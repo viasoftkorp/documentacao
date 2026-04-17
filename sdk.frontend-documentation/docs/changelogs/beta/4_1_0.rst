@@ -1,0 +1,548 @@
+
+Changelog - 4.1.0 Betas
+=======================
+
+10-03-20 (4.1.0-beta.85)
+------------------------
+
+Features
+^^^^^^^^
+
+* **navigation** [\ `FRM-1088 <http://jira.korp.com.br/browse/FRM-1088>`_\ ]: Added VsNavbarService.setNavigationMenu() to set an navigationMenu, not needing to do a foreach for insert a whole array.
+
+Bug Fixes
+^^^^^^^^^
+
+* **navigation** [\ `FRM-1088 <http://jira.korp.com.br/browse/FRM-1088>`_\ ]: Fixed problem that makes sidenav items be authorized twice.
+
+Improvements
+^^^^^^^^^^^^
+
+* **navigation** [\ `FRM-1088 <http://jira.korp.com.br/browse/FRM-1088>`_\ ]: Removed i18n export from navigation.
+
+
+02-03-20 (4.1.0-beta.84)
+------------------------
+
+* **datepicker** [\ `FRM-1074 <http://jira.korp.com.br/browse/FRM-1074>`_\ ]: Fix property "readonly" not working after other properties were updated
+
+
+28-02-20 (4.1.0-beta.83)
+------------------------
+
+* **datepicker** [\ `FRM-1072 <http://jira.korp.com.br/browse/FRM-1072>`_\ ]: Fix icons not displaying correctly when formGroup's disabled state was changed; Added allowPicker property.
+
+
+28-02-20 (4.1.0-beta.82)
+------------------------
+
+* **input** [\ `FRM-1018 <http://jira.korp.com.br/browse/FRM-1018>`_\ ]: Fix initial value as number.
+
+
+28-02-20 (4.1.0-beta.81)
+------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* **input** [\ `FRM-1018 <http://jira.korp.com.br/browse/FRM-1018>`_\ ]: Renomeado de mask para useMask para evitar conflitos com o Pacote NgxMask.
+
+
+28-02-20 (4.1.0-beta.80)
+------------------------
+
+* **datepicker** [\ `FRM-1042 <http://jira.korp.com.br/browse/FRM-1042>`_\ ]: Adicionado hintLabel e alterado o comportamento de readonly/disabled.
+
+
+27-02-20 (4.1.0-beta.79)
+------------------------
+
+* **input** [\ `link <http://jira.korp.com.br/browse/FRM-1018>`_\ ]: Corrigido máscara de currency.
+* **testing** [no-link]: Adicionado docs de testing
+
+
+24-02-20 (4.1.0-beta.77)
+------------------------
+
+* **mask** [\ `FRM-1018 <http://jira.korp.com.br/browse/FRM-1018>`_\ ]: Corrigido problema em que as mascaras de currency e zipcode não recebiam o valueChange.
+
+
+24-02-20 (4.1.0-beta.76)
+------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* **vs-input + mask** [\ `FRM-1015 <http://jira.korp.com.br/browse/FRM-1015>`_\ ]: Alterado nome da diretiva de máscara no input de *"mask"* para *"vsMask"*.
+* **OBSERVAÇÃO**\ : Não houve alteração na propriedade de máscara do textarea, então está não deve ser alterada.
+
+21-02-20 (4.1.0-beta.75)
+------------------------
+
+* **vs-input** [\ `FRM-1037 <http://jira.korp.com.br/browse/FRM-1037>`_\ ]: Corrigido problema em que os valores do input e radio button não eram zerados.
+* **mask** [\ `FRM-1018 <http://jira.korp.com.br/browse/FRM-1018>`_\ ]: Corrigido problema em que as mascaras de currency e zipcode não recebiam o valueChange.
+
+14-02-20 (4.1.0-beta.74)
+------------------------
+
+* **vs-input** [\ `FRM-995 <http://jira.korp.com.br/browse/FRM-995>`_\ ]: Corrigido problema com máscaras emitindo valor quando acontece um setValue no input.
+
+11-02-20 (4.1.0-beta.73)
+------------------------
+
+* **vs-grid** [\ `FRM-1001 <http://jira.korp.com.br/browse/FRM-1001>`_\ ]: Adicionado interface na grid para desenvolver render.
+* **theme** [\ `FRM-1002 <http://jira.korp.com.br/browse/FRM-1002>`_\ ]: Removido imports desnecessários de fontes do PrimeNG **BREAK CHANGE**
+
+10-02-20 (4.1.0-beta.72)
+------------------------
+* **readme** [no-link]: Correção das versões no Readme.
+
+10-02-20 (4.1.0-beta.71)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **oauth** [\ `FRM-991 <http://jira.korp.com.br/browse/FRM-991>`_\ ]: Corrigido erro caso horário local esteja incorreto.
+
+Features
+^^^^^^^^
+
+* **vs-navbar** [\ `FRM-998 <http://jira.korp.com.br/browse/FRM-998>`_\ ]: Adicionado opção de tradução do título da NavBar.
+
+07-02-20 (4.1.0-beta.70)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **oauth** [\ `FRM-992 <http://jira.korp.com.br/browse/FRM-992>`_\ ]: Corrigido problema de nonce.
+
+05-02-20 (4.1.0-beta.69)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **datepicker** [\ `FRM-990 <http://jira.korp.com.br/browse/FRM-990>`_\ ]: Corrigido erros ao iniciar um datepicker com valor vazio.
+* **oauth** [\ `FRM-992 <http://jira.korp.com.br/browse/FRM-992>`_\ ]: Corrigido problema de horário diferente causar token inválido.
+
+31-01-20 (4.1.0-beta.68)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [\ `FRM-979 <http://jira.korp.com.br/browse/FRM-979>`_\ ]: Corrigido comportamento do mask em relação ao currency.
+* **VsMapModule** [\ `FRM-670 <http://jira.korp.com.br/browse/FRM-670>`_\ ]: Removida dependência do Flex-layout do VsMapModule.
+
+Features
+^^^^^^^^
+
+* **@viasoft/mask** [\ `FRM-979 <http://jira.korp.com.br/browse/FRM-979>`_\ ]: Criação da lib de mask e adição da mask HH:mm
+
+30-01-20 (4.1.0-beta.67)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-grid** [no-link]: Correção do estilo da grid que era aplicado incorretamente em ambiente de produção
+
+21-01-20 (4.1.0-beta.66)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-grid** [no-link]: Ajustado os tamanho de icones na grid.
+
+Features
+^^^^^^^^
+
+* **vs-navigation** [no-link]: Re-adicionado posição de informação ao topo do navigation.
+
+21-01-20 (4.1.0-beta.64)
+------------------------
+
+Features
+^^^^^^^^
+
+* **vs-text-editor** [no-link]: Adicionado possibilidade de adicionar itens ao editor.
+* **vs-dialog** [\ `FRM-974 <http://jira.korp.com.br/browse/FRM-974>`_\ ]: Corrigido problema de dialog na posição errada.
+
+21-01-20 (4.1.0-beta.63)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **Authorization** [no-link]: Retirada mensagem de erro na entrada dos apps.
+* **vs-navigation** [\ `FRM-975 <http://jira.korp.com.br/browse/FRM-975>`_\ ]: Alterado estilo da navegação, agora quando é só um item mostra como tooltip.
+
+21-01-20 (4.1.0-beta.62)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **Authorization** [no-link]: Corrigido problema na inicialização dos apps.
+* **vs-dashboard** [\ `FRM-928 <http://jira.korp.com.br/browse/FRM-928>`_\ ]: Agora na inicialização do dashboard ele fica correto.
+
+Features
+^^^^^^^^
+
+* **vs-icon** [\ `FRM-971 <http://jira.korp.com.br/browse/FRM-971>`_\ ]: Adicionado tamanhos dinâmicos ao vs-icon.
+* **vs-datagrid** [\ `FRM-972 <http://jira.korp.com.br/browse/FRM-972>`_\ ]:Alterado o peso da fonte da grid.
+
+21-01-20 (4.1.0-beta.61)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **Authentication** [\ `FRM-963 <http://jira.korp.com.br/browse/FRM-963>`_\ ]: Corrigido problema com silent refresh.
+* **Licensing** [\ `FRM-936 <http://jira.korp.com.br/browse/FRM-936>`_\ ]: Wake em instancia de browser congelada.
+* **vs-data-grid** [\ `FRM-969 <http://jira.korp.com.br/browse/FRM-969>`_\ ]: Grid agora tem propriedade para tradução, sendo por default false.
+
+Features
+^^^^^^^^
+
+* **vs-kanban** [\ `FRM-939 <http://jira.korp.com.br/browse/FRM-939>`_\ ]: Agrupado resquest que é feita para busca de dados para o kanban.
+* **vs-kanban** [\ `FRM-924 <http://jira.korp.com.br/browse/FRM-924>`_\ ]: Adicionado refresh ao kanban.
+
+21-01-20 (4.1.0-beta.60)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **Identity** [\ `SDKBACK-146 <http://jira.korp.com.br/browse/SDKBACK-146>`_\ ]: Removido UserName do JWt e por seguinte das requisições.
+* **Authentication** [\ `FRM-966 <http://jira.korp.com.br/browse/FRM-966>`_\ ]: Corrigido problema de requisições se o login não terminasse, especificamento ao realizar logout.
+* **vs-dashboard** [\ `FRM-965 <http://jira.korp.com.br/browse/FRM-965>`_\ ]: Pequenos ajuste de filtros e layouts do dashboard.
+* **SignalR** [no-link]: Feito update do signal R no sdk.
+
+21-01-20 (4.1.0-beta.59)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-datepicker** [\ `FRM-964 <http://jira.korp.com.br/browse/FRM-964>`_\ ]: Form agora fica dirty quando date picker é marcado ou digitado.
+* **vs-datagrid** [\ `FRM-946 <http://jira.korp.com.br/browse/FRM-946>`_\ ]: Filtro da grid agora segue a altura correta das demais linhas.
+
+17-01-20 (4.1.0-beta.58)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [\ `FRM-926 <http://jira.korp.com.br/browse/FRM-926>`_\ ]: Ajustado bug onde emit false com máscara não atualiada o valor visual.
+* **vs-grid** [\ `FRM-962 <http://jira.korp.com.br/browse/FRM-962>`_\ ]: Ajustado bug onde grid não estava salvando filtros.
+
+Features
+^^^^^^^^
+
+* **SerialUnsubscriber** [\ `FRM-881 <http://jira.korp.com.br/browse/FRM-881>`_\ ]: Adicionada função de SerialUnsubscriber para realizar unsubscribe nas aplicações, disponível a partir da biblioteca common utils.
+* **vs-dashboard** [\ `FRM-935 <http://jira.korp.com.br/browse/FRM-935>`_\ ]: Página de settings adicionado as gadgets.
+* **ApiGenerator** [no-link]: Modificado link para download do jar para geração de clients.
+* **ShowCase** [\ `FRM-923 <http://jira.korp.com.br/browse/FRM-923>`_\ ]: Padronização do app ShowCase, rotas ajudastadas e páginas agrupadas por propósito.
+* **ShowCase** [\ `FRM-933 <http://jira.korp.com.br/browse/FRM-933>`_\ ]: Adicionado serivços stubs para teste com Cypress no ShowCase.
+
+07-01-20 (4.1.0-beta.56)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **LicensingAliveInfo** [`FRM-929 <http://jira.korp.com.br/browse/FRM-929>`_\ ]: Status atualizado em alguns casos de erro.
+
+07-01-20 (4.1.0-beta.55)
+------------------------
+
+Features
+^^^^^^^^
+
+* **vs-grid** [`FRM-927 <http://jira.korp.com.br/browse/FRM-927>`_\ ]: Ações quando colunas ativas arrumada a ordem.
+
+07-01-20 (4.1.0-beta.52)
+------------------------
+
+Features
+^^^^^^^^
+
+* **vs-dashboard** [`FRM-925 <http://jira.korp.com.br/browse/FRM-925>`_\ ]: Tela de configuração padrão adicionado aos gadgets.
+
+07-01-20 (4.1.0-beta.50)
+------------------------
+
+Features
+^^^^^^^^
+
+* **vs-input** [no-link]: Removido test de input que estava aprensentando inconsistencais no tempo de build do jenkis.
+
+07-01-20 (4.1.0-beta.49)
+------------------------
+
+Features
+^^^^^^^^
+
+* **vs-dashboard** [`link <http://jira.korp.com.br/browse/FRM-831>`_\ ]: Arrumado o desalinhamento dos gadgets nos dashboards.
+
+07-01-20 (4.1.0-beta.47)
+------------------------
+
+Features
+^^^^^^^^
+
+* **vs-input** [\ `link <http://jira.korp.com.br/browse/FRM-913>`_\ ]: Adicionado os testes de regressão visual.
+* **vs-dashboard** [no-link]: Removido Fxflex dos dashboards.
+* **vs-dashboard** [no-link]: Refatorada lógicas de dashboard com a troca do componente, e adicionado Gadget Container.
+
+06-01-20 (4.1.0-beta.46)
+------------------------
+
+Features
+^^^^^^^^
+
+* **AuthorizationStorageService** [no-link]: Todos os casos retornam true se user admin.
+
+06-01-20 (4.1.0-beta.45)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-autocomplete** [no-link]: Alterado problema ao clickar em ver mais opções.
+* **theme** [no-link]: Corrigido watch da biblioteca theme.
+* **BaseCrudService** [no-link]: Adicionado serviços de base crud ao sdk.
+
+30-12-19 (4.1.0-beta.44)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-date-picker** [\ `link <http://jira.korp.com.br/browse/FRM-920>`_\ ]:Nome dos arquivos de dashboard errados.
+* **vs-navigation** [\ `link <http://jira.korp.com.br/browse/FRM-899>`_\ ]: Corridida lógica para manter foco nos itens da navigation ao trocar de telas, baseado na rota atual.
+
+30-12-19 (4.1.0-beta.43)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-date-picker** [\ `link <http://jira.korp.com.br/browse/FRM-920>`_\ ]:Nome dos arquivos de dashboard errados.
+* **vs-navigation** [\ `link <http://jira.korp.com.br/browse/FRM-899>`_\ ]: Corridida lógica para manter foco nos itens da navigation ao trocar de telas, baseado na rota atual.
+
+30-12-19 (4.1.0-beta.38)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-date-picker** [\ `link <http://jira.korp.com.br/browse/FRM-915>`_\ ]: Corrigido problema de dirty e implementação do Datepicker.
+* **vs-date-picker** [\ `link <http://jira.korp.com.br/browse/FRM-918>`_\ ]: Corrigido teste visual do Datepicker.
+* **vs-input** [\ `link <http://jira.korp.com.br/browse/FRM-917>`_\ ]: Corrigido valor na máscara de datetime.
+
+Features
+^^^^^^^^
+
+* **vs-navigation** [\ `link <http://jira.korp.com.br/browse/FRM-899>`_\ ]: Manter o foco nos itens do navigation ao trocar de telas.
+* **vs-navigation** [\ `link <http://jira.korp.com.br/browse/FRM-702>`_\ ]: Removido a necessidade de icones de assets no navigation.
+* **vs-dashboard** [\ `link <http://jira.korp.com.br/browse/FRM-887>`_\ ]: Criado a possibilidade de renomear as tabs (guias) do dashboard.
+
+30-12-19 (4.1.0-beta.37)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-dashboard** [\ `link <http://jira.korp.com.br/browse/FRM-897>`_\ ]: Ajustado espaço dos gráficos nos dashboards quando colocados um sobre o outro.
+* **vs-dashboard** [\ `link <http://jira.korp.com.br/browse/FRM-901>`_\ ]: (Resolvido) Em uma Dashboard com gadgets, desabilitada para edição (adicionar, posicionar e remover gadgets), ocorre estouro de erro ao tentar mover gadget dentro da Dashboard.
+* **vs-input** [no-link]: Trocada lógica de hidden no input.
+* **vs-input** [no-link]: Máscara de currency do input corrigido.
+* **navigation** [no-link]: Corrigido redirect para profile no portal.
+
+30-12-19 (4.1.0-beta.36)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [\ `link <http://jira.korp.com.br/browse/FRM-914>`_\ ]: Corrigido problema de virgula com currency mask.
+
+30-12-19 (4.1.0-beta.34)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [no-link]: Corrigido lógica para números.
+
+28-12-19 (4.1.0-beta.33)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [no-link]: Trocado default value dedropSpecialCharacter para true.
+* **vs-input** [no-link]: Corrigido problemas do vs-input para formArrayName e formGroupName.
+
+27-12-19 (4.1.0-beta.30)
+------------------------
+
+Features
+^^^^^^^^
+
+* **authorization** [`link <http://jira.korp.com.br/browse/FRM-888>`_\ ]: Toda parte de autorização refatorada, retirada das referencias a roles, e guardas e cache de autorização refatorado;
+
+27-12-19 (4.1.0-beta.29)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [no-link]: Problema de value vazio quando há um vs-input do tipo date corrigido.
+
+Features
+^^^^^^^^
+
+* **vs-grid** [\ `link <http://jira.korp.com.br/browse/FRM-146>`_\ ]: Adicionado cache de posição e de largura das grids, bem como a melhoria de código e de performance.
+
+26-12-19 (4.1.0-beta.28)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [\ `link <http://jira.korp.com.br/browse/FRM-909>`_\ ]: Corrigido problema event emitter e de reset input após primeira alteração.
+
+26-12-19 (4.1.0-beta.26)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **navigation** [no-link]: Corrigido problema de loading infinito.
+
+24-12-19 (4.1.0-beta.25)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [\ `link <http://jira.korp.com.br/browse/FRM-908>`_\ ]: Corrigido problemas relacionados a emissão de eventos (focus, change, click, incluindo bug de dupla emissão no vs-button), realizado tratamentos para evitar erros no console.
+
+24-12-19 (4.1.0-beta.24)
+------------------------
+
+Features
+^^^^^^^^
+
+* **navigation** [\ `link <http://jira.korp.com.br/browse/FRM-896>`_\ ]: Corrigido diversas nomenclaturas, além da adição de área destinada a shortcuts dentro do navigation **POSSIVEIS BREAK CHANGES** devido a renomenclatura de propriedades e métodos.
+
+20-12-23 (4.1.0-beta.23)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [no-link]: Corrigido disabled do input;
+* **vs-input** [no-link]: Corrigido dirty do input;
+* **vs-kanban** [`link <http://jira.korp.com.br/browse/FRM-889>`_\ ]: Corrigido ordenação do kanban;
+
+20-12-19 (4.1.0-beta.22)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [`link <http://jira.korp.com.br/browse/FRM-905>`_\ ]: Corrigido prefix e suffix, além de emissão do value quando input sem mascara.
+
+20-12-19 (4.1.0-beta.21)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [`link <http://jira.korp.com.br/browse/FRM-904>`_\ ]: Corrigido log de erros para máscara de cpf/cnpj quando nulo.
+
+Features
+^^^^^^^^
+
+* **dashboard** [`link <http://jira.korp.com.br/browse/FRM-886>`_\ ]: Tabs de dashboard somem quando há apenas uma.
+* **user-service** [`link <http://jira.korp.com.br/browse/FRM-701>`_\ ]: Método de getStoredJwt dentro de UserService está público.
+* **autocomplete** [`link <http://jira.korp.com.br/browse/FRM-898>`_\ ]: Refatoração do autocomplete. **POSSIVEIS BREAK CHANGES**
+
+19-12-19 (4.1.0-beta.20)
+------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* **vs-input**\ : groupName e arrayName foram removidos dos @Input, dessa forma, para sua utilização, deve ser feita conforme documentação do `Reactive Forms <https://angular.io/guide/reactive-forms>`_
+
+Bug Fixes
+^^^^^^^^^
+
+* **vs-input** [`link <http://jira.korp.com.br/browse/FRM-902>`_\ ]: Readicionado dropSpecialCharacters.
+
+18-12-19 (4.1.0-beta.19)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **timeline** [ no-link ]: Pequena correção para que o conteúdo de um timeline se expanda (ocupe 100% da largura).
+
+Features
+^^^^^^^^
+
+* **input** [ `link <http://jira.korp.com.br/browse/FRM-876>`_ ]: Refatoração completa do vs-input, corrigindo diversos problemas e melhorias de performance e de código.
+
+  * **Criado vs-input Legacy**
+
+12-12-19 (4.1.0-beta.18)
+------------------------
+
+Features
+^^^^^^^^
+
+* **timeline** [ `link <http://jira.korp.com.br/browse/FRM-890>`_ ]: Adicionado a possibilidade de templates de header, body, footer e icon dentro do timeline, além de corrções e melhorias no código fonte.
+
+09-12-19 (4.1.0-beta.17)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **grid** [ `link <http://jira.korp.com.br/browse/FRM-880>`_ ]: Corrigido posição de mensagem de "Sem Resultados" e adicionado unsubscribes faltantes.
+
+09-12-19 (4.1.0-beta.16)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **timeline** [ `link <http://jira.korp.com.br/browse/FRM-862>`_ ]: Correção de sem imagem, fazendo com que haja uma imagem default caso não encontre a imagem.
+
+Features
+^^^^^^^^
+
+* **common/authentication** [ `link <http://jira.korp.com.br/browse/FRM-847>`_ ]: Alterada a forma de buscar permissões de usuário para quando o app inicia.
+
+07-12-19 (4.1.0-beta.15)
+------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* Fix when **tab group** tab selection was incorrect when occured an router change to an invalid route then redirect to a tab match route.
+* Fixed width of template of **radio button** to 100%
+* Fixed copy and paste behavior in **vs-input** with CPF/CNPJ mask
+
+Features
+^^^^^^^^
+
+* Added color property to **vs-label**

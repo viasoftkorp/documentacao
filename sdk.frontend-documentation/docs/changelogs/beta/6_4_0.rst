@@ -1,0 +1,538 @@
+Changelog - 6.4.0 Betas
+=======================
+
+6.4.0-beta.58 (18/10/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `ERP-34371 <http://jira.korp.com.br/browse/ERP-34371>`_ - `common`: Renaming license consume behavior, now when page is in background, license consume will only happen when page is opened again, avoiding problems related to browser not being able to consume license due to background usage limitations.
+- `ERP-34371 <http://jira.korp.com.br/browse/ERP-34371>`_ - `common`: Renaming license related classes/interfaces/enums (most likely, you won't need to change anything in your app):
+  - From `ConsumeAppLicenseStatus` to `VsConsumeAppLicenseStatus`
+  - From `LicenseConsumeType` to `VsLicenseConsumeType`
+  - From `LicensedAccountStatus` to `VsLicensedAccountStatus`
+  - From `LicensedAppStatus` to `VsLicensedAppStatus`
+  - From `LicensedBundleStatus` to `VsLicensedBundleStatus`
+  - From `LicensingModels` to `VsLicensingModels`
+  - From `LicensingModes` to `VsLicensingModes`
+  - From `LicensingStatus` to `VsLicensingStatus`
+  - From `ReleaseAppLicenseStatus` to `VsReleaseAppLicenseStatus`
+  - From `ConsumeLicenseControllerInput` to `IVsConsumeLicenseControllerInput`
+  - From `ConsumeLicenseOutput` to `IVsConsumeLicenseOutput`
+  - From `GetLicensedTenantControllerOutput` to `IVsGetLicensedTenantControllerOutput`
+  - From `LicenseByTenantId` to `IVsLicenseByTenantId`
+  - From `LicenseDetails` to `IVsLicenseDetails`
+  - From `LicenseUsageAdditionalInformation` to `IVsLicenseUsageAdditionalInformation`
+  - From `LicenseLicensedAccountDetails` to `IVsLicensedAccountDetails`
+  - From `LicensedAppDetails` to `IVsLicensedAppDetails`
+  - From `LicensedTenantDetails` to `IVsLicensedTenantDetails`
+  - From `NamedUserAppLicenseOutput` to `IVsNamedUserAppLicenseOutput`
+  - From `NamedUserBundleLicenseOutput` to `IVsNamedUserBundleLicenseOutput`
+  - From `RefreshAppLicenseInUseByUserOutput` to `IVsRefreshAppLicenseInUseByUserOutput`
+  - From `ReleaseLicenseControllerInput` to `IVsReleaseLicenseControllerInput`
+  - From `ReleaseLicenseOutput` to `IVsReleaseLicenseOutput`
+
+----
+
+6.4.0-beta.57 (10/10/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-6 <https://korp.youtrack.cloud/issue/SDKF-6>`_ - `navigation`: Fix problem in `navbar-sidenav` which was breaking when an `IItemMenuOptions` was null or it wasn't authorized.
+
+----
+
+6.4.0-beta.55 (03/10/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `FRM-1950 <http://jira.korp.com.br/browse/FRM-1950>`_ - `components`: Fix in `vs-textarea` size when `row` property is not provided.
+- `SDKBACK-945 <http://jira.korp.com.br/browse/SDKBACK-945>`_ - `common` Minor fix in `VsHttpModule.isCompanyBased` (now setting isCompanyBased to false by default).
+
+----
+
+6.4.0-beta.52 (03/10/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `SDKBACK-945 <http://jira.korp.com.br/browse/SDKBACK-945>`_ - `common`: A bunch of Notification related classes / interfaces were renamed.
+  - `INotification` -> `IVsNotification`
+  - `Notification` -> `VsNotification`
+  - `IPayload` -> `IVsNotificationPayload`
+  - `NotificationType` -> `VsNotificationTypeEnum`
+  - `IGroupNotifications` -> `IVsGroupNotifications`
+- `SDKBACK-945 <http://jira.korp.com.br/browse/SDKBACK-945>`_ - Refactor CustomServices `authenticationService` property.
+  - It was replaced to `authentication`, of `VsAuthCustomServices` type, allowing you to provide a custom `VsAuthService` / `VsAuthTokenValidationService`
+- `FRM-1949 <http://jira.korp.com.br/browse/FRM-1949>`_ - By default, **COMPANY IS NO LONGER REQUIRED**.
+  - You can provide a function to `VsHttpModule.isCompanyBased` to decide whether or not your app is based on Company.
+  - If you need to check whether or not the apps is company based, you can use `VsCompanyBasedResolver.isCompanyBasedPromise` value.
+    
+    - `VsCompanyBasedResolver.isCompanyBased` WILL BE FALSE until `VsCompanyBasedResolver.isCompanyResolved` finishes.
+- **BE CAREFUL**, if you implement any custom service related to company, you will need to handle whether or not the app is company based.
+
+- For obvious reason, VsCompanyService won't provide any value to companyId / legacyCompanyId if app is not company based.
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: Add `getNegativeNumberImask` / `getNumberImask` functions
+- `SDKBACK-945 <http://jira.korp.com.br/browse/SDKBACK-945>`_ - `common`: `VsAuthTokenValidationService` was added, allowing SDK/devs to validate authentication from time to time (by now it isn't doing anything).
+- `SDKBACK-945 <http://jira.korp.com.br/browse/SDKBACK-945>`_ - `common`: `VsCommandRunnerService` was added as a static service (you shouldn't inject it). It helps you to manage commands in frontend.
+  - Commands is a way to make notifications / code call a function without knowing its origin.
+    
+    - There's a new notification type called `VsNotificationTypeEnum.Command` (enum = 6)
+- This service allows you to register your own commands using `addCommand` method.
+- This service allows you to execute any command using `executeCommand` method.
+- By default, there are the following commands available:
+ 
+  - `vsLogin`: force user login
+  - `vsLogout`: force user logout
+  - `vsReload`: force page to reload
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `vs-grid` tag cell now has translates correctly.
+- [NO-ISSUE] - `common`: Fix problem related to login when app is in mock mode.
+
+----
+
+6.4.0-beta.49 (23/09/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] `common`: Now SDK handles 0 Http call response status by default.
+
+^^^^^^^^
+
+- `FRM-1946 <http://jira.korp.com.br/browse/FRM-1946>`_ - `components`: `vs-grid` now indicates when a filter is applied, changing the icon color to blue.
+
+Bug Fixes
+^^^^^^^^^
+
+- `FRM-1956 <http://jira.korp.com.br/browse/FRM-1956>`_ - `components`: `vs-datepicker` when `readonly` is `true`, open datepicker / clear buttons are hidden
+- `FRM-1957 <http://jira.korp.com.br/browse/FRM-1957>`_ - `common`: Messages with | character weren't being translated correctly.
+
+Usability
+---------
+
+- `PROP-956 <http://jira.korp.com.br/browse/PROP-956>`_ - `components`: Refactoring form components for better usability.
+  - Changing `vs-icon` to `vs-button` in all prefixes/suffixes of vs form components (This helps to improve the site accessibility).
+
+----
+
+6.4.0-beta.47 (10/08/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] `common`: Fix tab title translation.
+- [NO-ISSUE] `common`: Fix External Authentication endpoints.
+
+----
+
+6.4.0-beta.42 (04/08/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `FRM-1397 <http://jira.korp.com.br/browse/FRM-1397>`_ - `components`: Fix problem in `vs-autocomplete` which was cleaning the selected value on field blur.
+
+----
+
+6.4.0-beta.34 (18/07/2022)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `FRM-1941 <http://jira.korp.com.br/browse/FRM-1941>`_ - `components`: Add `required` property to `vs-autocomplete` and `vs-autocomplete-chips`.
+
+----
+
+6.4.0-beta.33 (08/06/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `FRM-1935 <http://jira.korp.com.br/browse/FRM-1935>`_ - `components`: `vs-checkbox` now will be touched when a value is set.
+
+----
+
+6.4.0-beta.30 (02/06/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: `runInitialLoginSequence` doesn't need to be called anymore, it's called automatically when app runs.
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: `VsAppCoreModule.forRoot` / `VsCommonModule.forRoot` `authConfig` was removed (replaced by `authentication` property)
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: `VsAppCoreModule.forRoot` / `VsCommonModule.forRoot` `authentication` added, allowing skip initial authentication and setup oauth client configurations
+- `FRM-1934 <http://jira.korp.com.br/browse/FRM-1934>`_ - `navigation`: `IItemMenuOptions.detectParameters` was replaced by `exactMatch`
+  - Now all routes, by default, are matched by starting with rather than exact match
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `navigation`: NAVIGATION_MAP was rename to VS_NAVIGATION_MAP
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: Renaming `defaultAuthConfig` to `VS_AUTH_DEFAULT_CONFIG`
+
+Features
+^^^^^^^^
+
+- `FRM-1934 <http://jira.korp.com.br/browse/FRM-1934>`_ - `navigation`: IItemMenuOptions.shouldBeShown (*optional*) added, allowing to skip showing menu item
+  - This is a function that receives `isAuthenticated` and should return a `boolean`
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: Added `VS_AUTH_DEFAULT_REDIRECT_URL` function, allowing to retrieve the default redirect url for oauth authentication
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: Following VS Guards now accept and handle routeData of `IVsAuthGuardOptions` type, allowing to provide a back route if user doesn't have access to the current route:
+    - `MustBeLoggedAuthGuard`
+    - `MustBeAdminAuthGuard`
+    - `MustBePolicyManagerAuthGuard`
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: Added `MustBeLoggedOrShouldBeAuthenticateAuthGuard`, allowing to guard routes that should be protected by authentication and, if user try to access it without being logged, redirect to login page
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: Added `VsAuthService.isAuthenticated` property, allowing to check whether user is authenticated.
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: `VsAuthService.login()` now receives a redirect url (*optional*), allowing to redirect to a specific url after login
+- `ASD-31 <http://jira.korp.com.br/browse/ASD-31>`_ - `common`: `DataLivelyService` / `NotificationService` will emit only logs that are warning or higher (previous Normal logs were being logged).
+
+----
+
+6.4.0-beta.29 (19/05/2022)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `FRM-1931 <http://jira.korp.com.br/browse/FRM-1931>`_ - `common`: `DataLivelyService` now supports multiple subscriptions to the same notification.
+  - Before this update, only one subscription was possible due to a problem related to remove method (which made all subscriptions to unsubscribe).
+
+----
+
+6.4.0-beta.28 (04/05/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `FRM-1510 <http://jira.korp.com.br/browse/FRM-1510>`_ - `http`: Default error dialog now shows for the following codes: [401, 500, 503]. You can implement a custom showFunction using `VS_UI_ERROR_SETTINGS.shouldShowErrorDialog`
+
+Features
+^^^^^^^^
+
+- `FRM-1510 <http://jira.korp.com.br/browse/FRM-1510>`_ - `http`: Default error dialog allows you to create a custom title, body or errorCode for each message. You can do it by setting a custom value for the following methods:
+
+  - `VsHttpErrorDialogService.getErrorTitle`
+  - `VsHttpErrorDialogService.getErrorBody`
+  - `VsHttpErrorDialogService.getErrorCode`
+
+- `FRM-1510 <http://jira.korp.com.br/browse/FRM-1510>`_ - `http`: Default error dialog allows you to run even on devMode using `VS_UI_ERROR_SETTINGS.shouldRunOnDevMode`.
+
+----
+
+6.4.0-beta.27 (26/04/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `FRM-1925 <http://jira.korp.com.br/browse/FRM-1925>`_ - `common`: `VsAppCoreModule.forRoot({ portalConfig.domain })` was updated:
+- The following valid values were updated:
+
+    - Shopping → Purchases
+    - RMA → Rma
+    - HR → HumanResources
+    - Settings → Configurations
+    - Custom → Customized
+    - Quality → QualityAssurance
+    - Shopping → Purchases
+    - Shopping → Purchases
+
+- The following valid values were added:
+
+    - Fiscal
+    - Development
+    - Licensing
+    - Reports
+    - Mobile
+
+- The following valid values were removed:
+
+    - Tax
+
+----
+
+6.4.0-beta.23 (09/03/2022)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `FRM-1923 <http://jira.korp.com.br/browse/FRM-1923>`_ - `common`: SDK now auto-updates browser tab title for the current app.
+
+Bug Fixes
+^^^^^^^^^
+
+- `FRM-1921 <http://jira.korp.com.br/browse/FRM-1921>`_ - `components`: All form components that have `formControlName` now pass this property as a HTML attribute, fixing `vs-test.getVsInput()` method.
+- `FRM-1922 <http://jira.korp.com.br/browse/FRM-1922>`_ - `common`: Fixed a bug which `VsDialog.open` didn't open in some situations based on `data` property.
+
+----
+
+6.4.0-beta.21 (09/03/2022)
+--------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1916 <http://jira.korp.com.br/browse/FRM-1916>`_ - ``grid``\ : ``options.filterOptions.useField`` now supports ``string`` or a ``function`` that returns a ``string`` value.
+* `FRM-1915 <http://jira.korp.com.br/browse/FRM-1915>`_ - ``input``\ : ``errorStateMatcher`` is now a ``@Input`` property.
+* `FRM-1915 <http://jira.korp.com.br/browse/FRM-1915>`_ - ``datepicker``\ : ``errorStateMatcher`` is now a ``@Input`` property.
+* `FRM-1915 <http://jira.korp.com.br/browse/FRM-1915>`_ - ``select``\ : ``errorStateMatcher`` is now a ``@Input`` property.
+* `FRM-1915 <http://jira.korp.com.br/browse/FRM-1915>`_ - ``textarea``\ : ``errorStateMatcher`` is now a ``@Input`` property.
+
+----
+
+6.4.0-beta.20 (21/02/2022)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1910 <http://jira.korp.com.br/browse/FRM-1910>`_ - ``message-dialog``\ : MESSAGE_DIALOG_SETTINGS no longer exists. It wasn't used.
+
+----
+
+Features
+^^^^^^^^
+
+* `FRM-1910 <http://jira.korp.com.br/browse/FRM-1910>`_ - ``common``\ : ``MessageService`` now accepts ``TemplateRef`` for title / message properties.
+* `FRM-1910 <http://jira.korp.com.br/browse/FRM-1910>`_ - ``common``\ : ``MessageService`` now has a ``actionsTemplateRef`` for all methods, allowing to define a template for the actions rather than the default buttons.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1910 <http://jira.korp.com.br/browse/FRM-1910>`_ - ``grid``\ : Grid wasn't unsubscribing from confirm delete message.
+* `FRM-1910 <http://jira.korp.com.br/browse/FRM-1910>`_ -\ ``common``\ : ``MessageService.isHtml`` now really works.
+
+----
+
+6.4.0-beta.19 (17/02/2022)
+--------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1662 <http://jira.korp.com.br/browse/FRM-1662>`_ - ``grid``\ : ``skipClear`` parameter in ``gridOptions.refresh`` was added, avoiding clearing the filter, pagination, sorting, etc during refresh.
+
+----
+
+6.4.0-beta.18 (01/02/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1906 <http://jira.korp.com.br/browse/FRM-1906>`_ - ``grid``\ : Grid would throw error after cleaning checkbox selections on advanced filter change.
+
+----
+
+6.4.0-beta.17 (21/01/2022)
+--------------------------
+
+Changes
+^^^^^^^
+
+* 
+  `FRM-1904 <http://jira.korp.com.br/browse/FRM-1904>`_ - `components`: Added legacy components to mitigate breaking changes in 6.3 release:
+
+
+  * ``vs-checkbox-legacy``
+
+    * From ``vs-checkbox`` to ``vs-checkbox-legacy``
+    * From ``@viasoft/components/checkbox`` to ``@viasoft/components/checkbox-legacy``
+    * From ``VsCheckboxModule`` to ``VsCheckboxLegacyModule``
+
+  * ``vs-radio-button-legacy``
+
+    * From ``vs-radio-button`` to ``vs-radio-button-legacy``
+    * From ``@viasoft/components/radio-button`` to ``@viasoft/components/radio-button-legacy``
+    * From ``VsRadioButtonModule`` to ``VsRadioButtonLegacyModule``
+
+  * ``vs-select-legacy``
+
+    * From ``vs-select`` to ``vs-select-legacy``
+    * From ``@viasoft/components/select`` to ``@viasoft/components/select-legacy``
+    * From ``VsSelectModule`` to ``VsSelectLegacyModule``
+
+  * ``vs-textarea-legacy``
+
+    * From ``vs-textarea`` to ``vs-textarea-legacy``
+    * From ``@viasoft/components/textarea`` to ``@viasoft/components/textarea-legacy``
+    * From ``VsTextareaModule`` to ``VsTextareaLegacyModule``
+
+  **Note: This is a temporary way to avoid the breaking changes introduced in version 6.3 and will be removed in upcoming releases.**
+
+----
+
+6.4.0-beta.16 (21/01/2022)
+--------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1903 <http://jira.korp.com.br/browse/FRM-1903>`_ - ``stepper``\ : Added ``disabled`` property to ``vs-stepper-item``.
+* `FRM-1901 <http://jira.korp.com.br/browse/FRM-1901>`_ - ``grid``\ : Get requests will now log errors.
+* `FRM-657 <http://jira.korp.com.br/browse/FRM-657>`_ - ``input``\ , ``search``\ : Added ``autocomplete`` property.
+* `FRM-657 <http://jira.korp.com.br/browse/FRM-657>`_ - ``select-modal``\ , ``select-modal-legacy``\ : Added ``searchInputTemplate`` property, allowing the use of custom templates.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1901 <http://jira.korp.com.br/browse/FRM-1901>`_ - ``grid``\ : An error would be thrown when ``VsGridGetResult.data`` was empty.
+
+----
+
+6.4.0-beta.15 (19/01/2022)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1742 <http://jira.korp.com.br/browse/FRM-1742>`_ - ``common``\ : License is now released before logout, avoiding an error modal from showing.
+
+----
+
+6.4.0-beta.14 (20/12/2021)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1898 <http://jira.korp.com.br/browse/FRM-1898>`_ - ``navigation``\ : Company Selection now shows ``tradingName`` rather than ``companyName``.
+
+----
+
+6.4.0-beta.12 (10/12/2021)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-894 <http://jira.korp.com.br/browse/FRM-894>`_ - ``navigation``\ : Navigation menu would exceed the viewport when too close to the edge.
+
+----
+
+6.4.0-beta.11 (29/11/2021)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1894 <http://jira.korp.com.br/browse/FRM-1894>`_ - ``components``\ : Dialog footer content would be hidden in certain cases.
+
+----
+
+6.4.0-beta.10 (26/11/2021)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1893 <http://jira.korp.com.br/browse/FRM-1893>`_ - ``common``\ : Licensing requests would fail when using Hydra authentication.
+
+----
+
+6.4.0-beta.9 (25/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1823 <http://jira.korp.com.br/browse/FRM-1823>`_ - ``checkbox``\ : Overflowing label text wouldn't wrap to a new line, instead overlapping other elements.
+
+----
+
+6.4.0-beta.7 (25/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1649 <http://jira.korp.com.br/browse/FRM-1649>`_ - ``select-modal-legacy``\ : Close button would be focused automatically instead of the search input when opening a modal.
+* `FRM-1819 <http://jira.korp.com.br/browse/FRM-1819>`_ - ``tree-table``\ : "Cannot read ``sortField`` of ``undefined``\ " error would be thrown during initialization in some cases.
+* `FRM-1887 <http://jira.korp.com.br/browse/FRM-1887>`_ - ``input`` and other form fields: A visual bug related to the underline of disabled fields would occur when browser zoom was set to certain values.
+
+----
+
+6.4.0-beta.6 (24/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1890 <http://jira.korp.com.br/browse/FRM-1890>`_ - ``datepicker``\ : Error message wouldn't show up when using validators.
+
+----
+
+6.4.0-beta.5 (22/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1880 <http://jira.korp.com.br/browse/FRM-1880>`_ - ``navigation``\ : Company selection overflow ellipsis color didn't match the text color.
+* `FRM-1877 <http://jira.korp.com.br/browse/FRM-1877>`_ - ``grid``\ : Pointer cursor was shown even when ``VsGridOptions.select`` wasn't defined.
+
+----
+
+6.4.0-beta.4 (19/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1888 <http://jira.korp.com.br/browse/FRM-1888>`_ - ``navigation``\ : In Safari for macOS, navigation sidebar menus would show up in the wrong place when expanded.
+
+----
+
+6.4.0-beta.3 (18/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1886 <http://jira.korp.com.br/browse/FRM-1886>`_ - ``grid``\ : Columns using sub-fields would be hidden in mobile mode.
+
+----
+
+6.4.0-beta.2 (16/11/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1885 <http://jira.korp.com.br/browse/FRM-1885>`_ - ``common``\ : User image would not load correctly, causing the profile menu to be hidden.
+
+----
+
+6.4.0-beta.1 (09/11/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1715 <http://jira.korp.com.br/browse/FRM-1715>`_ - ``common``\ : ``DataLivelyService`` and ``NotificationService`` will now connect to webhooks using ``tenantId`` and ``environmentId``\ , avoiding notification issues with multiple logins in different tenants.
+  * This should not be a breaking change in most cases, only if you're using one of these services while the user is not logged in. For those cases, you'll need to implement a custom ``DataLivelyService`` and ``NotificationService`` that doesn't use ``tenantId`` and ``environmentId``.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1715 <http://jira.korp.com.br/browse/FRM-1715>`_ - ``common``\ : Notifications would be duplicated after reconnecting.
+
+  * ``NotificationService`` will now unsubscribe from webhook events before reconnecting.
+
+* `FRM-1813 <http://jira.korp.com.br/browse/FRM-1813>`_ - ``common``\ : Notification ``connectionId`` would be ``null`` after reconnecting.

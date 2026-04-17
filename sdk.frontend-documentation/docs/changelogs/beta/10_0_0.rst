@@ -1,0 +1,293 @@
+Changelog - 10.0.0 Betas
+=======================
+
+10.0.0-beta.2 (20/05/2025)
+--------------------------
+
+Migracao
+--------
+
+Esta versão está focada na atualização do Angular 19. É crucial que você siga estas etapas nesta ordem exata ao atualizar seus aplicativos e bibliotecas.
+
+1. Certifique-se que já tenha atualizado o Angular para a versão 18 e o SDK para a versão 9.0.0.
+2. Rode o comando para atualizar o Angular (marque todas as migrações possiveis para facilitar o processo)
+
+.. code-block:: shell
+
+   ng update @angular/core@19 @angular/cli@19 --force
+
+3. Rode o comando para atualizar o Angular Material.
+
+.. code-block:: shell
+
+   ng update @angular/material@19 --force
+
+Caso queira, é possível auto-migrar todos os `@inputs` / `@outputs` para serem `signals`, apenas rodando os comandos abaixo:
+
+.. code-block:: shell
+
+   ng generate @angular/core:signal-input-migration
+   ng generate @angular/core:signal-queries-migration
+   ng generate @angular/core:output-migration
+
+4. Atualize o `package.json` conforme tabela abaixo:
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+     - Documentation
+   * - @angular/animations
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/cdk
+     - 🔄 Updated
+     - `^19.2.6`
+     - https://material.angular.io/
+   * - @angular/common
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/compiler
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/core
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/forms
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/material
+     - 🔄 Updated
+     - `^19.2.6`
+     - https://material.angular.io/
+   * - @angular/platform-browser
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/platform-browser-dynamic
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @angular/router
+     - 🔄 Updated
+     - `^19.2.3`
+     - https://angular.io/docs
+   * - @ngx-translate/core
+     - 🔄 Updated
+     - `~16.0.4`
+     - https://ngx-translate.org/getting-started/migration-guide/
+   * - @primeng/themes
+     - ✅ Added
+     - `^19.0.10`
+     - https://github.com/primefaces/primeng/releases/
+   * - @sentry/angular
+     - 🔄 Updated
+     - `~9.9.0`
+     - 
+   * - @sentry/browser
+     - 🔄 Updated
+     - `~9.9.0`
+     - 
+   * - @viasoft/datepicker
+     - 🔄 Updated
+     - `~10.0.0`
+     - 
+   * - @viasoft/fontawesome-pro
+     - 🔄 Updated
+     - `~6.7.3`
+     - 
+   * - angular-oauth2-oidc
+     - 🔄 Updated
+     - `19.0.0`
+     - 
+   * - core-js
+     - 🔄 Updated
+     - `3.41.0`
+     - 
+   * - dompurify
+     - 🔄 Updated
+     - `~3.2.4`
+     - 
+   * - primeicons
+     - ❌ Removed
+     - 
+     - 
+   * - primeng
+     - 🔄 Updated
+     - `~19.0.10`
+     - https://github.com/primefaces/primeng/releases/
+   * - rxjs
+     - 🔄 Updated
+     - `~7.8.2`
+     - 
+   * - tslib
+     - 🔄 Updated
+     - `^2.8.1`
+     - 
+   * - ua-parser-js
+     - 🔄 Updated
+     - `2.0.3`
+     - 
+   * - zone.js
+     - 🔄 Updated
+     - `~0.15.0`
+     - 
+   * - @angular-devkit/build-angular
+     - 🔄 Updated
+     - `^19.2.4`
+     - 
+   * - @angular-eslint/builder
+     - 🔄 Updated
+     - `19.3.0`
+     - 
+   * - @angular-eslint/eslint-plugin
+     - 🔄 Updated
+     - `19.3.0`
+     - 
+   * - @angular-eslint/eslint-plugin-template
+     - 🔄 Updated
+     - `19.3.0`
+     - 
+   * - @angular-eslint/schematics
+     - 🔄 Updated
+     - `19.3.0`
+     - 
+   * - @angular-eslint/template-parser
+     - 🔄 Updated
+     - `19.3.0`
+     - 
+   * - @angular/cli
+     - 🔄 Updated
+     - `^19.2.4`
+     - 
+   * - @angular/compiler-cli
+     - 🔄 Updated
+     - `^19.2.3`
+     - 
+   * - @angular/language-service
+     - 🔄 Updated
+     - `^19.2.3`
+     - 
+   * - @types/dompurify
+     - 🔄 Updated
+     - `^3.2.0`
+     -
+   * - @types/jasmine
+     - 🔄 Updated
+     - `~5.1.7`
+     - 
+   * - @types/lodash
+     - 🔄 Updated
+     - `^4.17.16`
+     - 
+   * - @types/node
+     - 🔄 Updated
+     - `~22.13.13`
+     - 
+   * - @viasoft/testing
+     - 🔄 Updated
+     - `5.0.0-beta.1`
+     - 
+   * - chokidar
+     - 🔄 Updated
+     - `^4.0.3`
+     - 
+   * - cypress
+     - 🔄 Updated
+     - `~14.2.0`
+     - 
+   * - cypress-real-events
+     - 🔄 Updated
+     - `^1.14.0`
+     - 
+   * - eslint
+     - 🔄 Updated
+     - `^8.57.0`
+     - 
+   * - jasmine-core
+     - 🔄 Updated
+     - `~5.6.0`
+     - 
+   * - ng-packagr
+     - 🔄 Updated
+     - `~19.2.0`
+     -
+   * - prettier
+     - 🔄 Updated
+     - `~3.5.3`
+     -
+   * - shelljs
+     - 🔄 Updated
+     - `~0.9.2`
+     -
+
+5. Confira a documentação de `Migração do Angular <https://angular.dev/update-guide?v=18.0-19.0&l=3>`_
+6. Qualquer estilo relacionado ao `primeicons` ou ao `primeng` deve ser removido do `angular.json` já que não existem mais.
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- **`FormsModule` / `ReactiveFormsModule` não estão mais no `VsCommonModule`, caso precise, importe manualmente**.
+- **A propriedade `dataIdentifier` foi adicionada ao `VsGridOptions`. Ela é usada para identificar linhas de forma única e permitir o rastreamento correto. O valor padrão é `'id'`, mas você deve informar de forma obrigatória para evitar problemas**
+- `VsFormManipulator.disabled` foi substituido para `VsFormManipulator.isDisabled()`, sendo `model<boolean>` ao invés de `boolean`
+- `VsTableCell` foi totalmente removido, agora todas as colunas customizadas da VsGrid / VsTreeTable devem herdar de `VsTableCellCustomComponent`;
+- As seguintes propriedades do `VsTableCellCustomComponent` foram refatoradas para utilizarem signal:
+    - `editRowOptions` para `editRowOptions()`. **ATENÇÃO: ISSO PODE DAR ERRO EM RUNTIME CASO NÃO ALTERADO CORRETAMENTE**
+    - `fieldName` para `columnName()`
+    - `isEditable` para `isCellEditable()`
+    - `index` para `rowIndex()`
+    - `shouldTranslate` para `shouldTranslateCell()`
+    - `isInEditMode` para `isCellInEditMode()`.
+    - `kind` para `cellKind()`
+    - `tooltip` para `cellTooltip()`
+    - `format` para `cellFormat()`
+    - `actions` para `cellActions()`
+    - `events` para `cellEvents()`
+    - `disabled` para `isDisabled()`
+- Substitua `@import "@viasoft/theming/use-theme";` para `@use "@viasoft/theming/use-theme" as *;`
+- Substitua `@use "@viasoft/theming/mixins/breakpoint";` para `@use "@viasoft/theming/mixins/breakpoint" as util;`
+- PrimeNG Theming has been completely changed, `vs components` has been fixed bit if you use any other component, you must fix styles on your own.
+- `MaskResolverService` removido, substitua para `VsMaskResolverService`
+- `VsTreeTableColumn.disableSorting` removido, use `VsTreeTableColumn.sorting.disable`
+- `VsGridColumnSettings.align` removido, use `VsGridColumnSettings.alignHeader` ou `VsGridColumnSettings.alignCell`
+- `VsGridColumnSettings.disableFilter` removido, use `VsGridColumnSettings.filterOptions.disable`
+- `VsGridColumnSettings.valueFormatter` removido, use `VsGridColumnSettings.format`
+- `VsGridColumnSettings.onChanged` removido, use `VsGridColumnSettings.events.onChanged`
+- `isPrefixClickable` / `isSuffixClickable` removidos do componente de VsInput, pois não eram mais utilizados.
+- `IItemMenuOptions.cta` removido, use `IItemMenuOptions.onClick`
+- `<vs-tree-table (select) />` removido, use `<vs-tree-table (onSelect) />`
+- Substitua `VsColoredTextData` para `IVsTableCellColoredTextData`
+- Substitua `VsGridTagData` para `IVsTableCellTagData`
+- Substitua `VsIconData` para `IVsTableCellIconData`
+- Substitua `IIcon` para `IVsIconCustomType`
+- Substitua `VsGridAction` para `VsTableAction`
+
+Deprecated Changes
+^^^^^^^^^^^^^^^^^^
+
+- Substitua `VsInputModule` para `VsInputComponent`
+- Substitua `VsSpinnerModule` para `VsSpinnerComponent`
+- Substitua `VsLabelModule` para `VsLabelComponent`
+- Substitua `VsIconModule` para `VsIconComponent`
+- Substitua `VsButtonModule` para `VsButtonComponent`
+- Substitua `VsButtonFabModule` para `VsButtonFabComponent`
+- Substitua `VsCheckboxModule` para `VsCheckboxComponent`
+- Substitua `VsAccordionModule` para `VsAccordionComponent`
+- Substitua `VsNoResultModule` para `VsNoResultComponent`
+- Substitua `VsLabelLinkModule` para `VsLabelLinkComponent`
+- Substitua `VsSearchInputModule` para `VsSearchInputComponent`
+- Substitua `VsGridComponentLoaderModule` para `VsGridComponentLoaderComponent`
+- Substitua `VsLayoutModule` para `VsLayoutComponent`
+- Substitua `VsModalModule` para `VsModalComponent`
+- Substitua `VsPaginatorModule` para `VsPaginatorComponent`
+- Substitua `VsScrollButtonsModule` para `VsScrollButtonsComponent`
+- Substitua `UserService` para `VsUserService`
+- Substitua `MessageModule` para `VsMessageModule`
+- Substitua `StorageModule` para `VsStorageModule`

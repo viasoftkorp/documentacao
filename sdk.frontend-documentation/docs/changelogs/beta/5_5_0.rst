@@ -1,0 +1,88 @@
+Changelog - 5.5.0 Betas
+=======================
+
+5.5.1-beta.9 (07/06/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1697 <http://jira.korp.com.br/browse/FRM-1697>`_ - ``grid``\ : New Chromium version caused grid rows to expand to fill the available vertical space.
+
+----
+
+5.5.0-beta.8 (05/04/2021)
+-------------------------
+
+Housekeeping
+^^^^^^^^^^^^
+
+* `FRM-1661 <http://jira.korp.com.br/browse/FRM-1661>`_\ : Grid now uses VsSubscriptionManager, fixing a **huge performance** issue which caused that subscriptions wasn't removed until the ngOnDestroy of vs-grid component.
+
+----
+
+5.5.0-beta.6 (23/03/2021)
+-------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1599 <http://jira.korp.com.br/browse/FRM-11599>`_ - ``filter``\ : MongoDB queries are now case-insensitive. This applies to ``autocomplete``\ , ``grid`` and ``tree-table``\ , as well as anyone using the ``getMongoFromJQuery`` function.
+
+----
+
+5.5.0-beta.5 (23/03/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1607 <http://jira.korp.com.br/browse/FRM-1607>`_ - ``select-modal-legacy``\ : Styles from ``select-modal`` could override styles from ``select-modal-legacy``\ , causing the grid to have 0 height.
+* `FRM-1603 <http://jira.korp.com.br/browse/FRM-1603>`_ - ``http``\ : Environments with accent marks could cause requests to fail.
+
+  * ``EnvironmentName`` and ``AppName`` request headers were removed since they're unused and could cause these issues.
+  * For identifying environments, the ``EnvironmentId`` header should be used instead.
+
+----
+
+5.5.0-beta.2 (11/03/2021)
+-------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1588 <http://jira.korp.com.br/browse/FRM-1588>`_ - ``grid``\ : Added an error message and reload button that are shown automatically when a get request fails.
+
+----
+
+5.5.0-beta.1 (05/03/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1574 <http://jira.korp.com.br/browse/FRM-1574>`_ - ``grid``\ , ``tree-table``\ : The ``persistentCache`` option now defaults to ``false``.
+
+Features
+^^^^^^^^
+
+* `FRM-1454 <http://jira.korp.com.br/browse/FRM-1454>`_ - ``button``\ : Added icon options to buttons with ``model="icon"``.
+
+  * You can now use the ``iconStyle``\ , ``iconColor`` and ``iconBoxColor`` properties in ``vs-button`` elements.
+
+* `FRM-1504 <http://jira.korp.com.br/browse/FRM-1504>`_ - ``grid``\ : Added icon options to grid actions.
+
+  * You can now use the ``iconStyle``\ , ``iconColor`` and ``iconBoxColor`` properties in ``VsGridAction`` objects.
+
+* `FRM-1537 <http://jira.korp.com.br/browse/FRM-1537>`_ - ``i18n``\ : The ``TranslateService.instant`` method now works with pipe parameters.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1562 <http://jira.korp.com.br/browse/FRM-1562>`_ - ``navigation``\ : User profile picture was being "squeezed".
+
+Housekeeping
+^^^^^^^^^^^^
+
+* `FRM-1563 <http://jira.korp.com.br/browse/FRM-1563>`_\ : Removed all internal usages of SerialSubscriptions and SerialUnsubscriber.
+* `FRM-1272 <http://jira.korp.com.br/browse/FRM-1272>`_\ : Organized and cleaned up all internal imports.

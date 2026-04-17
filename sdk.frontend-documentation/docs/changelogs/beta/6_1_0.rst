@@ -1,0 +1,71 @@
+
+Changelog - 6.1.0 Betas
+=======================
+
+6.1.2-beta.3 (22/09/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1795 <http://jira.korp.com.br/browse/FRM-1795>`_ - ``message-dialog``\ : Action buttons were center-aligned instead of right-aligned.
+
+----
+
+6.1.1-beta.2 (21/09/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1794 <http://jira.korp.com.br/browse/FRM-1794>`_ - ``checkbox``\ : Frame and ripple would get cut off after interaction in some very specific cases.
+
+----
+
+6.1.0-beta.1 (06/09/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* 
+  `FRM-1763 <http://jira.korp.com.br/browse/FRM-1763>`_ - ``grid``\ : Renamed ``none`` option to ``center`` in ``VsGridColumnSettings.align``.
+
+* 
+  `FRM-1620 <http://jira.korp.com.br/browse/FRM-1620>`_ - ``navigation``\ : Removed ``IItemMenuOptions.functionPath``.
+
+Dependency Updates
+^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+   * - ``primeng``
+     - 🔃 Updated
+     - ``~12.1.0``
+
+
+*Note: the ``~`` is important! It guarantees that only patch (\ ``x.x.X``\ ) versions can be installed automatically, whereas ``^`` allows for minor (\ ``x.X.x``\ ) versions to be installed as well.*
+
+Features
+^^^^^^^^
+
+* `FRM-1465 <http://jira.korp.com.br/browse/FRM-1465>`_ - ``common``\ : Added ``errorCodes`` property to ``VsUiErrorSettings``.
+
+  * This property gives developers control over which HTTP error codes should automatically show an error dialog.
+  * By default, the following error codes show a dialog: 401, 404 and 500.
+
+Changes
+^^^^^^^
+
+* `FRM-1763 <http://jira.korp.com.br/browse/FRM-1763>`_ - ``grid``\ , ``tree-table``\ : Visual refresh.
+* `FRM-1763 <http://jira.korp.com.br/browse/FRM-1763>`_\ : Refactored PrimeNG theme and removed styles that weren't being used by SDK components.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1763 <http://jira.korp.com.br/browse/FRM-1763>`_ - ``grid``\ : Checkbox selection column could mess up the column size calculation.
+* `FRM-1763 <http://jira.korp.com.br/browse/FRM-1763>`_ - ``grid``\ : Horizontal scrollbar could show up when it shouldn't.

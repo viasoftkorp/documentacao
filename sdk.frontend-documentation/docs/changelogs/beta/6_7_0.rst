@@ -1,0 +1,1069 @@
+Changelog - 6.7.0 Betas
+=======================
+
+6.7.0-beta.129 (16/08/2024)
+-------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] `common`: License error when reopen a page after a long period of inactivty was fixed.
+
+____
+
+6.7.0-beta.119 (16/04/2024)
+---------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-36 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista?identificador=SDKF-36>`_ - `components`: Fixed an issue related to column sorting with cache in the `TreeTable`. 
+
+____
+
+6.7.0-beta.117 (10/04/2024)
+---------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixed an issue that prevented row selection from working in the mobile layout of the `Grid`.
+
+____
+
+6.7.0-beta.113 (28/03/2024)
+---------------------------
+
+Changes
+^^^^^^^
+
+- [NO-ISSUE] - `components`: Reverted the corrections made to the `ScrollButtons` in version `6.7.0-beta.109`.
+
+____
+
+6.7.0-beta.109 (27/03/2024)
+---------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: A new ``InjectionToken`` has been added to control the visibility of `ScrollButtons` in the `VsHeader` component. This ``InjectionToken`` accepts a ``boolean`` value that determines whether the scroll buttons should appear. The default behavior is disabled, and to enable it, you can use the InjectionToken (`VS_HEADER_SCROLL_BUTTONS`).
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+      
+  .. code-block:: typescript
+    
+    @NgModule({
+      providers: [
+        { provide: VS_HEADER_SCROLL_BUTTONS, useValue: true }
+      ]
+    })
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Several corrections have been made to the `VsScrollButtons` to ensure proper behavior.
+
+____
+
+6.7.0-beta.107 (27/03/2024)
+---------------------------
+
+- [NO-ISSUE] - `components`: Performance improvements have been made to `vsScroll` Directive and `VsScrollButtons` Component.
+
+____
+
+6.7.0-beta.104 (25/03/2024)
+---------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-31 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista?identificador=SDKF-30>`_ - `components/view-template`: New scroll buttons have been added to the `Header`. These buttons appear when the header buttons total width exceeds the available space. The scroll buttons can be customized using templates.
+
+  - Additionally, a new directive ``vsScroll`` and a new component ``VsScrollButtons`` has been introduced, which can be used in other components as well. The directive and component allow custom scroll buttons and supports both horizontal and vertical scrolling.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example for Header with templates:</span>
+
+  .. code-block:: html+ng2
+
+    <vs-header mode="nav" [startScrollButtonTemplate]="scrollStartButton" [endScrollButtonTemplate]="scrollEndButton">
+      <div actions>
+        <ng-template #scrollStartButton
+          let-scrollElement="scrollElement"
+          let-disabled="disableScrollToStartButton"
+          let-startButtonClasses="startButtonClasses">
+          <vs-button [class]="startButtonClasses" [disabled]="disabled" (clickEvent)="scrollElement('start')">
+            Custom start
+          </vs-button>
+        </ng-template>
+
+        <ng-container *ngFor="let item of items">
+          <vs-button model="icon" [icon]="item.icon" [label]="item.label"></vs-button>
+        </ng-container>
+
+        <ng-template #scrollEndButton
+          let-scrollElement="scrollElement"
+          let-disabled="disableScrollToEndButton"
+          let-endButtonClasses="endButtonClasses">
+          <vs-button [class]="endButtonClasses" [disabled]="disabled" (clickEvent)="scrollElement('end')">
+            Custom end
+          </vs-button>
+        </ng-template>
+      </div>
+    </vs-header>
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Examples for VsScrollButtons:</span>
+
+  .. code-block:: html+ng2
+
+    <div vsScroll [customScrollAmount]="100">
+      <vs-scroll-buttons>
+        <ng-container *ngFor="let item of items">
+          <vs-button model="icon" [icon]="item.icon" [label]="item.label"></vs-button>
+        </ng-container>
+      </vs-scroll-buttons>
+    </div>
+
+    <div class="vertical-scroll-buttons" vsScroll>
+      <vs-scroll-buttons scrollOrientation="vertical">
+        <ng-container *ngFor="let item of items">
+          <vs-button model="icon" [icon]="item.icon" [label]="item.label"></vs-button>
+        </ng-container>
+      </vs-scroll-buttons>
+    </div>
+
+Improvements
+^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Performance improvements have been made to the following components: `VsFilter`, `VsAutocomplete` and `VsSearch`.
+
+____
+
+6.7.0-beta.103 (22/03/2024)
+---------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Changes have been made to the `LabelLink`. New properties include ``target``, which allows specifying where to open the linked document and ``isExternalLinkFn``, a function that determines if the link is external. External links will now open using the default browser behavior if specified as external.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Performance corrections have been made to the `TreeTable`.
+- [NO-ISSUE] - `components`: Fixed issues with the `Grid` `singleSelect` selection behavior.
+- [NO-ISSUE] - `components`: A correction has been made to ensure the `Grid` paginator locks when the item count is less than the page size.
+
+____
+
+6.7.0-beta.99 (18/03/2024)
+--------------------------
+
+Changes
+^^^^^^^
+
+- [NO-ISSUE] - `components`: A change was made to the Grid Paginator, now it hides the first and last pagination icon when `totalCountMode` is disabled. To disable `totalCountMode`, return ``0`` or ``undefined`` in the `gridOptions` Get method of `VsGrid`.
+
+____
+
+6.7.0-beta.97 (14/03/2024)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-31 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista?identificador=SDKF-31>`_ - `components`: `Grid` columns now accept a `tooltip`, which can be a `string`, or a function that returns a `string.`
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: typescript
+
+    new VsGridSimpleColumn({
+      tooltip: 'tooltip'
+    })
+
+____
+
+6.7.0-beta.94 (06/03/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: A correction has been made to the `tabLabel` color of the `TabGroup` when a tab is disabled.
+
+____
+
+6.7.0-beta.93 (06/03/2024)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-29 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista?identificador=SDKF-29>`_ - `components`: Performance improvements have been made to the following components: `TreeTable`, `Icon` and `Navbar`.
+
+____
+
+6.7.0-beta.91 (03/03/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-14 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista?identificador=SDKF-14>`_ - `components`: A problem with the ``rowClick`` when used in conjunction with `getSelection` in the `Grid` has been fixed and additional corrections were made to the selection behavior in `Grid`.
+
+____
+
+6.7.0-beta.86 (28/02/2024)
+--------------------------
+
+Changes
+^^^^^^^
+- `SDKF-14 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/707f5490-b85f-6580-a8ff-349ee4a3fb6a>`_ - `components`: The ``checkbox`` mode option has been removed from the `selectionMode` property of the `Grid`. Now, the `Grid` supports only two selection modes: ``multiple`` and ``single``. This change simplifies the available selection options and adjusts some behaviors of the `Grid` in relation to row selection.
+  
+  - **Multiple** Mode:
+    
+    - When the `Grid` is configured with ``selectionMode = 'multiple'``, and only the ``select`` method is implemented, rows can be selected by clicking either on the checkbox or on the entire row.
+    - If the ``select`` and ``onRowClick``, or ``ctrlClick`` methods are implemented, checkboxes can only be selected through a direct click on the checkbox. Clicks on the row will invoke the ``onRowClick`` or ``ctrlClick`` methods, without marking the checkbox.
+    - To allow ``onRowClick`` to also select the checkbox, a new property called ``shouldToggleSelection`` has been added to the return of ``onRowClick``. To enable checkbox selection through ``onRowClick`` in ``multiple`` mode, simply return an object with ``shouldToggleSelection: true``.
+  
+  - **Single** Mode:
+
+    - In ``single`` mode, there are no checkboxes on the `Grid` rows. If only the ``select`` method is implemented, it will be called when clicking on a row. If ``onRowClick`` is also implemented, this method will be called upon clicking the row, preventing the ``select`` method from being called .
+
+  - With the removal of the ``checkbox`` mode from the ``selectionMode`` property in the `Grid`, developers will need to make adjustments to migrate to the new selection options available. Here is a simplified guide to facilitate this transition:
+
+    - Update the `selectionMode`: Change the ``selectionMode`` of your `Grid` from ``checkbox`` to ``multiple``. This aligns your grid's configuration with the updated selection options.
+    - Avoid Implementing `onRowClick`: To maintain a selection behavior similar to the previous ``checkbox`` mode, avoid implementing the ``onRowClick`` method.
+    
+    After completing the migration, the behavior will be as follows:
+
+    - Clicking directly on a checkbox will select the corresponding row.
+    - Additionally, beyond direct checkbox clicks, clicking on any part of the row will also result in the selection of that row's checkbox.
+
+____
+
+6.7.0-beta.81 (05/02/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-24 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/a1412524-3b8c-733b-41fc-6358944ee9d8>`_ - `components`: A problem with the checkboxes in VsTreeView was fixed that prevented the correct functioning of partial selections.
+
+____
+
+6.7.0-beta.80 (02/02/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Additional corrections have been implemented in the `VsActionsSidenav` component (`Notification`).
+
+____
+
+6.7.0-beta.78 (01/02/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-5 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/969152fd-c313-9e00-3171-6b866b4cfbba>`_ - `common`: New improvements have been implemented in the `VsActionsSidenav` component (`Notification`), including a new interface and new functionalities. Now, users have the ability to select individual messages to mark as read or to delete them. Additionally, functionalities have been introduced that allow users to select specific messages they wish to mark as read or delete, as well as options to remove all messages or delete all at once.
+
+____
+
+6.7.0-beta.76 (31/01/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-23 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/75691b70-329a-d0a0-bdd6-e646f2920a6c>`_ - `components`: A new eventEmitter called chipClickEvent has been added to VsAutocompleteChipsMinimalist. This eventEmitter can be used to capture the information of the chip after it is clicked on.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: html+ng2
+
+    <vs-autocomplete-chips-minimalist
+      controlName="autocompleteChips"
+      placeholder="Example"
+      [options]="autocompleteOptionsChips"
+      [autocompleteGetInput]="autocompleteGetInputChips"
+      [getChipColor]="getChipColor.bind(this)"
+      (chipClickEvent)="onChipClick($event)"
+      (selectionChangeEvent)="change($event)"
+      (deletionChangeEvent)="delete($event)"
+    ></vs-autocomplete-chips-minimalist>
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-22 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/75675487-8425-ec3f-d6dc-f0fd8c80de2e>`_ - `common`: A problem in `VsCommandRunnerService` related to handling pending logout commands has been fixed. Previously, if a pending logout command was received and a user attempted to re-login while the session was already active, the logout message would be displayed, forcing the user to log in again. This fix resolves the issue, ensuring that, when re-logging in with an active session, pending logout commands no longer affect the user's session.
+
+____
+
+6.7.0-beta.73 (30/01/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `common`: A problem in `VsCommandRunnerService` was corrected that affected the behavior of the ``logout`` command in the **Firefox** browser. Before this fix, upon receiving a ``logout`` command, the user was logged out as expected, but the command was not properly deleted. This led to undesirable behavior where, upon logging in again, the logout message was immediately displayed, and the user was logged out again, creating a continuous logout loop.
+
+____
+
+6.7.0-beta.72 (24/01/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-20 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/6d0ddcac-d4a2-19fa-2ccb-0abfdaeb0908>`_ - `components`: The ``autoSelectTextOnFocus`` property of `VsAutocompleteSelect` has been fixed when used in conjunction with `VsClickableInput`. Previously, when focusing on the `VsAutocompleteSelect` within a `VsClickableInput`, the text was not automatically selected as expected.
+
+____
+
+6.7.0-beta.70 (19/01/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-17 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/bd879803-8429-0791-3f71-4a703429f5c8>`_ - `components`: The `@Input` ``getChipColor`` property has been added to the `VsAutocompleteChipsMinimalist` component. This property accepts a function with the parameters ``key`` and ``value``, returning a ``string``. The function is used to define specific colors for the `chips` in `VsAutocompleteChipsMinimalist`.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  **component.html**
+     
+  .. code-block:: html+ng2
+
+    <vs-autocomplete-chips-minimalist
+      [getChipColor]="getChipColor.bind(this)"
+    ></vs-autocomplete-chips-minimalist>
+
+  **component.tabs-view-template**  
+
+  .. code-block:: typescript
+
+    private chipColors = {
+      chip1: '#FFBC0A',
+      chip2: '#D7263D',
+      chip3: '#32DE8A',
+      chip4: '#C200FB'
+    };
+
+    public getChipColor(key: string): string {
+      return this.chipColors[key];
+    }
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: A problem in `VsKanban` was fixed that prevented the removal of a `kanban-card` if it was moved from one `vs-kanban-list` to another and its ID was equal to 0.
+
+____
+
+6.7.0-beta.67 (16/01/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-16 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/bd17a932-1b9a-2a69-f1da-71c1ea60b6aa>`_ - `components`: A new property called ``tooltip`` has been added to `VsGridCheckboxColumn`. This property displays a specific text when the user hovers over the checkbox.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+    
+  .. code-block:: typescript
+
+    new VsGridCheckboxColumn({
+      field: 'Example',
+      headerName: 'Example',
+      tooltip: 'Tooltip example'
+    }),
+
+____
+
+6.7.0-beta.66 (15/01/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-15 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/e750ea4c-acfa-9f4d-e4a6-435236490b40>`_ - `components`: Filters for the `VsGrid` have been added to the mobile layout.
+
+____
+
+6.7.0-beta.65 (07/01/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-11 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/bb493843-fc32-a7a0-b7c6-31f686903582>`_ - `components`: The option ``hideHeaderCheckbox`` has been added to `GridOptions`. This new property accepts a ``boolean`` value and allows developers to remove the checkbox from the `Grid` header.
+
+____
+
+6.7.0-beta.64 (02/01/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `common`:  Now, it is possible to pass an HTML message to the header of the `Notification` message.
+
+- [NO-ISSUE] - `components`: Two new properties have been added to `vsTabLabel`:
+
+  - ``order``: This property determines the tab's position in the list, allowing developers to specify the order in which the tab labels should appear within the `VsTabGroup`. The default value is 1, meaning that tabs will be arranged based on the provided order value.
+  - ``hidden``: The hidden property is used to hide a specific label within the tab group.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+    
+  .. code-block:: html+ng2
+
+    <vs-tabs-view-template>
+      <vs-tab-group endRouteBase="tab-group">
+        <div *vsTabLabel="{ title: 'tab.one.label', route: 'tab-one', order: 2 }"></div>
+        <div *vsTabLabel="{ title: 'tab.two.label', route: 'tab-two', hidden: true}"></div>
+        <div *vsTabLabel="{ title: 'tab.three.label', route: 'tab-three'}"></div>
+      </vs-tab-group>
+    </vs-tabs-view-template>
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-12 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/20f36cce-6444-8357-5d45-4a7d8d457d3f>`_ - `components`: An improvement has been implemented in `VsKanban`. Now, when dragging a `kanban-card` to the edge of the screen horizontally, the horizontal scroll is automatically triggered.
+
+____
+
+6.7.0-beta.61 (29/12/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-10 <https://portal.korp.com.br/projetos/0e971de3-71ae-16ff-9d20-fcf528bebd03/lista/25666b9c-9fdc-cbfb-fff0-f1f8c3cc6ffa>`_ - `components`: The ``disabled`` property of the `VsGridCheckboxColumn` now accepts a function that returns a ``boolean``.
+
+____
+
+6.7.0-beta.59 (28/12/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Some performance corrections were made in the `VsIcon` component.
+
+____
+
+6.7.0-beta.58 (28/12/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `common`: A correction has been made to address the issue of duplicate messages in the `Notification` upon reconnection.
+
+____
+
+6.7.0-beta.56 (08/12/2023)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Now in the `VsGrid` component, after executing the ``clearAllFilters`` method, the selection is also cleared. 
+
+____
+
+6.7.0-beta.55 (04/12/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Additional corrections have been implemented in the `VsLabelLink` component.
+
+____
+
+6.7.0-beta.53 (30/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-214 <https://korp.youtrack.cloud/issue/SDKF-214>`_ - `components`: Added a new component called `VsLabelLink`. This component allows the creation of navigable links with additional features, such as custom styling and tooltips. The `@Input` properties include:
+
+  - ``classes``: Allows adding custom CSS classes to the link.
+  - ``tooltip``: A text that will be displayed when hovering over the link.
+  - ``tooltipPosition``: Sets the tooltip's position relative to the link (`above, below, left, right, before, after`).
+  - ``label``: The text of the link.
+  - ``color``: Defines the color of the link text.
+  - ``navigationPath``: The navigation path when clicking on the link.
+  - ``avoidNavigation``: A function that returns a boolean to prevent navigation based on specific conditions.
+
+____
+
+6.7.0-beta.52 (28/11/2023)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-215 <https://korp.youtrack.cloud/issue/SDKF-215>`_ - `components`: Now, when you select a value from `VsAutocompleteChip` within a `VsClickableInput`, the `VsClickableInput` will remain open.
+
+____
+
+6.7.0-beta.47 (14/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: The configuration of the `VsDatepicker` can now be passed through the `@Input` ``config`` property.
+
+____
+
+6.7.0-beta.46 (13/11/2023)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: The `VsClickableInput` now offers support for `VsAutocompleteChips` component.
+
+____
+
+6.7.0-beta.44 (13/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-209 <https://korp.youtrack.cloud/issue/SDKF-209>`_ - `components`: A new `@Input` property called ``disableHeader`` has been added. This property accepts a ``boolean`` value that allows disabling the grid's header. When the grid's header is disabled, it means that all functionalities related to sorting and filters in the header section will not just be turned off, they will be completely removed.
+
+____
+
+6.7.0-beta.42 (10/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: A new `@Input` property has been added to the `VsClickableInput` component, called ``shouldShowPointerCursor``. This property accepts a ``boolean`` value and is used to determine whether the cursor displayed over the `VsClickableInput` should be of the pointer type or the default cursor.
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: Additional corrections have been implemented in the `VsClickableInput` component.
+
+____
+
+6.7.0-beta.41 (09/11/2023)
+--------------------------
+
+Changes
+^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: The `VsDynamicInput` component has been renamed to `VsClickableInput`.
+
+Features
+^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: The ``[(isEditing)]`` property has been added to `VsClickableInput`, allowing for a two-way binding that controls the editing state of the `VsClickableInput`.
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: The `@Input` property `avoidGlobalClick` has been added to `VsClickableInput`. This property allows the component to be activated only through a click on a specific location, defined by the developer.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+    
+  .. code-block:: html+ng2
+
+    <vs-clickable-input
+      [previewTemplate]="previewSelect"
+      [clickableInputChildTemplate]="selectField"
+      [avoidGlobalClick]="true">
+      <ng-template #previewSelect let-onClickableClick="onClick">
+        <div class="preview-template">
+          <vs-icon icon="mouse" (click)="onClickableClick()"></vs-icon>
+          {{ selectValue }}
+        </div>
+      </ng-template>
+
+      <ng-template #selectField>
+        <vs-select formControlName="select" [options]="selectOptions"></vs-select>
+      </ng-template>
+    </vs-clickable-input>
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: The `VsClickableInput` now offers support for `VsTextarea` component.
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: Additional corrections have been implemented in the `VsClickableInput` component.
+
+____
+
+6.7.0-beta.39 (08/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: Two new ``@Input`` properties have been added to `VsDynamicInput`:
+
+  - ``disabled``: This property allows the `VsDynamicInput` to be disabled.
+  - ``tabIndex``: Set with a default value of -1, this property is used to enable tab navigation in the component.
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: The `VsDynamicInput` now offers support for new components:
+
+  - `VsInput`
+  - `VsDatepicker`
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: Additional corrections have been implemented in the `VsDynamicInput` component.
+
+____
+
+6.7.0-beta.38 (07/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-207 <https://korp.youtrack.cloud/issue/SDKF-207>`_ - `components`: Added the `VsDynamicInput` Component, with this component it is possible to display the input value as a customizable template, chosen by the developer who is implementing the component. By clicking on the displayed text (developer's template), the original input, which is contained within the component, is revealed, allowing for the value to be edited.
+
+  - Properties:
+    
+    - ``dynamicInputChildTemplate``: This property accepts a TemplateRef, allowing developers to define the actual input element that will be displayed and edited by the user.
+    - ``previewTemplate``: Accepts a TemplateRef to define how the input's current value is displayed before the user interacts with it.
+
+  - Supported Components:
+    
+    - `VsAutocompleteSelect`
+    - `VsSelect`
+
+  .. raw:: html
+
+      <span style="font-weight: bold;">Usage Example:</span>
+      
+  .. code-block:: html+ng2
+
+    <vs-dynamic-input 
+      [previewTemplate]="previewTemplate" 
+      [dynamicInputChildTemplate]="templateField"
+    >
+      <ng-template #previewTemplate>
+        <div>{{ form.get('vsSelect').value }}</div>
+      </ng-template>
+      
+      <ng-template #templateField>
+        <vs-select 
+          data-cy-control="reactive-regular" 
+          formControlName="vsSelect" 
+          [options]="options"
+        ></vs-select>
+      </ng-template>
+    </vs-dynamic-input>
+
+____
+
+6.7.0-beta.36 (03/11/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-206 <https://korp.youtrack.cloud/issue/SDKF-206>`_ - `components`: A correction has been made to the `keep-sort` icon in `VsGrid`. Previously, in situations where two or more columns had ``sorting.useField`` set with equal values, the `keep-sort` icon remained visible on all columns. 
+
+____
+
+6.7.0-beta.34 (01/11/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-205 <https://korp.youtrack.cloud/issue/SDKF-205>`_ - `components`: The property ``autoSelectTextOnClick`` has been added to `VsTextEditable` component.
+
+- [NO-ISSUE] - `components`: Two new properties have been added to `VsGridColumn`, named ``alignHeader`` and ``alignCell``. These properties allow for separate alignment of the column title and cell content. Previously, the alignment of both was controlled by the ``align`` property, which has now been `deprecated`. The new properties ``alignHeader`` and ``alignCell`` accept the following positions: ``left``, ``right`` or ``center``.
+
+  .. raw:: html
+
+      <span style="font-weight: bold;">Usage Example:</span>
+    
+  .. code-block:: typescript
+
+    this.gridOptions = new VsGridOptions();
+
+    this.gridOptions.columns = [
+      new VsGridSimpleColumn({
+        alignCell: 'left',
+        alignHeader: 'right'
+      }),
+    ];
+
+____
+
+6.7.0-beta.31 (31/10/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-204 <https://korp.youtrack.cloud/issue/SDKF-204>`_ - `components`: A new `@Input` property named ``useCurrentValueAsFilter`` has been added to the `VsAutocompletSelect` component. This property, which accepts a boolean value, determines whether the current input value will be used to perform filtering in the autocomplete. The default value of this property is false, which means that by default, the current value is not used as a filter unless explicitly configured by the developer to do so.
+- `SDKF-205 <https://korp.youtrack.cloud/issue/SDKF-205>`_ - `components`: A new `@Input` property named ``autoSelectTextOnFocus`` has been added to several form components. This property, which accepts a boolean value, is used to determine whether the text inside the input field will be automatically selected when the field receives focus. The ``autoSelectTextOnFocus`` property has been added to the following components:
+
+  - VsAutocompleteSelect
+  - VsDatepicker
+  - VsDropdown
+  - VsInput
+  - VsTextarea.
+
+____
+
+6.7.0-beta.25 (25/10/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-200 <https://korp.youtrack.cloud/issue/SDKF-200>`_ - `components`: Additional corrections have been implemented in the `VsAutocompleteChipsMinimalist` component.
+
+____
+
+6.7.0-beta.24 (24/10/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-200 <https://korp.youtrack.cloud/issue/SDKF-200>`_ - `components`: A new component named `VsAutocompleteChipsMinimalist` has been added. This component is a minimalist variation of the already existing `VsAutocompleteChips`. The `VsAutocompleteChipsMinimalist` offers a more simplified and clean interface, while maintaining the key functionalities of the original component.
+
+____
+
+6.7.0-beta.23 (23/10/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Additional corrections have been implemented in the alignment of title of the `VsTabGroup` component.
+
+____
+
+6.7.0-beta.20 (13/10/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-196 <https://korp.youtrack.cloud/issue/SDKF-196>`_ - `components`: A correction has been made to the title size of the `VsTabGroup` component for cases where the title is an empty icon without text.
+
+____
+
+6.7.0-beta.19 (11/10/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-195 <https://korp.youtrack.cloud/issue/SDKF-195>`_ - `components`: Additional corrections have been implemented in the title of the `VsTabGroup` component.
+
+____
+
+6.7.0-beta.18 (10/10/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-196 <https://korp.youtrack.cloud/issue/SDKF-196>`_ - `components`: A new `@Input` property has been added to the `VsTabGroup` component, named ``fitHeaderToContent``. This property allows the border (outline) of the title within the tab-group to automatically adjust to match the size of the title.
+
+____
+
+6.7.0-beta.17 (10/10/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-195 <https://korp.youtrack.cloud/issue/SDKF-195>`_ - `components`: A problem with the `VsTabGroup` title has been fixed. Previously, when a value was not provided for the title, the title was incorrectly displayed as `[Object object]`. This update ensures that, in the absence of a specified title, the title field remains empty.
+
+____
+
+6.7.0-beta.16 (09/10/2023)
+--------------------------
+
+Features
+^^^^^^^^
+- `SDKF-192 <https://korp.youtrack.cloud/issue/SDKF-192>`_ - `components`: Added `VsTextEditable` Component. This component allows for the direct editing of textual content within the user interface.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+  
+  .. code-block:: html+ng2
+
+    <vs-text-editable formControlName="title" [editableContent]="editableContent" placeholder="placeholder">
+      <h1>
+        <span #editableContent></span>
+      </h1>
+    </vs-text-editable>
+
+  .. code-block:: html+ng2
+
+    <vs-text-editable formControlName="title3" [editableContent]="editableContent3" [placeholder]="placeholderTemplate">
+      <h3>
+        <span #editableContent3></span>
+      </h3>
+    </vs-text-editable>
+    <ng-template #placeholderTemplate>
+      <b>Placeholder </b><i>Template</i>
+    </ng-template>
+
+____
+
+6.7.0-beta.13 (06/10/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-83 <https://korp.youtrack.cloud/issue/SDKF-83>`_ - `components`: Added a new `selectionMode` called `multiple` to the Grid. This `selectionMode` allows for simultaneous support of both row clicks and checkbox clicks within the Grid.
+
+  - Along with the introduction of `multiple` `selectionMode`, a new method called ``onRowClick`` has been added. This method is triggered when a row is clicked while the `selectionMode` is set to ``multiple``. When the `selectionMode` is ``single``, the ``onRowClick`` method is also triggered, serving as a replacement for the ``select`` method in this context.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: typescript
+
+    this.gridOptions = new VsGridOptions();
+    this.gridOptions.selectionMode = 'multiple';
+
+    this.gridOptions.select = (i, data) => console.info(`select ${i}: ${data.commonName}`);
+    this.gridOptions.onRowClick = (i, data) => console.info(`onRowClick: ${i}: ${data.commonName}`);
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Notes</span>
+
+  In ``single`` `selectionMode`, if ``onRowClick`` is not implemented, the ``select`` method will continue to function normally as the default behavior for row clicks.
+
+____
+
+6.7.0-beta.12 (06/10/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-192 <https://korp.youtrack.cloud/issue/SDKF-192>`_ - `components`: The `text-editable` component has been added. This component allows for the creation of elements where the text can be directly edited on the page.
+
+  .. raw:: html
+
+      <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: typescript
+    
+    public form: FormGroup;
+  
+    constructor(private fb: FormBuilder) { }
+
+    ngOnInit() {
+      this.initForm();
+    }
+
+    private initForm() {
+      this.form = this.fb.group({
+        title: ['title', []],
+      })
+    }    
+
+  .. code-block:: html+ng2
+
+    <vs-text-editable formControlName="title"></vs-text-editable>
+
+  - The `text-editable` component also supports the passing of ``TemplateRef``.
+
+  .. code-block:: html+ng2
+
+    <vs-text-editable formControlName="title" [editableContent]="editableContent">
+      <h1>
+        <span #editableContent></span>
+      </h1>
+    </vs-text-editable>
+
+  - You can specify a default ``placeholder`` for the `text-editable`. This ``placeholder`` text will be displayed when there is no value present.
+  
+  .. code-block:: html+ng2
+
+    <vs-text-editable formControlName="title" placeholder="placeholder"></vs-text-editable>
+
+  - Additionally, the ``placeholder`` can also be a ``TemplateRef``.
+
+  .. code-block:: html+ng2
+
+    <vs-text-editable formControlName="title" [placeholder]="placeholderTemplate"></vs-text-editable>
+    <ng-template #placeholderTemplate>
+      <b>Placeholder </b><i>Template</i>
+    </ng-template>
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Important Note</span>
+
+  - To utilize the `text-editable` component, ensure to import the **VsTextEditableModule** into the module of your component.
+  
+  .. code-block:: typescript
+    
+    import { NgModule } from '@angular/core';
+    import { VsTextEditableModule } from '@viasoft/components';
+
+    @NgModule({
+      imports: [
+        VsTextEditableModule
+      ]
+    })
+
+Changes
+^^^^^^^
+
+- `SDKF-193 <https://korp.youtrack.cloud/issue/SDKF-193>`_ - `components`: Adjusted icon sizes within `datepicker`.
+
+____
+
+6.7.0-beta.11 (26/09/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-188 <https://korp.youtrack.cloud/issue/SDKF-188>`_ - `components`: Fixed an issue in the `tree-table` where the `filter` functionality was not working properly when navigating between pages. This fix ensures correct filtering when browsing the different pages of the `tree-table`.
+- `SDKBACK-100 <https://korp.youtrack.cloud/issue/SDKBACK-100>`_ - `components`: A issue was fixed in the `filter` functionality that prevented it from working properly with decimal numbers. With this correction, the `filter` now accepts decimal numbers.
+
+____
+
+6.7.0-beta.9 (21/09/2023)
+-------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: The tooltip attribute for `actions` and `headerActions` in both `grid` and `tree-table` has been enhanced to accept a function returning a ``string``.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: An issue has been fixed where passing an empty array to `rightActions` would incorrectly add width to the size of the `grid`.
+- [NO-ISSUE] - `components`: Fixed an issue in the `tree-table` where resizing a column would break the width of the `tree-table`. This fix ensures that the `tree-table` maintains its width layout integrity during and after the column resizing.
+- [NO-ISSUE] - `components`: A correction has been applied to the color of the sorting label in the `tree-table`.
+
+____
+
+6.7.0-beta.5 (20/09/2023)
+-------------------------
+
+- `SDKF-184 <https://korp.youtrack.cloud/issue/SDKF-184>`_ - `components`: A modification has been made to the `rightHeaderActions` of the `grid`. Now, they are consistently positioned on the right side of the header.
+
+____
+
+6.7.0-beta.4 (19/09/2023)
+-------------------------
+
+Update Dependencies / Breaking Changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- The package ``@fortawesome/fontawesome-pro`` has been replaced with ``@viasoft/fontawesome-pro``.
+
+  .. list-table::
+    :header-rows: 1
+
+    * - Dependency
+      - Status
+      - Version
+    * - @viasoft/fontawesome-pro
+      - ✅ Added
+      - ``5.15.4``
+    * - @fortawesome/fontawesome-pro
+      - ❌ Removed
+      -
+
+  This requires updates in the `angular.json` file. Any reference to ``@fortawesome`` should be updated to ``@viasoft``.
+
+Features
+^^^^^^^^
+
+- `SDKF-165 <https://korp.youtrack.cloud/issue/SDKF-165>`_ - `components`: Introduced `headerActions` for mobile layout in the `grid` component.
+- `SDKF-165 <https://korp.youtrack.cloud/issue/SDKF-165>`_ - `components`: Introduced new attributes for the `actions` of the `tree-table`. The added attributes include ``iconStyle``, ``iconColor``, ``iconBoxColor``, ``disabled``, and ``refreshSubject``. With these additions, the attributes for `actions` within the `tree-table` are now aligned with those of the `grid`'s `actions`.
+- `SDKF-165 <https://korp.youtrack.cloud/issue/SDKF-165>`_ - `components`: The `conditions` attribute for `headerActions` now also accepts a function that returns a ``Promise<boolean>`` for both grid and tree-table.
+- `SDKF-165 <https://korp.youtrack.cloud/issue/SDKF-165>`_ - `components`: The `disabled` attribute for `headerActions` now also accepts a function that returns a ``boolean`` value for both grid and tree-table.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Important Note</span>
+
+  If there is a need to dynamically refresh the ``disabled``, ``actions``, or ``headerActions`` in these components, different approaches should be used for `tree-table` and `grid`:
+    
+  - For `tree-table`: Invoke the ``refreshActionsSubject`` subject.
+
+    .. code-block:: html+ng2
+
+      <vs-tree-table [refreshActionsSubject]="refreshActionsSubject"></vs-tree-table>
+    
+    .. code-block:: typescript
+
+      public refreshActionsSubject = new Subject<void>();
+
+      private yourFunction() {
+        this.refreshActionsSubject.next();
+      }
+
+  - For `grid`: Call the ``refreshActions`` method available in `VsGridOptions`. 
+
+  Both will ensure that all `actions` reflect the most current state and attributes defined in the options.
+
+Changes
+^^^^^^^
+
+- `SDKF-165 <https://korp.youtrack.cloud/issue/SDKF-165>`_ - `components`: Now, the `grid` header (``thead``) remains fixed at the top of the screen during scrolling.
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `SDKF-165 <https://korp.youtrack.cloud/issue/SDKF-165>`_ - `components`: The ``VsGridAction`` class has been deprecated. Users are advised to use the ``VsTableAction`` class as a replacement. The new class provides similar functionalities and is set to be the standard going forward.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Updates to VsTableAction:</span>
+
+  - **tooltip** can now accept either a function returning a ``string`` or a static ``string``.
+  - **condition** can now accept either a function returning a ``Promise<boolean>`` or a ``boolean``.
+  - **disabled** can now accept either a function returning a ``boolean`` or a static ``boolean``.

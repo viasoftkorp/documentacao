@@ -1,0 +1,104 @@
+
+Changelog - 6.2.0 Betas
+=======================
+
+6.2.0-beta.10 (13/10/2021)
+--------------------------
+
+Dependency updates
+^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+   * - ``ua-parser-js``
+     - ✅ Added
+     - ``^0.7.28``
+
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dev dependency
+     - Status
+     - Version
+   * - ``@types/ua-parser-js``
+     - ✅ Added
+     - ``^0.7.36``
+
+
+Changes
+^^^^^^^
+
+* `FRM-1761 <http://jira.korp.com.br/browse/FRM-1761>`_ - ``common``\ : Implemented new licensing API.
+
+----
+
+6.2.0-beta.9 (08/10/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1810 <http://jira.korp.com.br/browse/FRM-1810>`_ - ``tree-view``\ : Items with children were not being indented correctly.
+
+----
+
+6.2.0-beta.8 (04/10/2021)
+-------------------------
+
+Changes
+^^^^^^^
+
+* `FRM-1800 <http://jira.korp.com.br/browse/FRM-1800>`_\ : ``VS_AUTHORIZATION_PREFIX`` is now being exported so it can be used by other applications and/or libraries.
+
+----
+
+6.2.0-beta.7 (04/10/2021)
+-------------------------
+
+Fixes
+^^^^^
+
+* `FRM-1800 <http://jira.korp.com.br/browse/FRM-1800>`_\ : Authorization prefix can now be specified in ``VsAppCoreModule``\ , whereas previously it could only be specified in ``VsCommonModule``.
+
+----
+
+6.2.0-beta.6 (04/10/2021)
+-------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1800 <http://jira.korp.com.br/browse/FRM-1800>`_ - ``common``\ : Added option to customize the authorization route prefix
+
+  * Authorization routes now follow the new API;
+  * A prefix should be specified in ``VsAppCoreModule`` so that API calls go through your app's backend;
+  * By default the prefix is set to ``"authorization"``.
+
+----
+
+6.2.0-beta.2 (04/10/2021)
+-------------------------
+
+Changes
+^^^^^^^
+
+* `FRM-1782 <http://jira.korp.com.br/browse/FRM-1782>`_ - ``input``\ , ``select``\ , ``search-input``\ , ``textarea``\ , ``datepicker``\ , ``dropdown``\ , ``autocomplete``\ , ``chip-list``\ : Visual refresh.
+
+  * The following CSS custom properties are available for customization, though they should only be used in specific cases:
+
+    * ``--vs-form-field-color-disabled``\ : Applied to the text color of disabled fields;
+    * ``--vs-form-field-color-underline``\ : Applied to the field underline color (dotted and on hover);
+    * ``--vs-form-field-color-label``\ : Applied to the placeholder and hint label colors;
+    * ``--vs-form-field-color-error``\ : Applied to the required indicator and error label.
+
+----
+
+6.2.0-beta.1 (01/10/2021)
+-------------------------
+
+*No changes compared to 6.1.2*

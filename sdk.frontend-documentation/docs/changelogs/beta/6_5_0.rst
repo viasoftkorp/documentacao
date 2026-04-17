@@ -1,0 +1,210 @@
+Changelog - 6.5.0 Betas
+=======================
+
+.. TODO: Decide whether or not we should merge SDKF-11
+
+.. - `SDKF-11 <https://korp.youtrack.cloud/issue/SDKF-11>`_ - `http`: You should remove all `HttpClientModule` imports is your modules. Multiple `HttpClientModule` were duplicating a lot of HttpInterceptors related code.
+..   - Right now, if you use `VsHttpModule.forRoot` in your `app.module.ts`, `HttpClientModule` is already provided for all application
+
+
+6.5.0-beta.30 (26/07/2024)
+-------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] `common`: License error when reopen a page after a long period of inactivty was fixed.
+
+----
+
+6.5.0-beta.22 (25/04/2023)
+-------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] `components`: `grid` Resize grid columns now works on Mobile / touch devices.
+
+----
+
+6.5.0-beta.17 (20/03/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-91 <https://korp.youtrack.cloud/issue/SDKF-91>`_ - `components`: `grid` now permits the use of a function that returns a string in the `sorting.useField`.
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-92 <https://korp.youtrack.cloud/issue/SDKF-92>`_ - `common`: `message.service` now translates correctly.
+
+----
+
+6.5.0-beta.15 (20/02/2023)
+-------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-41 <https://korp.youtrack.cloud/issue/SDKF-41>`_ - `navigation`: `VsNavbarService.searchInputEnter` event available, emitting a event whenever the user press Enter key inside navbar search input.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] `components`: `grid` advancedFilter now stringifies numbers. This way problems related to decimal numbers won't happen anymore.
+
+----
+
+6.5.0-beta.14 (08/02/2023)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `SDKF-15 <https://korp.youtrack.cloud/issue/SDKF-15>`_ - `theme`: We refactored `@viasoft/theme` build. It shouldn't be a Breaking Change, but be aware and pay attention to possible style changes.
+- `SDKF-48 <https://korp.youtrack.cloud/issue/SDKF-48>`_ - `components`: `grid` now emits `selectionCleared` rather than `selectAll` when you click in "unselect all" checkbox.
+
+Features
+^^^^^^^^
+
+- `SDKF-30 <https://korp.youtrack.cloud/issue/SDKF-30>`_ - `components`: `autocomplete` now autofocus option if only a single option is available.
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-26 <https://korp.youtrack.cloud/issue/SDKF-26>`_ - `navigation`: `portal-sidenav` style fixed.
+- `SDKF-68 <https://korp.youtrack.cloud/issue/SDKF-68>`_ - `components`: `grid` VSGrid checkbox column click no longer activates the `gridOpions.select` event.
+
+----
+
+6.5.0-beta.13 (07/12/2022)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `SDKF-16 <https://korp.youtrack.cloud/issue/SDKF-16>`_ - `components`: `vs-grid`.options.disableSorting was replaced by:
+
+.. code-block:: typescript
+  
+  this.gridOptions.sorting = {
+    useField: 'field', // it allows a custom fieldName for sorting
+    disable: true,
+  };
+
+Features
+^^^^^^^^
+
+- `SDKF-16 <https://korp.youtrack.cloud/issue/SDKF-16>`_ - `components`: `vs-grid.options.sorting.useField` added, allowing devs to provide a custom field name for sorting.
+- `SDKF-27 <https://korp.youtrack.cloud/issue/SDKF-27>`_ - `components`: `vs-autocomplete-select` focus is on the input, allowing keyboard shortcuts (Ctrl + A). It means that, vs-select only override the following keys' behaviour:
+  - ArrowUp;
+  - ArrowDown;
+  - Enter;
+
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-27 <https://korp.youtrack.cloud/issue/SDKF-27>`_ - `components`: `vs-autocomplete-select` now handles when field is programatically cleared (it wouldn't clear the autocomplete input value).
+
+----
+
+6.5.0-beta.12 (18/11/2022)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-25 <https://korp.youtrack.cloud/issue/SDKF-25>`_ - `common`: Company request now gets up to 100 companies (used to be only 10).
+
+----
+
+6.5.0-beta.10 (16/11/2022)
+-------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-27 <https://korp.youtrack.cloud/issue/SDKF-27>`_ - `components`: `vs-autocomplete` add `autofocusOnLoad` input, allowing you to autofocus field on load.
+- `SDKF-10 <https://korp.youtrack.cloud/issue/SDKF-10>`_ - `components`: `vs-grid` now has a `pageSize` option, so you can provide a custom pageSize at any time.
+
+----
+
+6.5.0-beta.8 (04/11/2022)
+-------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- `SDKF-10 <https://korp.youtrack.cloud/issue/SDKF-10>`_ - Bunch of lint fixes, might improve performance.
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-8 <https://korp.youtrack.cloud/issue/SDKF-8>`_ - `components`: `vs-autocomplete` fix clear button when value is `0`.
+
+----
+
+6.5.0-beta.5 (01/11/2022)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-8 <https://korp.youtrack.cloud/issue/SDKF-8>`_ - `components`: `vs-autocomplete` now works with options which the value is `0`.
+
+----
+
+6.5.0-beta.3 (27/10/2022)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-4 <https://korp.youtrack.cloud/issue/SDKF-4>`_ - `components`: `vs-autocomplete` options won't overflow horizontally anymore.
+
+----
+
+6.5.0-beta.1 (24/10/2022)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `SDKF-4 <https://korp.youtrack.cloud/issue/SDKF-4>`_ - `components`: `vs-autocomplete` was re-made from the ground up, being totally refactored to be more user/dev friendly.
+  - Main Changes in autocomplete component:
+
+    - `controlName` replaced by `formControlName`;
+    - `options` property was removed;
+    - `get` property is the new way to provide a getItems function;
+    - `getName` property is the new way to provide a getItemName function;
+    - **Autocomplete now works with a simple FormControl, rather than a FormGroup (key / value)**
+
+  - A bunch of classes/components/interfaces were renamed:
+    - `FormElement` renamed to `VsFormEventManipulator<ValueType>`
+    - `FormManipulator` renamed to `VsFormManipulator<ValueType>`
+    - `FormInput` renamed to `VsFormInputManipulator`
+    - Legacy Select
+      
+      - `vs-autocomplete-select` renamed to `vs-autocomplete-select-legacy`
+      - `VsAutocompleteSelectComponent` renamed to `VsLegacyAutocompleteSelectComponent`
+      - `VsAutocompleteOutput` renamed to `VsLegacyAutocompleteOutput`
+- `SDKF-4 <https://korp.youtrack.cloud/issue/SDKF-4>`_ - `components`: `vs-button` `autofocus` now works independent of the button `model` property.
+  
+Features
+^^^^^^^^
+
+- `SDKF-4 <https://korp.youtrack.cloud/issue/SDKF-4>`_ - `components`: `VsFormInputManipulator` now has `onValueChange` subject, allowing to subscribe to new values and to know whether it was internally/externally set.
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-4 <https://korp.youtrack.cloud/issue/SDKF-4>`_ - `components`: `vs-select` now correctly doesn't show clear button when value is `0`.
+
+Housekeeping
+^^^^^^^^^^^^
+
+- `SDKF-4 <https://korp.youtrack.cloud/issue/SDKF-4>`_ - `components`: `vs-button` was totally refactored to be more performative
+

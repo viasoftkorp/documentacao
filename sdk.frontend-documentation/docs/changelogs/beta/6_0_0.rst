@@ -1,0 +1,30 @@
+Changelog - 6.0.0 Betas
+=======================
+
+6.0.1-beta.2 (25/08/2021)
+-------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1748 <http://jira.korp.com.br/browse/FRM-1748>`_ - ``common``\ : Added ``VsAuthenticationCanLoad`` class, which avoids errors related to ``RouteResolver`` calls being requested without SDK headers (authorization/company/userId).
+
+Usage:
+
+.. code-block:: typescript
+
+   import { VsAuthenticationCanLoad } from '@viasoft/common';
+   // ...
+   const routes: Routes = [
+       {
+           path: 'my-path',
+           component: MyComponent,
+           canLoad: [VsAuthenticationCanLoad]
+       },
+       // ...
+   ];
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1740 <http://jira.korp.com.br/browse/FRM-1740>`_ - ``common``\ : Licensing dialog could throw a "Cannot read property of undefined" error.

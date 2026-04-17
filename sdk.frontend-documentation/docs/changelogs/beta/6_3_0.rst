@@ -1,0 +1,227 @@
+
+Changelog - 6.3.0 Betas
+=======================
+
+6.3.0-beta.15 (22/10/2021)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1801 <http://jira.korp.com.br/browse/FRM-1801>`_\ :
+
+  * Replaced ``VS_AUTHORIZATION_PREFIX`` (from ``@viasoft/common``\ ) with ``VS_API_PREFIX`` (from ``@viasoft/http``\ );
+  * Renamed ``IViasoftCommonModuleConfig.authorizationPrefix`` to ``apiPrefix``\ ;
+  * This property is still mandatory and will now be used for requests made to authentication endpoints. This may also be used by other libraries;
+  * Authorization endpoints now start with ``authorization`` so you may need to remove it from your prefix.
+
+----
+
+6.3.0-beta.14 (20/10/2021)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1539 <http://jira.korp.com.br/browse/FRM-1539>`_ - ``radio-group``\ : Refactored to use ControlValueAccessor.
+
+  * Now works just like any regular Angular form control, using either ``ngModel`` or ``formControlName``\ ;
+  * Removed the ``formGroup`` and ``controlName`` properties;
+  * Removed the ``disableGroup`` property;
+  * Removed the ``requiredGroup`` property;
+  * Removed the ``change`` output;
+  * Removed the ``clickEvent``\ , ``keyEnterEvent``\ , ``blurEvent``\ , ``changeEvent`` and ``focusEvent`` outputs;
+  * Setting the ``disabled`` property when using reactive forms will now show a warning;
+  * Renamed the ``position`` property to ``horizontal``\ ;
+  * Renamed the ``radios`` property to ``options``\ ;
+  * Renamed the ``@viasoft/components/radio-button`` entry point to ``@viasoft/components/radio-group``\ ;
+  * Renamed the ``vs-radio-button`` selector to ``vs-radio-group``\ ;
+  * Renamed the ``VsRadioButtonModule`` class to ``VsRadioGroupModule``\ ;
+  * Renamed the ``VsRadioButtonOptions`` interface to ``VsRadioGroupOption``.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-656 <http://jira.korp.com.br/browse/FRM-656>`_ - ``tabs-view-template``\ : Tab groups inside a ``router-outlet`` didn't take up the full width.
+
+----
+
+6.3.0-beta.9 (18/10/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1816 <http://jira.korp.com.br/browse/FRM-1816>`_\ : Providing an authorization proxy prefix is now mandatory.
+
+Features
+^^^^^^^^
+
+* `FRM-1805 <http://jira.korp.com.br/browse/FRM-1805>`_ - ``tree-table``\ : Added ``collapse`` event.
+
+  * Works similarly to the ``expand`` event, except it's fired whenever a row is collapsed.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1796 <http://jira.korp.com.br/browse/FRM-1796>`_ - ``grid``\ : Mobile mode grid wouldn't occupy 100% of the screen width in some cases.
+* `FRM-1808 <http://jira.korp.com.br/browse/FRM-1808>`_ - ``grid``\ : Get request could be called twice when ``enableFilter`` was set to ``false``.
+
+----
+
+6.3.0-beta.8 (13/10/2021)
+-------------------------
+
+Dependency Updates
+^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+   * - ``ua-parser-js``
+     - ✅ Added
+     - ``^0.7.28``
+
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dev dependency
+     - Status
+     - Version
+   * - ``@types/ua-parser-js``
+     - ✅ Added
+     - ``^0.7.36``
+
+Changes
+^^^^^^^
+
+* `FRM-1761 <http://jira.korp.com.br/browse/FRM-1761>`_ - ``common``\ : Implemented new licensing API.
+
+----
+
+6.3.0-beta.7 (08/10/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1810 <http://jira.korp.com.br/browse/FRM-1810>`_ - ``tree-view``\ : Items with children were not being indented correctly.
+
+----
+
+6.3.0-beta.6 (04/10/2021)
+-------------------------
+
+Changes
+^^^^^^^
+
+* `FRM-1800 <http://jira.korp.com.br/browse/FRM-1800>`_\ : ``VS_AUTHORIZATION_PREFIX`` is now being exported so it can be used by other applications and/or libraries.
+
+----
+
+6.3.0-beta.5 (04/10/2021)
+-------------------------
+
+Fixes
+^^^^^
+
+* `FRM-1800 <http://jira.korp.com.br/browse/FRM-1800>`_\ : Authorization prefix can now be specified in ``VsAppCoreModule``\ , whereas previously it could only be specified in ``VsCommonModule``.
+
+----
+
+6.3.0-beta.4 (01/10/2021)
+-------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1800 <http://jira.korp.com.br/browse/FRM-1800>`_ - ``common``\ : Added option to customize the authorization route prefix
+
+  * Authorization routes now follow the new API;
+  * A prefix should be specified in ``VsAppCoreModule`` so that API calls go through your app's backend;
+  * By default the prefix is set to ``"authorization"``.
+
+Changes
+^^^^^^^
+
+* `FRM-1782 <http://jira.korp.com.br/browse/FRM-1782>`_ - ``input``\ , ``select``\ , ``search-input``\ , ``textarea``\ , ``datepicker``\ , ``dropdown``\ , ``autocomplete``\ , ``chip-list``\ : Visual refresh.
+
+  * The following CSS custom properties are available for customization, though they should only be used in specific cases:
+
+    * ``--vs-form-field-color-disabled``\ : Applied to the text color of disabled fields;
+    * ``--vs-form-field-color-underline``\ : Applied to the field underline color (dotted and on hover);
+    * ``--vs-form-field-color-label``\ : Applied to the placeholder and hint label colors;
+    * ``--vs-form-field-color-error``\ : Applied to the required indicator and error label.
+
+----
+
+6.3.0-beta.3 (01/10/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1704 <http://jira.korp.com.br/browse/FRM-1704>`_ - ``textarea``\ : Refactored to use ControlValueAccessor.
+
+  * Now works just like any regular Angular form control, using either ``ngModel`` or ``formControlName``\ ;
+  * Removed the ``formGroup``\ , ``arrayName``\ , ``groupName`` and ``controlName`` properties;
+  * Setting the ``disabled`` property when using reactive forms will now show a warning;
+  * Added the ``hidden`` property;
+  * Added the ``appearance`` property;
+  * Added the ``type`` property;
+  * Added the ``direction`` property;
+  * Added the ``textAlign`` property;
+  * Renamed the ``textareaAutosize`` property to ``autosize``.
+
+Features
+^^^^^^^^
+
+* `FRM-1799 <http://jira.korp.com.br/browse/FRM-1799>`_ - ``form-utils``\ : Made ``@viasoft/components/form-utils`` available for use.
+
+  * Includes the following classes:
+
+    * ``FormManipulator``\ : Ready-to-use implementation of ControlValueAccessor, read internal code for an explanation of each method;
+    * ``FormElement``\ : Extends ``FormManipulator``\ , adding ``@Output()`` properties for ``click``\ , ``keyEnter``\ , ``blur`` and ``focus`` events;
+    * ``FormInput``\ : Extends ``FormElement``\ , adding ``@Input()`` properties for ``readonly``\ , ``maxLength``\ , ``required``\ , ``errorMessage``\ , ``type``\ , ``direction`` and ``textAlign``.
+
+  * Also includes a few useful types, mainly used in ``FormInput``\ :
+
+    * ``InputType``\ : All possible ``<input />`` types;
+    * ``TextAlignment``\ : All possible CSS ``text-align`` values;
+    * ``TextDirection``\ : All possible HTML ``dir`` values.
+
+----
+
+6.3.0-beta.2 (28/09/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1028 <http://jira.korp.com.br/browse/FRM-1028>`_ - ``checkbox``\ : Refactored to use ControlValueAccessor.
+
+  * Now works just like any regular Angular form control, using either ``ngModel`` or ``formControlName``\ ;
+  * Removed the ``formGroup`` and ``controlName`` properties;
+  * Setting the ``disabled`` property when using reactive forms will now show a warning;
+  * Removed the ``onChange`` output in favor of ``ngModelChange`` or ``valueChanges`` when using template-driven or reactive forms respectively.
+
+* `FRM-1705 <http://jira.korp.com.br/browse/FRM-1705>`_ - ``select``\ : Refactored to use ControlValueAccessor.
+
+  * Now works just like any regular Angular form control, using either ``ngModel`` or ``formControlName``\ ;
+  * Removed the ``formGroup``\ , ``arrayName``\ , ``groupName`` and ``controlName`` properties;
+  * Setting the ``disabled`` property when using reactive forms will now show a warning;
+  * Added the ``hidden`` property;
+  * Added the ``appearance`` property;
+  * Added the ``hintLabel`` property;
+  * Renamed ``VsSelect`` to ``VsSelectOption``.
+
+* `FRM-1770 <http://jira.korp.com.br/browse/FRM-1770>`_ - ``common``\ : Added tenant and user IDs to keys saved in Local Storage through ``VsStorageService``.
+
+  * Renamed ``StorageService`` to ``VsStorageService``\ ;
+  * Removed ``STORAGE_PREFIX`` injection token;
+  * Added ``VS_STORAGE_OPTIONS`` injection token, used for disabling tenant/app/user IDs;
+  * *Note: all legacy keys saved will be updated automatically upon being used*

@@ -1,0 +1,743 @@
+Changelog - 6.6.0 Betas
+=======================
+
+6.6.0-beta.135 (24/07/2024)
+-------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] `common`: License error when reopen a page after a long period of inactivty was fixed.
+
+----
+
+
+6.6.0-beta.125 (09/10/2023)
+---------------------------
+
+Changes
+^^^^^^^
+
+- `SDKF-193 <https://korp.youtrack.cloud/issue/SDKF-193>`_ - `components`: Adjusted icon sizes within `datepicker`.
+
+____
+
+6.6.0-beta.123 (14/09/2023)
+---------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-166 <https://korp.youtrack.cloud/issue/SDKF-166>`_ / `SDKF-167 <https://korp.youtrack.cloud/issue/SDKF-167>`_ - `components`: Added `gridCardActionsTopTemplate` and `gridCardActionsBottomTemplate` to the `grid` component. These new templates allow for the positioning of `grid` actions either at the top or the bottom of the `grid-card` in mobile layout.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: html+ng2
+
+    <vs-grid 
+      [gridCardActionsTopTemplate]="gridCardActionsTopTemplate"
+      [gridCardActionsBottomTemplate]="gridCardActionsBottomTemplate"
+    >
+    </vs-grid>
+
+    <ng-template #gridCardActionsTopTemplate let-data="data">
+      your actions here...
+    </ng-template>
+
+    <ng-template #gridCardActionsBottomTemplate let-data="data">
+      your actions here...
+    </ng-template>
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Important Note</span>
+
+  When utilizing ``gridCardActionsBottomTemplate``, be aware that it will replace the default `actions` of the `grid`.
+
+- `SDKF-181 <https://korp.youtrack.cloud/issue/SDKF-181>`_ - `theme`: New classes have been introduced to vertically align the `vs-checkbox` with forms when the `vsFormLayout` is set to ``horizontal``.
+  
+  - ``horizontal-form-align-center``: Aligns the checkbox to the center of the form.
+  - ``horizontal-form-align-bottom``: Aligns the checkbox to the bottom of the form.
+
+____
+
+6.6.0-beta.121 (13/09/2023)
+---------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-157 <https://korp.youtrack.cloud/issue/SDKF-157>`_ - `common`: Fixed a problem with `translations` that were not working correctly alongside route guards. This adjustment ensures that `translations` are applied correctly.
+- [NO-ISSUE] - `components`: Fixed an issue where the click event on Grid actions was still triggering even when the disabled attribute was active.
+
+____
+
+6.6.0-beta.119 (06/09/2023)
+---------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: The `disabled` method for both `grid` and `tree-table` has been updated. It now requires a function that returns a boolean value.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Important Note</span>
+
+  If there is a need to dynamically refresh the ``disabled``, ``actions``, or ``headerActions`` in these components, different approaches should be used for `tree-table` and `grid`:
+    
+  - For `tree-table`: Invoke the ``refreshActionsSubject`` subject.
+
+    .. code-block:: html+ng2
+
+      <vs-tree-table [refreshActionsSubject]="refreshActionsSubject"></vs-tree-table>
+    
+    .. code-block:: typescript
+
+      public refreshActionsSubject = new Subject<void>();
+
+      private yourFunction() {
+        this.refreshActionsSubject.next();
+      }
+  
+  - For `grid`: Call the ``refreshActions`` method available in `VsGridOptions`. 
+  
+  Both will ensure that all `actions` reflect the most current state and attributes defined in the options.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Added a correction ensuring that the `disabled` attribute on `grid` actions functions as expected. With this fix, the `disabled` state of actions is properly set based on the attribute value provided to each action.
+
+____
+
+6.6.0-beta.116 (04/09/2023)
+---------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixed the issue with the refresh for `action` conditions within the `grid`. With this correction, the conditions for `actions` are updated correctly.
+- [NO-ISSUE] - `theme`: Fixed the layout issue in `autocomplete-chips` when using ``vertical`` or ``horizontal`` `vsFormLayout`. This adjustment ensures that line breaks are executed correctly.
+
+____
+
+6.6.0-beta.114 (01/09/2023)
+---------------------------
+
+Changes
+^^^^^^^
+
+- `SDKF-163 <https://korp.youtrack.cloud/issue/SDKF-163>`_ - `components`: The vertical scroll within `tree-table` is now always visible (if necessary). No longer need to scroll horizontally to the right for the vertical scroll to appear.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Fixed a vertical alignment issue with `mat-chip` in `autocomplete-chips` for both ``vertical`` and ``horizontal`` `vsFormLayout.`
+- [NO-ISSUE] - `components`: Implemented a correction related to the `defaultAdvancedFilter` of the `grid`. Now, the ``condition`` of the `defaultAdvancedFilter` is always converted to upper case. This fix ensures that the ``condition`` can be specified in either upper or lower case without issues.
+
+____
+
+6.6.0-beta.108 (28/08/2023)
+---------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-159 <https://korp.youtrack.cloud/issue/SDKF-159>`_ - `components`: The `advancedFilter` of the `Grid` now accepts initial values.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Example:</span>
+
+  .. code-block:: typescript
+
+    this.gridOptions = new VsGridOptions();
+      
+      this.gridOptions.defaultAdvancedFilter = {
+        condition: 'and',
+        rules: [
+          {
+            field: 'name',
+            operator: 'ends_with',
+            type: 'string',
+            value: 'Value from defaultAdvancedFilter'
+          }
+        ]
+      };
+
+  .. raw:: html
+
+      <span style="font-weight: bold;">Important Note</span>
+
+  When there is cached data available for the `advancedFilter`, the `grid` will prioritize and use the cached values over the initial values provided through `defaultAdvancedFilter`.
+
+____
+
+6.6.0-beta.103 (22/08/2023)
+---------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- `SDKF-147 <https://korp.youtrack.cloud/issue/SDKF-147>`_ - `components`: Fixed an issue with detectChanges within `forms`, effectively resolving the "ExpressionChangedAfterItHasBeenChecked" `error`, that was occurring in some forms.
+- [NO-ISSUE] - `components`: Fixed rendering issues with `headerActions` in both the `grid` and `tree-table`. Now, if a `headerAction` has a condition, it will render correctly based on that condition.
+
+____
+
+6.6.0-beta.100 (22/08/2023)
+---------------------------
+
+Update Dependencies
+^^^^^^^^^^^^^^^^^^^
+
+- `SDKF-134 <https://korp.youtrack.cloud/issue/SDKF-134>`_ - Updated the **@viasoft/datepicker** package.
+
+  .. list-table::
+    :header-rows: 1
+
+    * - Dependency
+      - Status
+      - Version
+    * - @viasoft/datepicker
+      - 🔄 Updated
+      - ``1.0.2``
+
+____
+
+6.6.0-beta.97 (15/08/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixed issues related to the calculation of widths for `actions` of the `grid`.
+
+____
+
+6.6.0-beta.95 (14/08/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: `headerActions` have been introduced to the `tree-table`.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: typescript
+
+    rightHeaderActions = [
+      {
+        icon: 'check',
+        callback: () => {}
+      }
+    ]
+
+    leftHeaderActions = [
+      {
+        icon: 'check',
+        callback: () => {}
+      }
+    ]
+
+  .. code-block:: html+ng2
+
+    <vs-tree-table
+      [rightHeaderActions]="rightHeaderActions"
+      [leftHeaderActions]="leftHeaderActions"
+    >
+    </vs-tree-table>
+
+  .. raw:: html
+
+      <span style="font-weight: bold;">Important Note</span>
+
+  If there's a need to refresh the `actions` or `headerActions` dynamically, must be invoked the ``refreshActionsSubject`` subject available in `tree-table`. This subject ensures that all `actions` reflect the most current state and attributes defined in the options.
+
+  .. code-block:: html+ng2
+
+    <vs-tree-table [refreshActionsSubject]="refreshActionsSubject"></vs-tree-table>
+  
+  .. code-block:: typescript
+
+    public refreshActionsSubject = new Subject<void>();
+
+    private yourFunction() {
+      this.refreshActionsSubject.next();
+    }
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Implemented corrections to the calculation of widths for `headerActions` in the `grid`.
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: The `refreshActions` method of the grid has been updated to accurately reflect the changes in `actions / headerActions` following any modifications. It is important to call this method whenever there are changes to `actions` or `headerActions`.
+
+____
+
+6.6.0-beta.89 (11/08/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Fixed an issue where the asterisk indicating the `required` attribute was not displaying correctly on `vs-textarea` in both ``vertical`` and ``horizontal`` `vsFormLayout`.
+
+____
+
+6.6.0-beta.86 (10/08/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-146 <https://korp.youtrack.cloud/issue/SDKF-146>`_ - `components`: `headerActions` have been introduced to the `grid`. These can be placed on the upper left or upper right side of the `grid`. The `headerActions` support the same attributes as the `grid` `actions`
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: typescript
+
+    this.gridOptions = new VsGridOptions();
+
+    this.gridOptions.leftActions = [ 
+      {
+        icon: 'check',
+        callback() => {}
+      }
+    ]
+
+    this.gridOptions.rightActions = [ 
+      {
+        icon: 'check',
+        callback() => {}
+      }
+    ]
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Important Note</span>
+
+  If there's a need to refresh the `actions` or `headerActions` dynamically, must be invoked the ``refreshActions`` method available in `VsGridOptions`. This method ensures that all `actions` reflect the most current state and attributes defined in the options.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Implemented further fixes to the `required` attribute based on the changes introduced in version **6.6.0-beta.82**. These adjustments were necessary to address and correct ongoing functionality issues with the `required` attribute.
+
+____
+
+6.6.0-beta.82 (10/08/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Fixes have been made to ensure the correct functioning of the `required` attribute in forms, under both ``vertical`` and ``horizontal`` `vsFormLayout`.
+
+____
+
+6.6.0-beta.80 (09/08/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixed an issue with the `required` attributes of forms not functioning correctly in both ``vertical`` and ``horizontal`` `vsFormLayout.`
+
+____
+
+6.6.0-beta.78 (09/08/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-137 <https://korp.youtrack.cloud/issue/SDKF-137>`_ - `components`: The `condition` of the `grid` now supports promises as return values.
+
+Changes
+^^^^^^^
+
+- `SDKF-145 <https://korp.youtrack.cloud/issue/SDKF-145>`_ - `components`: Modified the color of the `tab-group` label to be more "highlighted".
+
+____
+
+6.6.0-beta.75 (04/08/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-144 <https://korp.youtrack.cloud/issue/SDKF-144>`_ - `theme`: New classes have been introduced to vertically align the `vs-checkbox` with forms when the `vsFormLayout` is set to ``vertical``.
+
+  - ``vertical-form-align-center``: Aligns the checkbox to the center of the form.
+  - ``vertical-form-align-top``: Aligns the checkbox to the top of the form.
+  - ``vertical-form-align-bottom``: Aligns the checkbox to the bottom of the form.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Fixed the alignment of the `vs-checkbox` when used as either `suffix` or `prefix`, ensuring proper centering in both ``vertical`` and ``horizontal`` `vsFormLayout`.
+- [NO-ISSUE] - `theme`: Adjusted the vertical alignment of form labels when `vsFormLayout` is set to ``horizontal``.
+
+____
+
+6.6.0-beta.71 (03/08/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Added support for the `required` attribute, which appends an asterisk to the form label, for both ``vertical`` and ``horizontal`` `vsFormLayout`.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Implemented layout adjustments to center the elements within the form fields for both ``vertical`` and ``horizontal`` `vsFormLayout`.
+
+Changes
+^^^^^^^
+
+- [NO-ISSUE] - `navigation`: The colors of the sidenav has been updated.
+- [NO-ISSUE] - `theme`: Spacing adjustments have been made to `forms` with `vsFormLayout` set to ``vertical``.
+
+Notes
+^^^^^
+
+- Some of the changes made in **6.6.0-beta.65** regarding hintLabel have been reverted, as they are no longer necessary after the spacing adjustments.
+
+____
+
+6.6.0-beta.65 (02/08/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Adjusted the layout of `forms` when `vsFormLayout` is set to ``vertical`` ensuring the layout is correct whether or not `hintLabel` is present.
+- [NO-ISSUE] - `theme`: Layout corrections have been applied to `search-input` and `dropdown` components for both ``vertical`` and ``horizontal`` `vsFormLayout` settings.
+
+____
+
+6.6.0-beta.61 (01/08/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `navigation`: Fixed the `vsFormLayout` for the companySelect in the `navbar`. The `vsFormLayout` for this select has been set to ``legacy`` to ensure that it always maintains the same behavior.
+- [NO-ISSUE] - `components`: Performance improvements have been made to the `forms`.
+
+- [NO-ISSUE] - `theme`: Fixed layout issues with ``mat-form-field-infix`` in `vsFormLayout` ``vertical`` on the following forms: 
+  
+  - vs-autocomplete-chips
+  - vs-chip-list
+  - vs-dropdown.
+
+____
+
+6.6.0-beta.56 (24/07/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `http`: Added the `ApiVersion` header, required for the newer versions of `Viasoft.Core`.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixed issues involving the appearance and placeholder in forms when `vsFormLayout` is set to ``legacy``.
+
+____
+
+6.6.0-beta.53 (21/07/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixed translations of placeholders when `vsFormLayout` is set to ``legacy``.
+- [NO-ISSUE] - `components`: Adjusted the form height for `vs-textarea` with ``rows=1`` when `vsFormLayout` is ``vertical``.
+
+____
+
+6.6.0-beta.49 (21/07/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: `autocomplete-chips` now supports the required attribute. When set, a visual indicator in the form of an asterisk (``*``) is appended to the form label, signaling that it is a required field.
+
+____
+
+6.6.0-beta.47 (20/07/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-132 <https://korp.youtrack.cloud/issue/SDKF-132>`_ / `SDKF-133 <https://korp.youtrack.cloud/issue/SDKF-133>`_ - `components`: `VsFormLayoutDirective` has been added. This directive allows for easy modification of form layouts. The available layouts are: ``legacy``, ``vertical``, and ``horizontal``.
+ 
+  * The `VsFormLayoutDirective` has been integrated with the following form components:
+  
+    - VsAutocompleteSelect
+    - VsDatepicker
+    - VsInput
+    - VsSearchInput
+    - VsSelect
+    - VsTextarea
+
+  - To utilize the `VsFormLayoutDirective`, ensure that you have imported the `VsFormModule` from ``@viasoft/components`` in the module of the component where the directive will be used.
+    
+    .. code-block:: typescript
+
+      import { VsFormModule } from '@viasoft/components';
+
+  - By applying the directive directly on a form or its parent element, you can change the layout for form components. If the directive is placed on a parent element, all form components within will inherit the specified layout.
+
+    .. raw:: html
+
+      <span style="font-weight: bold;">Example:</span>
+    
+    .. code-block:: html
+      
+      <form>
+        <vs-input vsFormLayout="vertical"></vs-input>
+        <vs-input vsFormLayout="horizontal"></vs-input>
+        <vs-textarea vsFormLayout="legacy"></vs-textarea>
+      </form>
+
+      <form vsFormLayout="vertical">
+        <vs-input></vs-input>
+        <vs-input></vs-input>
+        <vs-textarea></vs-textarea>
+      </form>
+
+  - Additionally, you can set the default `vsFormLayout` for your application by including it within `VsAppCoreModule.forRoot` in your ``app.module``.
+    
+    .. code-block:: typescript
+
+      import { VsAppCoreModule } from '@viasoft/app-core';
+
+      @NgModule({
+        imports: [
+          VsAppCoreModule.forRoot({
+            formLayout: 'vertical'
+          })
+        ]
+      })
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `common`: Resolved an issue with the width behavior in .mat-form-field-infix when using the percentage width classes (``w-...``).
+
+____
+
+6.6.0-beta.38 (13/07/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `theme`: Two new utility classes have been introduced to enhance flexibility in styling and layout.
+  
+  - `w-expand`: allows an element to take up any available space by setting its flex value to auto.
+  - `w-shrink`: resets the flex value to its initial state.
+ 
+- [NO-ISSUE] - `common`: `VsSentryIntegration.sessionReplayInit` method has been enhanced to accept an additional optional parameter: ``serviceUrlPrefix``. This prefix is used for the sentryConfiguration call, forming a URL in the pattern ``{backendUrl}/{serviceUrlPrefix}/sentry/configuration``.
+  
+  .. raw:: html
+
+      <span style="font-weight: bold;">Example:</span>
+
+  .. code-block:: typescript
+
+    VsSentryIntegration.sessionReplayInit(environment, 'showcase');
+
+____
+
+6.6.0-beta.34 (10/07/2023)
+--------------------------
+
+Changes
+^^^^^^^
+- [NO-ISSUE] - `common`: The ``@sentry/angular-ivy`` has been added as a dependency to the ``@viasoft/common``.
+
+____
+
+6.6.0-beta.28 (10/07/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- `SDKF-124 <https://korp.youtrack.cloud/issue/SDKF-124>`_ - `common`: `Sentry's` `session replay <https://docs.sentry.io/product/session-replay>`_ feature has been added.
+
+  .. raw:: html
+
+      <span style="font-weight: bold; font-size: 18px">Implementing VsSentry's Session Replay</span>
+
+  * Start by importing the VsSentryIntegration module in your main application file.
+
+    .. code-block:: typescript
+
+        import { VsSentryIntegration } from '@viasoft/common';
+
+  * Make sure to include the ``packageJson`` within the ``VsAppCoreModule.forRoot`` in your ``app.module``.
+
+    .. code-block:: typescript
+      
+      import { VsAppCoreModule } from '@viasoft/app-core';
+      import * as packageJson from 'path/to/package.json';
+
+      @NgModule({
+        imports: [
+          VsAppCoreModule.forRoot({
+            packageJson
+          })
+        ]
+      })
+
+  * To initialize VsSentry's session replay feature, invoke the sessionReplayInit method from VsSentryIntegration and pass the environment as an argument. (In the ``6.6.0-beta.38`` version, a new parameter was added to this method).
+
+    .. code-block:: typescript
+
+      VsSentryIntegration.sessionReplayInit(environment);
+
+- [NO-ISSUE] - `theme`: New "width" classes have been added to define specific widths for elements, ranging from 1/1 to 16/16 of the parent container's width.
+
+  .. raw:: html
+
+    <span style="font-weight: bold; font-size: 18px">How to use these width classes:</span>
+
+  * Width Classes:
+
+    The classes follow the format w-x/y, where x represents the fraction of space you want the element to take up, and y stands for the whole.
+    
+    .. raw:: html
+
+      <span style="font-weight: bold;">Examples:</span>
+
+    - `w-1/12`: Represents 1/12 of the parent container's width.
+    - `w-10/12`: Represents 10/12 (or 5/6) of the parent container's width.
+    - `w-1/2`: Represents half of the parent container's width.
+
+  * Responsive Classes:
+
+    Responsive classes are prefixed based on screen size:
+
+    - `xs`: Applies to screens with max-width: 767.999px
+    - `sm`: Applies to screens between min-width: 768px and max-width: 991.999px
+    - `md`: Applies to screens between min-width: 992px and max-width: 1199.999px
+    - `lg`: Applies to screens with min-width: 1200px
+
+    .. raw:: html
+
+      <span style="font-weight: bold;">Example:</span>
+    
+    - `xs:w-3/4`: On smaller screens (up to 767.999px), the element will take up three-quarters of the parent container's width.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Usage Example:</span>
+
+  .. code-block:: html
+
+    <div class="w-1/1">
+      <vs-input class="xs:w-3/4 sm:w-1/2"></vs-input>
+    </div>
+        
+----
+
+6.6.0-beta.24 (22/06/2023)
+--------------------------
+
+Changes
+^^^^^^^
+
+- [NO-ISSUE] - `common`: "Updating License" modal now is hidden by default, but you can set it to show up using `VsAppCoreModule.forRoot.showUpdateLicenseModal` / `VsCommonModule.forRoot.showUpdateLicenseModal`.
+
+----
+
+6.6.0-beta.20 (21/06/2023)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `quick-filter` now correctly disallow go to next page if user is already in the last page.
+- [NO-ISSUE] - `components`: `grid` filter is removed from DOM correctly when you press "Esc" in a select-modal
+
+----
+
+6.6.0-beta.19 (20/06/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: `VsFormValidatorService.validateForm` now has `modalTitle` / `modalErrorTemplate` / `modalActions`.
+
+----
+
+6.6.0-beta.16 (12/06/2023)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `navigation`: Fix a bug when using `authorizationService.refreshPermissions` in `navbar-sidenav.component`.
+
+----
+
+6.6.0-beta.12 (09/06/2023)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] - `common`: `authorizationStorageService.userPermissionsAfterLogin` was replaced to `authorizationStorageService.refreshPermissions`.
+
+Features
+^^^^^^^^
+
+- `PROP-1305 <http://jira.korp.com.br/browse/PROP-1305>`_ - `components`: `VsFormValidatorService` / `vsFormPath` directive added, so developers can easily show an error modal for the form, allowing users to navigate to each error field.
+- [NO-ISSUE] - `common`: `authorizationService.refreshPermissions` added.
+
+----
+
+6.6.0-beta.6 (26/05/2023)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `SDKF-49 <https://korp.youtrack.cloud/issue/SDKF-49>`_ - `components`: `grid` `GetSelection` type changed and now has cache, rather than being called by Angular is now called internally.
+
+----
+
+6.6.0-beta.5 (16/05/2023)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `button` In `nav-mode` `tooltip` prop was having the `label` functionality. Now `label` always behaviours like `label` and `tooltip` always behaviours like `tooltip`.
+  - So if you want the previous behavior, you should replace from `tooltip` to `label` wherever button is in `nav-mode` (inside of `sidenav-view-template` / `tabs-view-template` components)
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: `button` `navMode` property now is public, so you can easily choose whether or not you want the button to behavior as navMode.

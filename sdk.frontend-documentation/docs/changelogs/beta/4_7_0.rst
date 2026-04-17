@@ -1,0 +1,68 @@
+
+Changelog - 4.7.0 Betas
+=======================
+
+4.7.1-beta.4 (07/07/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+``components > tree-table``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1326 <http://jira.korp.com.br/browse/FRM-1326>`_\ : Fixed a bug where columns wouldn't resize correctly when ``fitColumns = false``
+
+----
+
+4.7.0-beta.3 (06/07/2020)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+``components > tree-table``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1324 <http://jira.korp.com.br/browse/FRM-1324>`_\ : Removed group funcitonality
+
+Features
+^^^^^^^^
+
+``components > tree-table``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1324 <http://jira.korp.com.br/browse/FRM-1324>`_\ : Updated visual styles to be more in line with ``<vs-grid>``\ , added ``isLoading`` property, added "no results" message
+
+Bug Fixes
+^^^^^^^^^
+
+``components > filter``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- `FRM-1325 <http://jira.korp.com.br/browse/FRM-1325>`_\ : Fixed a bug where ``filterOptions.getItems`` would have undefined params when using default values
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.7.0-beta.2 (02/07/2020)
+-------------------------
+
+Features
+^^^^^^^^
+
+``components > tree-table``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1322 <http://jira.korp.com.br/browse/FRM-1322>`_\ : Added column resizing
+
+----
+
+4.7.0-beta.1 (02/07/2020)
+-------------------------
+
+Features
+^^^^^^^^
+
+``components > tree-table``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1320 <http://jira.korp.com.br/browse/FRM-1320>`_\ : Added ``'single'`` selection mode
+* `FRM-1321 <http://jira.korp.com.br/browse/FRM-1321>`_\ : Added a new way to define column sizes with ``columnSizing``\ , ``fitColumns``\ , ``minColSize`` and ``defaultColSize`` properties

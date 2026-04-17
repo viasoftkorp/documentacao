@@ -1,0 +1,51 @@
+
+Changelog - 5.2.0 Betas
+=======================
+
+5.2.0-beta.3 (28/08/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1378 <http://jira.korp.com.br/browse/FRM-1378>`_ - ``grid``\ : Grid wouldn't load after applying a filter and reloading when cache was turned on.
+
+5.2.0-beta.1 (26/08/2020)
+-------------------------
+
+Dependency Updates
+^^^^^^^^^^^^^^^^^^
+
+``dependencies``
+~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+   * - @fortawesome/fontawesome-pro
+     - 🔄 Updated
+     - ``^5.14.0``
+
+* `FRM-931 <http://jira.korp.com.br/browse/FRM-931>`_\ : FontAwesome updated to ``5.14``.
+
+Changes
+^^^^^^^
+
+* `FRM-1377 <http://jira.korp.com.br/browse/FRM-1377>`_\ : Removed deprecated date formats and added Angular Date Pipe compatible formats.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-737 <http://jira.korp.com.br/browse/FRM-737>`_ - ``notification``\ : Notification snackbar wasn't properly translated.
+* `FRM-794 <http://jira.korp.com.br/browse/FRM-794>`_ - ``button``\ : ``color`` property wasn't working properly.
+* `FRM-816 <http://jira.korp.com.br/browse/FRM-816>`_ - ``tab-group``\ : Tab label wouldn't show a title if a plain string was used.
+* `FRM-850 <http://jira.korp.com.br/browse/FRM-850>`_ - ``grid``\ : Paginator dropdown would open to the bottom when grid was less than ``650px`` tall, causing an overflow.
+* `FRM-1003 <http://jira.korp.com.br/browse/FRM-1003>`_ - ``autocomplete``\ : Removing a chip wouldn't mark as dirty.
+* `FRM-1038 <http://jira.korp.com.br/browse/FRM-1038>`_ - ``grid``\ : Translations in card mode weren't working.
+* `FRM-1154 <http://jira.korp.com.br/browse/FRM-1154>`_ - ``navigation``\ : Expanding a group would navigate to the home page.
+* `FRM-1214 <http://jira.korp.com.br/browse/FRM-1214>`_ - ``client``\ : Paths with a space would stop the client from being generated properly.
+* `FRM-1342 <http://jira.korp.com.br/browse/FRM-1342>`_ - ``tree-table``\ : Horizontal scroll bar would appear if a tag column was placed on the last position.
+* `FRM-1344 <http://jira.korp.com.br/browse/FRM-1344>`_ - ``navigation``\ : Current page indicator would go away when hovering.

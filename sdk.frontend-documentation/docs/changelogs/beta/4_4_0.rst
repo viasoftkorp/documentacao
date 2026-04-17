@@ -1,0 +1,149 @@
+Changelog - 4.4.0 Betas
+=======================
+
+4.4.1-beta.10 (14/05/2020)
+--------------------------
+
+Changes
+^^^^^^^
+
+* **common/grid** - `FRM-1237 <http://jira.korp.com.br/browse/FRM-1237>`_
+
+  * Changed default tag color in ``VsGridTagColumn``
+
+----
+
+4.4.1-beta.9 (14/05/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **common/validators** - `FRM-1236 <http://jira.korp.com.br/browse/FRM-1236>`_
+
+  * Fixed CnpjOrCpf validator, allowing empty value
+
+----
+
+08-05-20 (4.4.0-beta.7)
+-----------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* **components/input** - `FRM-1229 <http://jira.korp.com.br/browse/FRM-1229>`_
+
+  * ``unmask`` will now default to ``true``
+
+07-05-20 (4.4.0-beta.6)
+-----------------------
+
+Features
+^^^^^^^^
+
+* **components/grid** - `FRM-1208 <http://jira.korp.com.br/browse/FRM-1208>`_
+
+  * Added ``VsGridTagColumn``
+
+    * This column accepts data in the following formats:
+
+      * ``string``\ : will be displayed as a simple tag with default background and text colors
+      * ``{ text: string, color?: string, textColor?: string }``\ : allows you to pick a background color (\ ``color``\ ) as long as it's a valid HTML Hex color or CSS named color, and the text color (\ ``textColor``\ ), defaulting to black or white based on the background color
+      * ``Array`` of any type listed above, or a mix of them
+
+    * Further information and guides will be available in the `docs <https://viasoftfrontend.korp.com.br/pt/master/>`_ in the future.
+
+----
+
+07-05-20 (4.4.0-beta.5)
+-----------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* 
+  **components/input** - `FRM-1212 <http://jira.korp.com.br/browse/FRM-1212>`_
+
+
+  * Fixed a bug where invalid fields would not show an error message
+
+* 
+  **components/input** - `FRM-1219 <http://jira.korp.com.br/browse/FRM-1219>`_
+
+
+  * Fixed a bug where 2 fields with the same mask with different options would use the same mask options
+
+----
+
+30-04-20 (4.4.0-beta.4)
+-----------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* 
+  **common/initAppSettings** - `FRM-1203 <http://jira.korp.com.br/browse/FRM-1203>`_
+
+
+  * Fixed request for app appsettings when cdnUrl is provided.
+
+* 
+  **components/input** - `FRM-1177 <http://jira.korp.com.br/browse/FRM-1177>`_
+
+
+  * Fixed a bug where clicking on an icon suffix/prefix would cause an error to be thrown.
+
+----
+
+28-04-20 (4.4.0-beta.3)
+-----------------------
+
+Features
+^^^^^^^^
+
+* **components/grid** - `FRM-1196 <http://jira.korp.com.br/browse/FRM-1196>`_
+
+  * ``VsGridOptions.filterFieldFormat`` will now apply to sorting as well
+
+Changes
+^^^^^^^
+
+* **navigation** - `FRM-987 <http://jira.korp.com.br/browse/FRM-987>`_
+
+  * Fixed active route showing up on many items or no items at all.
+  * Added ``detectParameters: boolean`` property to ``IItemMenuOptions``.
+
+    * When ``true``\ , "active" item will be determined on a closest-match basis, meaning the route ``/page?abc=123`` will be matched to an item with the path ``/page``.
+    * When ``false``\ , "active" item will be determined by checking if the current route is identical to the item's path.
+
+----
+
+27-04-20 (4.4.0-beta.2)
+-----------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/kanban** - `FRM-996 <http://jira.korp.com.br/browse/FRM-996>`_
+
+  * Fixed filter being "stuck" after one search.
+
+----
+
+24-04-20 (4.4.0-beta.1)
+-----------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* **components/input** and **mask** - `FRM-1122 <http://jira.korp.com.br/browse/FRM-1122>`_\ , `FRM-1184 <http://jira.korp.com.br/browse/FRM-1184>`_
+
+  * Removed mask package and refactored input
+  * `More info on masks <https://viasoftfrontend.korp.com.br/pt/master/library/components/mask/>`_
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/grid** - `FRM-820 <http://jira.korp.com.br/browse/FRM-820>`_
+
+  * Fixed 9-digit number formatting on phone columns.

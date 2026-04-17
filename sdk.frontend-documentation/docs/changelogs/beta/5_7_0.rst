@@ -1,0 +1,142 @@
+Changelog - 5.7.0 Betas
+=======================
+
+5.7.1-beta.10 (25/08/2021)
+--------------------------
+
+Features
+^^^^^^^^
+
+* `FRM-1748 <http://jira.korp.com.br/browse/FRM-1748>`_ - ``common``\ : Added ``VsAuthenticationCanLoad`` class, which avoids errors related to ``RouteResolver`` calls being requested without SDK headers (authorization/company/userId).
+
+Usage:
+
+.. code-block:: typescript
+
+   import { VsAuthenticationCanLoad } from '@viasoft/common';
+   // ...
+   const routes: Routes = [
+       {
+           path: 'my-path',
+           component: MyComponent,
+           canLoad: [VsAuthenticationCanLoad]
+       },
+       // ...
+   ];
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1740 <http://jira.korp.com.br/browse/FRM-1740>`_ - ``common``\ : Licensing dialog could throw a "Cannot read property of undefined" error.
+
+----
+
+5.7.0-beta.9 (11/08/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1440 <http://jira.korp.com.br/browse/FRM-1440>`_ - ``text-editor``\ : Moved the ``text-editor`` component to a separate library
+
+  * To migrate, simply install ``@viasoft/text-editor`` and fix all ``text-editor``\ -related imports
+
+Dependency Changes
+^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+   * - ngx-quill
+     - ❌ Removed
+   * - quill
+     - ❌ Removed
+
+*Note: If your apps and/or libraries use the ``text-editor`` component, you shouldn't apply these changes.*
+
+Housekeeping
+^^^^^^^^^^^^
+
+* `FRM-1754 <http://jira.korp.com.br/browse/FRM-1754>`_\ : Removed unused files and libraries.
+
+----
+
+5.7.0-beta.8 (10/08/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1441 <http://jira.korp.com.br/browse/FRM-1441>`_ - ``map``\ : Moved the ``map`` component to a separate library
+
+  * To migrate, simply install ``@viasoft/map`` and fix all ``map``\ -related imports
+
+Dependency Changes
+^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+   * - @agm/core
+     - ❌ Removed
+   * - @asymmetrik/ngx-leaflet
+     - ❌ Removed
+   * - leaflet
+     - ❌ Removed
+
+
+*Note: If your apps and/or libraries use the ``map`` component, you shouldn't apply these changes.*
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1737 <http://jira.korp.com.br/browse/FRM-1737>`_ - ``grid``\ : Error message would show up instead of the "no result" message in very specific cases.
+* `FRM-1719 <http://jira.korp.com.br/browse/FRM-1719>`_\ : User could sometimes stay logged in even after their token had expired.
+* `FRM-1694 <http://jira.korp.com.br/browse/FRM-1694>`_ - ``grid``\ : "More actions" button would show up even without any actions inside.
+
+----
+
+5.7.0-beta.3 (22/06/2021)
+-------------------------
+
+Dependency Changes
+^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+   * - @microsoft/signalr
+     - 🔄 Updated
+     - 5.0.7
+
+Features
+^^^^^^^^
+
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - `common`: Custom services available for:
+
+  * DataLivelyService
+  * NotificationService
+
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : Websocket connections now have an ``AutomaticReconnect`` flag.
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : Notifying users about a new notification can now be done using ``NotificationService.notifyUser``.
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : Added ``shouldNotifyUser`` parameter to ``NotificationService.addNotification``\ , letting you notify users about a new notification (default ``true``\ ).
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : Internal subscriptions were not being unsubscribed after being used.
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : Only the first websocket notification was being showed.
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``navigation``\ : Notification snackbar had low contrast on the action button.
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : ``DataLivelyNotificationUpdateIdInterceptor`` was replacing ``NotificationUpdateId`` header.
+
+Housekeeping
+^^^^^^^^^^^^
+
+* `FRM-1686 <http://jira.korp.com.br/browse/FRM-1686>`_ - ``common``\ : Performance improvements in ``VsCommonModule``.

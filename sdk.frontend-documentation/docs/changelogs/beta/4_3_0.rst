@@ -1,0 +1,75 @@
+
+Changelog - 4.3.0 Betas
+=======================
+
+16-04-20 (4.3.0-beta.4)
+-----------------------
+
+Features
+^^^^^^^^
+
+* **components/select-modal** - `FRM-1155 <http://jira.korp.com.br/browse/FRM-1155>`_
+
+  * Added IVsSelectModalDefaultFilterBooleanField, allowing boolean filters.
+
+06-04-20 (4.3.0-beta.3)
+-----------------------
+
+Features
+^^^^^^^^
+
+* **components/autocomplete** - `FRM-1130 <http://jira.korp.com.br/browse/FRM-1130>`_
+
+  * Added ``VsAutocompleteOptions.filterType``
+
+    * ``'plain'`` (default): ``VsAutocompleteGetInput.valueToFilter`` will contain the value typed by the user
+    * ``'jquery'``\ : ``VsAutocompleteGetInput.valueToFilter`` will contain a query in jQuery Query Builder format, with the value typed by the user assigned to every field in the ``VsAutocompleteOptions.filterFields`` property. The group operator is always ``OR`` and the field operator is always ``contains``.
+    * ``'mongo'``\ : ``VsAutocompleteGetInput.valueToFilter`` will contain a query in MongoDB format, with the value typed by the user assigned as a RegExp to every field in the ``VsAutocompleteOptions.filterFields`` property. The group operator is always ``$OR``.
+
+  * Added ``VsAutocompleteOptions.filterFields``
+
+    * Array of fields to filter for when ``VsAutocompleteOptions.filterType`` is either 'jquery' or 'mongo'.
+
+03-04-20 (4.3.0-beta.2)
+-----------------------
+
+Changes
+^^^^^^^
+
+* **components/grid** - `FRM-1135 <http://jira.korp.com.br/browse/FRM-1135>`_
+
+  * Added option to format a field's name when building a query
+
+    * See ``VsGridOptions.filterFieldFormat``
+
+Internal changes
+^^^^^^^^^^^^^^^^
+
+
+* **components/grid** - `FRM-1119 <http://jira.korp.com.br/browse/FRM-1119>`_
+
+  * Updated tests
+
+02-04-20 (4.3.0-beta.1)
+-----------------------
+
+Changes
+^^^^^^^
+
+* **common/base-crud** - `FRM-1111 <http://jira.korp.com.br/browse/FRM-1111>`_
+
+  * GetOutputDto now defaults to CreateOutputDto if not specified
+
+* **components/grid** - `FRM-1118 <http://jira.korp.com.br/browse/FRM-1118>`_
+
+  * Added option to use MongoDB query format instead of jQuery Query Builder
+
+    * ``VsGridOptions.filterType = 'mongo'``
+
+Updates
+^^^^^^^
+
+
+* **@viasoft/angular-oauth2-oidc** - `FRM-1109 <http://jira.korp.com.br/browse/FRM-1109>`_
+
+  * Updated to 8.0.5

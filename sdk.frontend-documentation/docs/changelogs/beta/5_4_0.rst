@@ -1,0 +1,117 @@
+
+Changelog - 5.4.0 Betas
+=======================
+
+5.4.2-beta.8 (07/06/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1697 <http://jira.korp.com.br/browse/FRM-1697>`_ - ``grid``\ : New Chromium version caused grid rows to expand to fill the available vertical space.
+
+----
+
+5.4.0-beta.6 (04/02/2021)
+-------------------------
+
+Features
+^^^^^^^^
+
+* 
+  `FRM-1534 <http://jira.korp.com.br/browse/FRM-1534>`_ - ``navigation``\ : Added option to disable page reloading when the selected company changes.
+
+
+  * You can toggle this by providing the ``DISABLE_RELOAD_ON_COMPANY_CHANGE`` injection token.
+
+* 
+  `FRM-1520 <http://jira.korp.com.br/browse/FRM-1520>`_ - ``http``\ , ``common``\ , ``error-monitoring`` : Added support for Organization Units and Environments.
+
+
+  * Environment data can be retrieved from ``VsJwtProviderService`` and will automatically be sent in request headers and Sentry tags.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1540 <http://jira.korp.com.br/browse/FRM-1540>`_ - ``grid``\ : Paginator dropdown wouldn't show up on mobile.
+
+----
+
+5.4.0-beta.4 (18/01/2021)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1514 <http://jira.korp.com.br/browse/FRM-1514>`_ - ``dashboard``\ : Removed the Dashboard package from the core SDK repository.
+
+  * It will continue to be distributed under the ``@viasoft/dashboard`` package on ProGet, but will no longer follow the same update schedule as other core SDK packages. The first version published will be ``5.5.0``.
+
+Features
+^^^^^^^^
+
+* `FRM-1443 <http://jira.korp.com.br/browse/FRM-1443>`_ - ``common``\ : Added ``VsSubscriptionManager`` helper class.
+
+  * Deprecated ``SerialSubscriptions`` class and ``SerialUnsubscriber`` function.
+  * Use ``VsSubscriptionManager.add()`` to add a new subscription. If a subscription with the same name already exists and is open, it will be replaced by a new one.
+  * Inside ``ngOnDestroy``\ , always call ``VsSubscriptionManager.clear()``.
+
+* `FRM-1450 <http://jira.korp.com.br/browse/FRM-1450>`_ - ``client``\ : Added support for selective generation.
+
+  * You're now able to pick which parts of your API you'd like to generate.
+
+* `FRM-1455 <http://jira.korp.com.br/browse/FRM-1455>`_ - ``button``\ : Button will now switch to ``model="icon"`` automatically if the ``icon`` attribute is set.
+* `FRM-1507 <http://jira.korp.com.br/browse/FRM-1507>`_ - ``form``\ : Adjusted styles for ``vs-checkbox``\ , ``vs-search``\ , ``vs-button`` and ``vs-select`` components.
+
+  * You can also use the ``form-align-left``\ , ``form-align-center``\ , ``form-align-right`` and ``form-full-width`` attributes on a ``vs-button`` to change its alignment or sizing.
+
+Changes
+^^^^^^^
+
+* `FRM-1512 <http://jira.korp.com.br/browse/FRM-1512>`_ - ``filter``\ : Filter overlay will now close on scroll.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1380 <http://jira.korp.com.br/browse/FRM-1380>`_ - ``filter``\ : Date filter wouldn't be restored correctly after being cached.
+* `FRM-1475 <http://jira.korp.com.br/browse/FRM-1475>`_ - ``search-input``\ : "Search" and "clear" buttons were sized incorrectly.
+* `FRM-1511 <http://jira.korp.com.br/browse/FRM-1511>`_ - ``client``\ : An incorrect summary would sometimes display before the API was actually generated.
+
+----
+
+5.4.0-beta.3 (29/12/2020)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1444 <http://jira.korp.com.br/browse/FRM-1444>`_ - ``data-lively``\ : Refactored VsDataLivelyService to use ``Subject``.
+
+  * Instead of using ``subscribeToUpdate`` and callbacks, you should now use the ``get`` method, which returns a ``Subject``.
+  * If the ``Subject`` doesn't exist, it will be created automatically.
+  * The ``uniqueTypeName`` property in ``DataLivelyUpdate`` has been renamed to ``identifier``.
+
+----
+
+5.4.0-beta.1 (28/12/2020)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1445 <http://jira.korp.com.br/browse/FRM-1445>`_ - ``app-core``\ , ``message-dialog``\ : ``VsAppCoreModule`` now imports ``VsMessageDialogModule`` automatically.
+
+  * ``VsMessageDialogModule`` now prevents itself from being initialized more than once, but you should still remove any others imports you might have in your app.
+  * You should also be using ``VsAppCoreModule.forRoot()`` instead of ``VsCommonModule.forRoot()``\ , as it is now stable and can be safely used.
+
+Features
+^^^^^^^^
+
+* `FRM-1410 <http://jira.korp.com.br/browse/FRM-1410>`_ - ``button``\ : Now emits an Event object in the ``clickEvent`` output.
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1424 <http://jira.korp.com.br/browse/FRM-1424>`_ - ``grid``\ : Disabling actions column would break card mode.
+* `FRM-1419 <http://jira.korp.com.br/browse/FRM-1419>`_ - ``grid``\ : Pagination would be incorrect after applying a filter in some cases.
+* `FRM-1446 <http://jira.korp.com.br/browse/FRM-1446>`_ - ``grid``\ : Progress bar column had incorrect filter settings by default.

@@ -1,0 +1,1051 @@
+Changelog - 8.0.0 Betas
+=======================
+
+8.0.0-beta.135 (13/02/2025)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-263] `components`: `grid` Fix in grid height calculation when in a tabs-view-template.
+- [NO-ISSUE] `components`: `grid` Fix grid filter not showing in mobile layout.
+- [SDKF-201] `components`: `grid` Fix in actions size calculation.
+- [NO-ISSUE] `components`: `forms` Fix focusManagerService for mat-select.
+
+____
+
+8.0.0-beta.126 (05/12/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [SDKF-183] `components`: `grid` / `tree-table` `editManagerService` is now signal based, so beware for possible breaking changes.
+
+Features
+^^^^^^^^
+
+- [SDKF-183] `components`: `grid` / `tree-table` `editRowOptions.onRowEdit` / `editRowOptions.onRowsEdit` now has a trigger parameter, allowing you to know why edit was saved.
+- [SDKF-183] `components`: `grid` / `tree-table` `editRowOptions.onCancelEdit` added, allowing you to know why edit was canceled.
+- [SDKF-183] `components`: `grid` now has a `footer` ng-content.
+
+____
+
+8.0.0-beta.125 (26/11/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-192] `common`: `currency` mask now handles `undefined` / `null` values correctly.
+
+____
+
+8.0.0-beta.121 (19/11/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [SDKF-178] - `common`: `VS_AVOID_SHOWING_FILTER_ICON_IN_GRID` altered to `VS_SHOULD_SHOW_FILTER_ICON_IN_GRID`, now grid / tree-table will not show its filter icon by default.
+
+Features
+^^^^^^^^
+
+- [SDKF-173] - `vs-drawer` component added, replacing mat-drawer's functionality.
+____
+
+8.0.0-beta.118 (08/11/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-176] - `components`: `input` focusAndSelectText will now only happen when input is not partially selected
+- [SDKF-175] - `components`: `grid` Fixing grid.select to be called after all internal grid operations.
+
+____
+
+8.0.0-beta.116 (07/11/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-174] - `components`: `grid` `loaded` event added.
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-174] - `components`: `grid` Fix `ActionsSizeLimit` implementation
+
+____
+
+8.0.0-beta.114 (04/11/2024)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `checkbox` performance improved
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Fixes in table's datetime filter formatting its value to `Invalid Date`.
+
+____
+
+8.0.0-beta.111 (30/10/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-168] - `components`: `vs-autocomplete-chips-new[rawFormat]` added, allowing chips in rawFormat
+
+____
+
+8.0.0-beta.105 (28/10/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-165] - `quick-filter`: Fixing cache + useField compatibility problem
+
+____
+
+8.0.0-beta.104 (24/10/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-165] - `components`: Layout fixes for `vs-autocomplete-chips-new`.
+
+____
+
+8.0.0-beta.100 (23/10/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-156] - `components`: `vs-autocomplete-chips-new` added.
+
+____
+
+8.0.0-beta.99 (22/10/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-158] - `components`: `autocomplete-chips-minimalist-new` `isChipRemovable` added.
+- [SDKF-157] - `components`: `input` disabled label are now more visible
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `filter` for date are not emitting multiple times in some situations.
+
+____
+
+8.0.0-beta.97 (21/10/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [SDKF-151] - `components`: `MaskResolverService` is deprecated, use `VsMaskResolverService` instead;
+
+Features
+^^^^^^^^
+
+- [SDKF-151] - `common`: Many regexes exported, such `ONLY_NUMBERS_REGEX` / `VS_DATE_BASIC_REGEXES` / `VS_DATE_REGEXES`;
+- [SDKF-151] - `common`: Validation functions exported, such as `isDateStringValid` / `isDateTimeStringValid` / `isCnpjValid` / `isCpfValid`;
+- [SDKF-151] - `components`: `filter` Date filters now can also be typed via keyboard, not only via mouse selection;
+- [SDKF-151] - `components`: `filterOptions.formatFilter` added, allowing devs to have a function that will format the filter value;
+- [SDKF-151] - `components`: `filterOptions.shouldApplyFilter` added, allowing devs to have a function that will evaluate if filter should be applied or not;
+
+____
+
+8.0.0-beta.95 (17/10/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-152] - `components`: `kanban` Fix scrollHeight cache not being cleared after a refreshList with clearCache param enabled
+
+____
+
+8.0.0-beta.93 (16/10/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `kanban` `KanbanListComponent` renamed to `VsKanbanListComponent`.
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: `kanban` `scrollChange` output implemented.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `common`: `translation` now doesn't throw an error when an parameter is null (it is considered as `""`).
+- [NO-ISSUE] - `components`: `filter` filter options now handles correctly when no option is provided.
+
+Improvements
+^^^^^^^^^^^^
+
+- [SDKF-150] - `component`: `tree-table` performance improvements, mainly for virtual scroll system.
+
+____
+
+
+8.0.0-beta.88 (15/10/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-147] - `components`: `vs-autocomplete-chips-minimalist-new` added, it will replace current vs-autocomplete-chips-minimalist.
+- [SDKF-147] - `components`: `button` was remade using signals, improving performance.
+
+____
+
+8.0.0-beta.87 (14/10/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-149] - `components`: `grid` / `tree-table` `editRowOptions.shouldHideEditModeButtons` added.
+- [NO-ISSUE] - `components`: `chip-list` @Input `avoidEmailFormatValidation` added, since @Input() email wasn't working.
+
+____
+
+8.0.0-beta.86 (11/10/2024)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- [SDKF-146] - `components`: `select` was remade using signals, improving performance.
+
+Features
+^^^^^^^^
+
+- [SDKF-141] - `components`: `filter` now has virtual scroll via @Input `virtualScroll.enableVirtualScroll`.
+- [SDKF-145] - `components`: `grid` / `tree-table` now has `editRowOptions.onRowsEdit`, allowing you to save multiple rows at once.
+
+____
+
+8.0.0-beta.82 (08/10/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `kanban` / `grid` / `tree-table` correctly clear cache when its filter has changed.
+- [SDKF-144] - `common`: `licensing` Modals and dialogs are now correctly blurred and destroyed when user's license is expired.
+
+____
+
+8.0.0-beta.81 (07/10/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-142] - `components`: `vs-navigation-view` Profile and apps links are now real links and will redirect as expected (independent if is in portal app or not).
+- [SDKF-140] - `components`: `tree-table` filter now doesn't cause scroll when result is empty.
+
+Features
+^^^^^^^^
+
+- [SDKF-143] - `components`: `kanban` `list.isCollapsed` added, allowing you to provide a custom template via @Input `listCollapsedTemplate`.
+- [SDKF-144] - `components`: `tab-group` @Input `routedTabContentTemplate` added, allowing you to provide a custom template that will contain all routed-tabs.
+
+____
+
+8.0.0-beta.80 (03/10/2024)
+--------------------------
+
+Features
+^^^^^^^^
+- [SDKF-31] - `components`: `tree-table` `tooltip` property added to all cells.
+
+____
+
+
+8.0.0-beta.78 (01/10/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [SDKF-138] - `components`: `filter` `JQQB_OP_NOT_CONTAINS` added.
+  - This is considerated a breaking change because default filter conditions order has changed.
+
+Features
+^^^^^^^^
+
+- [SDKF-136] - `components`: `filter` `shouldHideConditionWhenSingleOption` available, hiding condition when only a single option is avaliable
+- [SDKF-137] - `components`: `grid` `shouldSavePageSizeCache` added, allowing to also save pageSize in cache
+- [SDKF-139] - `components`: `grid` `columns.filterOptions` width properties added (`width` / `minWidth` / `maxWidth`), allowing you to set filter modal width
+
+____
+
+8.0.0-beta.77 (26/09/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-134] - `components`: `grid` `gridOptions.actionsSizeLimit` now limits how many actions will be shown for each row, adding a more options button when limit is reached.
+- [NO-ISSUE] - `components`: `tree-table` `enableVirtualScroll` input added.
+
+____
+
+8.0.0-beta.75 (24/09/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `FormManipulator` now touches field when a value is set.
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-133] - `components`: `tree-view` no longer adds padding for single level tree views.
+- [NO-ISSUE] - `components`: `filter` now correctly shows select items count when `avoidShowingFilterIcon` injection token is set globally.
+
+____
+
+8.0.0-beta.70 (19/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-71] - `components`: `scroll-button` Fix in scroll button, now correctly handling text-wrap + showing all buttons.
+- [NO-ISSUE] - `components`: `grid` Now grid correctly handles sorting change + virtual scroll.
+
+____
+
+8.0.0-beta.65 (18/09/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-74] - `components`: `kanban` `addColumnTemplate` / `addColumnPlaceholderTemplate` added.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `grid` Fixing grid.get() when using virtual scroll.
+
+____
+
+8.0.0-beta.63 (17/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `kanban` Improvement in drag + scroll behavior, allowing you to drag cards and doing scroll at the same time without breaking virtual scroll.
+
+____
+
+8.0.0-beta.61 (16/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `kanban` Kanban lists wasn't calling unsubscribe(), causing getCards multiple times.
+- [NO-ISSUE] - `components`: `kanban` Fix in kanban scroll cache.
+
+____
+
+8.0.0-beta.59 (13/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `tree-table` Fix when editing nested rows (tree table wasn't updating nested values correctly);
+
+____
+
+8.0.0-beta.58 (12/09/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-39] - `components`: `kanban` `avoidShowSpinnerOnDrag` property added;
+
+____
+
+8.0.0-beta.57 (11/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `tree-table` Edit mode no longer emits select when clicking a cell.
+- [NO-ISSUE] - `components`: `tree-table` Edit mode now handles SDK masks (CPF / zipCode / Date).
+
+____
+
+8.0.0-beta.56 (10/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `grid` Fix in delete behavior (regression from 8.0.0-beta.49)
+
+____
+
+8.0.0-beta.51 (09/09/2024)
+--------------------------
+
+Improvements
+^^^^^^^^^^^^
+
+- [SDKF-72] - `components`: `filter` Grid / Tree Table filter scroll performance significantly improved, only trying to scroll filter modal when it is opened.
+
+____
+
+8.0.0-beta.50 (06/09/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-68] - `components`: `grid` Fixes in edit mode.
+
+____
+
+8.0.0-beta.49 (05/09/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-59] - `components`: `input` now has `minValue` / `maxValue` @Inputs, allowing to set min/max value for `vs-input type=number`
+- [NO-ISSUE] - `components`: `grid` now has `enableVirtualScroll` option, disabling paginator and allowing infinite scroll navigation.
+
+____
+
+8.0.0-beta.45 (04/09/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-59] - `components`: `tree-table` now has `editRowOptions` allowing you to edit any cell using tree-table. 
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Pay attention: </span><span>Custom cells will need you to extend `VsTableCellCustomComponent` and have an `editMode` input accordingly.</span>
+    
+- [NO-ISSUE] - `components`: `grid` / `tree-table` `VS_AVOID_SHOWING_FILTER_ICON_IN_GRID` injectable added, allowing you to hide filter icons in grid / tree table filters.
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `grid` now correctly focus first editable cell in first row on edit mode.
+- [NO-ISSUE] - `components`: `datepicker` now correctly opens on grid edit mode first click.
+
+____
+
+8.0.0-beta.35 (20/08/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [SDKF-59] - `components`: `grid` now has `editRowOptions` allowing you to edit any cell using grid.
+
+  .. raw:: html
+
+    <span style="font-weight: bold;">Pay attention: </span><span>Custom cells will need you to extend `VsTableCellCustomComponent` and have an `editMode` input accordingly.</span>
+  
+- [SDKF-59] - `components`: `grid` cells now must extend `VsTableCellCustomComponent<DataType, FieldValueType>`
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] - `components`: `radio-group` now has a `(radioClicked)` @Output.
+- [NO-ISSUE] - `components`: `tree-table` `sortingOptions`added, now you can set `useField` / `disable` for sorting in tree-tables.
+- [NO-ISSUE] - `components`: `select` now has 3 options modal size options, based on field size (`panelWidth="fitToField"`), options size (`panelWidth="fitToLargestOption"`) or a static `number` value;
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: `button` Angular `(click)` output will no longer be trigger when button is disabled;
+- [NO-ISSUE] - `components`: `autocomplete` Fix style for long text options;
+- [NO-ISSUE] `common`: License error when reopen a page after a long period of inactivty was fixed;
+- [NO-ISSUE] - `components`: `scroll-button` Fixing some internal errors;
+
+____
+
+8.0.0-beta.15 (23/05/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Style corrections have been made to the error modals for HTTP errors and license errors.
+- [NO-ISSUE] - `components`: Fixed color issues with the icons in the `PortalSidenav`
+
+____
+
+8.0.0-beta.12 (22/05/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Adjustments have been made to the layout of the company select in the navbar.
+
+____
+
+8.0.0-beta.10 (22/05/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Layout corrections have been made to the `VsTreeView` to address issues with the focus of checkboxes.
+
+____
+
+8.0.0-beta.9 (21/05/2024)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+- [NO-ISSUE] - `components`: Layout corrections have been made to the `VsSelect`, and to the company select in the `Navbar` 
+
+____
+
+8.0.0-beta.7 (21/05/2024)
+--------------------------
+
+This release is focused around updating to Angular 17. It is crucial that you follow these steps in this exact order when updating your apps and libraries.
+
+Before Updating
+^^^^^^^^^^^^^^^
+
+Update your Node.JS to version `20.12.2`.
+  - We recommend using `NVM` to work simultaneously between old/new apps
+
+    - ``nvm install 20.12.2``
+    - ``nvm use 20.12.2``
+
+Update `npm` to version `10.8.0`
+  - ``npm i -g npm@10.8.0``
+
+Also, install the latest versions of global packages (like @angular/cli / @angular/schematics).
+  - ``npm i -g @angular/cli@17.3.7``
+  - ``npm i -g @angular-devkit/schematics@17.3.7 @angular-devkit/schematics-cli@17.3.7``
+
+Follow these steps to migrate to Angular 17
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We recommend first updating all projects that are on version 6.7.x of the SDK to version 7.0.x according to the `guide <https://sdk-frontend-documentation.readthedocs.io/en/latest/changelogs/beta/7_0_0.html>`_.
+
+Next, follow the `tutorial <https://update.angular.io/?l=3&v=14.0-17.0>`_ to update from version v14 to v17.
+
+- The only CLI commands should be:
+  
+  .. code-block:: sh
+
+    ng update @angular/core@13 @angular/cli@13 --force
+    ng update @angular/material@13 --force
+
+    ng update @angular/core@14 @angular/cli@14 --force
+    ng update @angular/material@14 --force
+
+    ng update @angular/core@15 @angular/cli@15 --force
+    ng update @angular/material@15 --force
+
+    ng update @angular/core@16 @angular/cli@16 --force
+    ng update @angular/material@16 --force
+
+    ng update @angular/core@17 @angular/cli@17 --force
+    ng update @angular/material@17 --force
+
+.. raw:: html
+
+    <span style="font-weight: bold;">Attention</span>
+  
+During the update of @angular/material@15, it will generate several changes related to using legacy imports. These changes should be reverted because they will be unnecessary in versions 16/17.
+
+Update Dependencies
+^^^^^^^^^^^^^^^^^^^
+
+These are the final dependency tables, go through each dependency and perform the necessary changes.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+     - Documentation
+   * - @angular/animations
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/animations <https://github.com/angular/angular#readme>`_
+   * - @angular/cdk
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/cdk <https://github.com/angular/components#readme>`_
+   * - @angular/common
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/common <https://github.com/angular/angular#readme>`_
+   * - @angular/compiler
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/compiler <https://github.com/angular/angular#readme>`_
+   * - @angular/core
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/core <https://github.com/angular/angular#readme>`_
+   * - @angular/forms
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/forms <https://github.com/angular/angular#readme>`_
+   * - @angular/material
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/material <https://github.com/angular/components#readme>`_
+   * - @angular/platform-browser
+     - 🔄 Updated
+     - ``^14.2.12``
+     - `angular/platform-browser <https://github.com/angular/angular#readme>`_
+   * - @angular/platform-browser-dynamic
+     - 🔄 Updated
+     - ``^14.2.12``
+     - `angular/platform-browser <https://github.com/angular/angular#readme>`_
+   * - @angular/router
+     - 🔄 Updated
+     - ``^14.2.12``
+     - `angular/router <https://github.com/angular/angular/tree/main/packages/router>`_
+   * - @microsoft/signalr
+     - 🔄 Updated
+     - ``~8.0.0``
+     - `microsoft/signalr <https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-8.0?view=aspnetcore-8.0>`_
+   * - @ngx-translate/core
+     - 🔄 Updated
+     - ``~15.0.0``
+     - `ngx-translate/core <https://github.com/ngx-translate/core/blob/master/README.md>`_
+   * - @sentry/angular-ivy
+     - 🔄 Updated
+     - ``~7.114.0``
+     - `@sentry/angular-ivy <https://docs.sentry.io/platforms/javascript/guides/angular/>`_
+   * - @sentry/browser
+     - 🔄 Updated
+     - ``~7.114.0``
+     - `sentry/browser <https://docs.sentry.io/platforms/javascript/guides/angular/>`_
+   * - @viasoft/datepicker
+     - 🔄 Updated
+     - ``~3.0.1``
+     - `viasoft/datepicker <link>`_ 
+   * - angular-imask
+     - 🔄 Updated
+     - ``~7.6.0``
+     - `angular-imask <https://github.com/uNmAnNeR/imaskjs/tree/master/packages/angular-imask>`_
+   * - angular-oauth2-oidc
+     - 🔄 Updated
+     - ``~17.0.2``
+     - `angular-oauth2-oidc <https://manfredsteyer.github.io/angular-oauth2-oidc/docs/>`_
+   * - core-js
+     - 🔄 Updated
+     - ``~3.37.1``
+     - `core-js <https://github.com/zloirock/core-js>`_
+   * - dompurify
+     - 🔄 Updated
+     - ``~3.1.4``
+     - `dompurify <https://www.npmjs.com/package/dompurify>`_
+   * - imask
+     - 🔄 Updated
+     - ``~7.6.0``
+     - `imask <https://imask.js.org/guide.html>`_
+   * - jwt-decode
+     - 🔄 Updated
+     - ``^4.0.0``
+     - `jwt-decode <https://github.com/auth0/jwt-decode#readme>`_
+   * - primeicons
+     - 🔄 Updated
+     - ``~7.0.0``
+     - `primeicons <https://www.primefaces.org/diamond/icons.xhtml>`_
+   * - primeng
+     - 🔄 Updated
+     - ``~17.16.1``
+     - `primeng <https://primefaces.org/primeng/setup>`_
+   * - prompts
+     - ❌ Removed
+     - 
+     - 
+   * - rxjs
+     - 🔄 Updated
+     - ``~7.8.1``
+     - `rxjs <https://rxjs.dev/guide/overview>`_
+   * - single-spa
+     - 🔄 Updated
+     - ``^6.0.1``
+     - `single-spa <https://single-spa.js.org/docs/getting-started-overview>`_
+   * - single-spa-angular
+     - 🔄 Updated
+     - ``^9.1.2``
+     - `single-spa-angular <https://single-spa.js.org/docs/getting-started-overview>`_
+   * - tslib
+     - 🔄 Updated
+     - ``^2.6.2``
+     - `tslib <https://github.com/microsoft/tslib>`_
+   * - ua-parser-js
+     - 🔄 Updated
+     - ``~1.0.37``
+     - `ua-parser-js <https://github.com/faisalman/ua-parser-js>`_
+   * - util
+     - ❌ Removed
+     - 
+     - 
+   * - zone.js
+     - 🔄 Updated
+     - ``~0.14.6``
+     - `zone.js <https://www.npmjs.com/package/zone.js?activeTab=readme>`_
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dev dependency
+     - Status
+     - Version
+     - Documentation
+   * - 4tw/cypress-drag-drop
+     - ❌ Removed
+     - 
+     -
+   * - @angular-builders/custom-webpack
+     - 🔄 Updated
+     - ``~17.0.2``
+     - `@angular-builders/custom-webpack <https://github.com/just-jeb/angular-builders?tab=readme-ov-file#readme>`_
+   * - @angular-devkit/build-angular
+     - 🔄 Updated
+     - ``^17.3.7``
+     - `@angular-devkit/build-angular <https://github.com/angular/angular-cli>`_
+   * - @angular-eslint/builder
+     - 🔄 Updated
+     - ``17.3.0``
+     - `angular-eslint/builder <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/eslint-plugin
+     - 🔄 Updated
+     - ``17.3.0``
+     - `angular-eslint/eslint-plugin <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/eslint-plugin-template
+     - 🔄 Updated
+     - ``17.3.0``
+     - `angular-eslint/eslint-plugin-template <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/schematics
+     - 🔄 Updated
+     - ``17.3.0``
+     - `angular-eslint/schematics <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/template-parser
+     - 🔄 Updated
+     - ``17.3.0``
+     - `angular-eslint/template-parser <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular/cli
+     - 🔄 Updated
+     - ``^17.3.7``
+     - `@angular/cli <https://github.com/angular/angular-cli>`_
+   * - @angular/compiler-cli
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/compiler-cli <https://github.com/angular/angular/tree/main/packages/compiler-cli>`_
+   * - @angular/language-service
+     - 🔄 Updated
+     - ``^17.3.9``
+     - `angular/language-service <https://github.com/angular/angular#readme>`_
+   * - @types/jasmine
+     - 🔄 Updated
+     - ``~5.1.4``
+     - `types/jasmine <https://github.com/DefinitelyTyped/DefinitelyTyped/>`_
+   * - @types/lodash
+     - 🔄 Updated
+     - ``^4.17.4``
+     - `types/lodash <https://github.com/DefinitelyTyped/DefinitelyTyped/>`_
+   * - @types/node
+     - 🔄 Updated
+     - ``~20.12.12``
+     - `types/node <https://github.com/DefinitelyTyped/DefinitelyTyped>`_
+   * - @types/ua-parser-js
+     - 🔄 Updated
+     - ``^0.7.39``
+     - `@types/ua-parser-js <https://github.com/DefinitelyTyped/DefinitelyTyped>`_
+   * - @viasoft/testing
+     - 🔄 Updated
+     - ``3.0.5``
+     - `viasoft/testing <link>`_
+   * - cypress
+     - 🔄 Updated
+     - ``~13.9.0``
+     - `cypress <https://docs.cypress.io/guides/references/migration-guide>`_
+   * - cypress-image-snapshot
+     - ❌ Removed
+     -
+     -
+   * - cypress-real-events
+     - 🔄 Updated
+     - ``^1.12.0``
+     - `cypress-real-events <https://github.com/dmtrKovalenko/cypress-real-events#readme>`_
+   * - eslint-import-resolver-typescript
+     - 🔄 Updated
+     - ``~3.6.1``
+     - `eslint-import-resolver <https://github.com/import-js/eslint-import-resolver-typescript>`_
+   * - eslint-plugin-import
+     - 🔄 Updated
+     - ``~2.29.1``
+     - `eslint-plugin-import <https://github.com/import-js/eslint-plugin-import>`_
+   * - jasmine-core
+     - 🔄 Updated
+     - ``~5.1.2``
+     - `jasmine-core <https://github.com/jasmine/jasmine/>`_
+   * - jasmine-spec-reporter
+     - ❌ Removed
+     -
+     -
+   * - karma
+     - 🔄 Updated
+     - ``~6.4.3``
+     - `karma <https://karma-runner.github.io/>`_
+   * - karma-chrome-launcher
+     - 🔄 Updated
+     - ``~3.2.0``
+     - `karma-chrome-launcher <https://github.com/karma-runner/karma-chrome-launcher>`_
+   * - karma-coverage-istanbul-reporter
+     - ❌ Removed
+     -
+     -
+   * - karma-coverage
+     - ✅ Added
+     - ``~2.2.1``
+     - `karma-coverage <https://github.com/karma-runner/karma-coverage#readme>`_
+   * - karma-jasmine-html-reporter
+     - 🔄 Updated
+     - ``~2.1.0``
+     - `karma-jasmine-html-reporter <https://github.com/dfederm/karma-jasmine-html-reporter>`_
+   * - ng-packagr
+     - 🔄 Updated
+     - ``~17.3.0``
+     - `ng-packagr <https://github.com/ng-packagr/ng-packagr>`_
+   * - prettier
+     - 🔄 Updated
+     - ``~3.2.5``
+     - `prettier <https://prettier.io>`_
+   * - stylelint
+     - 🔄 Updated
+     - ``~14.16.1``
+     - `stylelint <https://stylelint.io/migration-guide/to-14/>`_
+   * - stylelint-config-prettier
+     - 🔄 Updated
+     - ``~9.0.5``
+     - `stylelint-config-prettier <https://github.com/prettier/stylelint-config-prettier>`_
+   * - ts-node
+     - ❌ Removed
+     -
+     -
+   * - tsickle
+     - ❌ Removed
+     -
+     -
+   * - typescript
+     - 🔄 Updated
+     - ``~5.4.5``
+     - `typescript <https://www.typescriptlang.org/>`_
+   * - yargs
+     - ❌ Removed
+     -
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - Libraries
+     - Status
+     - Version
+     - Documentation
+   * - @viasoft/email
+     - 🔄 Updated
+     - ``8.0.0``
+     - `Changelog <#changelog-email>`_
+   * - @viasoft/text-editor
+     - 🔄 Updated
+     - ``8.0.0``
+     - `Changelog <#changelog-text-editor>`_
+   * - @viasoft/authorization-management
+     - 🔄 Updated
+     - ``8.0.0``
+     - `Changelog <#changelog-authorization-management>`_
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- Remove any command related to `ngcc` as it is no longer necessary.
+- ``vs-button model="fab"`` / ``vs-button model="mini_fab"`` should be replaced with ``vs-button fab model="fab"`` / ``vs-button fab model="mini_fab"``
+- Delete `.browserslistrc` file.
+- Check all ``mat-*`` classes that are not ``mat-mdc-`` using the regex ``\.mat-(?!mdc)``
+
+  - Each case should be checked manually because there were classes removed/refactored, but in general, they were renamed from ``mat-XXX`` to ``mat-mdc-XXX``
+
+- Initial disabled behavior through the property [disabled]="true" no longer works with reactive forms.
+
+  - There will always be a warning from Angular related to this issue.
+
+- The following classes have been renamed: ``HydraUserService`` → ``VsUserHydraService``
+- The following packages have been removed and should no longer be used: ``@viasoft/client``
+- Several legacy components have been removed from the SDK. To find them, search using the regex: ``(vs-radio-button-legacy|vs-autocomplete-select-legacy|vs-select-legacy|vs-checkbox-legacy|vs-textarea-legacy|vs-sidenav-view-template|vs-dropdown)``
+
+  - vs-radio-button-legacy
+  - vs-autocomplete-select-legacy
+  - vs-select-legacy
+  - vs-checkbox-legacy
+  - vs-textarea-legacy
+  - vs-sidenav-view-template (no one uses it)
+  - vs-dropdown (no one uses it)
+
+- SerialSubscriptions / SerialUnsubscriber have been removed, use VsSubscriptionManager instead.
+
+Jenkins
+^^^^^^^
+
+Now it is necessary to specify the correct image in the Jenkinsfile. To do this, simply add the following lines:
+
+.. code-block:: sh
+
+  ...
+  def jnlpImageTag = "1.1.x"
+  ...
+  "jnlpImageTag": "${jnlpImageTag}",
+  ...
+
+Inclusion of Material Styles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the `styles.scss` file, it should start as follows:
+
+ .. code-block:: scss
+
+    @use '@angular/material' as mat;
+    @use "@viasoft/theming/config" as config;
+    @import "@viasoft/theming/use-theme";
+
+    @include useTheme();
+  
+- Themes Added by Default
+
+  .. code-block:: scss
+
+    @include mat.tooltip-theme(config.$vs-theme);
+    @include mat.form-field-theme(config.$vs-theme);
+    @include mat.input-theme(config.$vs-theme);
+    @include mat.dialog-theme(config.$vs-theme);
+    @include mat.icon-theme(config.$vs-theme);
+
+- Themes Already Added Through SDK Components
+
+  .. code-block:: scss
+
+    @include mat.autocomplete-theme(config.$vs-theme); // VsAutocomplete Chips / Select / Minimalist
+    @include mat.progress-spinner-theme(config.$vs-theme); // vs-spinner
+    @include mat.badge-theme(config.$vs-theme); // vs-navbar
+    @include mat.datepicker-theme(config.$vs-theme); // vs-datepicker
+    @include mat.stepper-theme(config.$vs-theme); // vs-stepper
+    @include mat.select-theme(config.$vs-theme); // vs-select
+    @include mat.paginator-theme(config.$vs-theme); // vs-paginator
+    @include mat.radio-theme(config.$vs-theme); // vs-radio-group
+    @include mat.checkbox-theme(config.$vs-theme); // vs-checkbox
+    @include mat.sidenav-theme(config.$vs-theme); // vs-navigation-view
+    @include mat.snack-bar-theme(config.$vs-theme); // vs-navbar
+    @include mat.expansion-theme(config.$vs-theme); // vs-accordion
+    @include mat.fab-theme(config.$vs-theme); // vs-button [fab]
+    @include mat.button-theme(config.$vs-theme); // vs-button
+    @include mat.chips-theme(config.$vs-theme); // VsAutocomplete Chips / Select / Minimalist / vs-chip-list
+
+- Need to Add Manually if Used (add to you component if it uses)
+
+  .. code-block:: scss
+
+    @include mat.toolbar-theme(config.$vs-theme); // mat-toolbar
+    @include mat.grid-list-theme(config.$vs-theme); // mat-grid-list
+    @include mat.slide-toggle-theme(config.$vs-theme); // mat-slide-toggle
+    @include mat.slider-theme(config.$vs-theme); // mat-slider
+    @include mat.divider-theme(config.$vs-theme); // mat-divider
+    @include mat.table-theme(config.$vs-theme); // mat-table
+    @include mat.list-theme(config.$vs-theme); // mat-list
+    @include mat.bottom-sheet-theme(config.$vs-theme); // MatBottomSheet
+    @include mat.button-toggle-theme(config.$vs-theme); // mat-button-toggle
+    @include mat.sort-theme(config.$vs-theme); // mat-sort-header
+    @include mat.tree-theme(config.$vs-theme); // mat-tree
+    @include mat.progress-bar-theme(config.$vs-theme); // used only by vs-table-cell-progress-bar
+    @include mat.card-theme(config.$vs-theme); // used only by vs-grid-card (mobile mode of the grid)
+    @include mat.menu-theme(config.$vs-theme); // used only by the notifications menu / vs-grid-card (mobile mode of the grid)
+    @include mat.tabs-theme(config.$vs-theme); // used only by vs-tab-group
+    @include mat.icon-button-theme(config.$vs-theme); // used in conjunction with mat-icon, which we do not use
+
+To find specific Angular Material components, use the following regex:
+ - ``(mat-toolbar|mat-grid-list|mat-slide-toggle|mat-slider|mat-divider|mat-table|mat-list|MatBottomSheet|mat-button-toggle|mat-sort-header|mat-tree|mat-card|mat-menu|mat-tab|mat-icon)``
+
+Additionally, search for:
+  - ``<mat-``
+
+- If you are using ``mat-chip-list`` or ``mat-chip``, they have been completely refactored and must follow the `new implementation <https://v15.material.angular.io/components/chips/examples>`_.
+
+Index.html
+^^^^^^^^^
+
+You must assure that local ``index.html`` file has all updated ``link`` tags:
+
+.. code-block:: html
+  <head>
+    <!-- ... -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- ... -->
+  </head>
+
+Libraries
+^^^^^^^^^
+
+TextEditorComponent (8.0.x):
+  - Renamed from `TextEditorComponent` to `VsTextEditorComponent`.
+  - `vs-text-editor` now uses `VFormManipulator`, so it works with formControlName rather than controlName.
+
+Testing (3.0.x):
+  - Renamed ``addHelperCommands`` to ``addSDKCommands``.
+  - Change from ``launchOptions.args.push('--window-size=1050,720')`` to ``launchOptions.args.push('--window-size=1066,815')``.
+  - Change from ``korp/cypress-docker:node18.12.0-chrome107`` to ``korp/cypress-docker:cypress-13.8.1-node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.2-edge-124.0.2478.51-1``
+  - Add ``"sourceMap": false`` to `cypress/tsconfig.json`.
+
+Authorization Management (8.0.x):
+  - ``app-user-create-or-edit`` to ``vs-authorization-user-create-or-edit``.
+    
+    - This should not affect anyone as it is an internal component only.

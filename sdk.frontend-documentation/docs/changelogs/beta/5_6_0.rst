@@ -1,0 +1,121 @@
+Changelog - 5.6.0 Betas
+=======================
+
+5.6.0-beta.6 (11/06/2021)
+-------------------------
+**This will break local and production environents, so be careful before updating your apps.**
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1442 <http://jira.korp.com.br/browse/FRM-1442>`_ - ``http``\ : HTTP headers interceptor was being called twice.
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* `FRM-1442 <http://jira.korp.com.br/browse/FRM-1442>`_\ : Authentication flow was updated to a better and more secure version.
+
+  * Fixes a problem where login was trying to use a mock access token (if it was already in ``localStorage``\ )
+
+    * Authentication now handles mock access tokens and deletes them automatically when needed.
+
+  * *Silent refresh is no longer used*\ , a *refresh token request* replaces its functionality
+  * URL hash is now being handled and automatically deleted after login process;
+  * ``runInitialLoginSequence`` now accepts ``disableAutoLogoutOnError`` flag
+
+    * This flag will avoid logout when an login error occur
+
+  * ``hydraGetUtcTimeUrl`` is no longer used
+  * ``VsAuthService`` constructor properties changed
+
+This is a breaking change because the new authentication process conflicts with the previous one. Please use the following migration tutorial to make sure your app's authentication will work locally and in production.
+
+Migration Guide
+^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+   * - angular-oauth2-oidc
+     - ✅ Added
+     - 10.0.3
+   * - @viasoft/angular-oauth2-oidc
+     - ❌ Removed
+     - 
+
+#. Update SDK packages to ``5.6.0``
+#. Replace '@viasoft/angular-oauth2-oidc' with 'angular-oauth2-oidc'
+#. ``hydraGetUtcTimeUrl`` is no longer used, you can remove it
+#. Delete ``silent-refresh.html`` and remove its references from ``angular.json``
+
+Updating Identity Server (locally)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**This will reset your database and Docker. Save anything important before proceeding.**
+
+If you use Identity Server, please do the following steps:
+
+#. Run ``git pull`` in @viasoft/infrastructure;
+#. Run ``reset-docker.ps1`` from @viasoft/infrastructure;
+#. Run ``setup.ps1`` from @viasoft/infrastructure;
+
+Updating Hydra (locally)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Run the following command in terminal:
+
+.. code-block:: bash
+
+   # Please notice that this is configuring a client for the `localhost:4200` URL, which can be changed if needed
+
+   hydra clients create --endpoint "http://localhost:4445" --id portal -g "authorization_code,refresh_token" -r "code,id_token,token,id_token token" -a "openid,profile,offline_access,offline" -c "http://localhost:4200,http://localhost:4200/" --post-logout-callbacks http://localhost:4200 --token-endpoint-auth-method "none"
+
+#. Edit the ``ttl`` section in ``hydra.yml`` and/or ``hydra.prod.yml``\ :
+
+.. code-block:: yml
+
+   ttl:
+     login_consent_request: 1h
+     access_token: 8760h
+     id_token: 8760h
+     refresh_token: -1
+     auth_code: 8760h
+
+#. Edit ``globalconfig.json`` in the ``Korp.Legacy.Authentication`` service like so:
+
+Before
+
+.. code-block:: json
+
+   // ...
+   "ViasoftLegacyAuthenticationHydra": {
+     "HydraAllowedScopes": "[\"openid\", \"profile\", \"offline\"]"
+   },
+   // ...
+
+After
+
+.. code-block:: json
+
+   // ...
+   "ViasoftLegacyAuthenticationHydra": {
+     "HydraAllowedScopes": "[\"openid\", \"profile\", \"offline\", \"offline_access\"]"
+   },
+   // ...
+
+
+#. Restart Hydra
+#. Restart ``Korp.Legacy.Authentication``
+
+----
+
+5.6.0-beta.5 (10/06/2021)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* `FRM-1697 <http://jira.korp.com.br/browse/FRM-1697>`_ - ``grid``\ : New Chromium version caused grid rows to expand to fill the available vertical space.

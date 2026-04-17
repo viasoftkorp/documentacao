@@ -1,0 +1,169 @@
+
+Changelog - 4.2.0 Betas
+=======================
+
+24-03-20 (4.2.0-beta.7)
+-----------------------
+
+Changes
+^^^^^^^
+
+* **components/tree-view** - `FRM-1033 <http://jira.korp.com.br/browse/FRM-1033>`_
+
+  * Empty message is now localized
+
+Internal Changes
+^^^^^^^^^^^^^^^^
+
+
+* 
+  **components/grid** - `FRM-822 <http://jira.korp.com.br/browse/FRM-822>`_
+
+
+  * Refactored tests
+
+* 
+  **jenkins** - `TD-76 <http://jira.korp.com.br/browse/TD-76>`_
+
+
+  * Performance improvements
+
+20-03-20 (4.2.0-beta.6)
+-----------------------
+
+Fixes
+^^^^^
+
+
+* 
+  **navigation/notifications** - `FRM-494 <http://jira.korp.com.br/browse/FRM-494>`_
+
+
+  * Fixed long words breaking notification layout
+
+* 
+  **components/radio** - `FRM-1103 <http://jira.korp.com.br/browse/FRM-1103>`_\ , `FRM-1108 <http://jira.korp.com.br/browse/FRM-1108>`_
+
+
+  * Fixed radio allowing items to be selected when either the FormGroup, FormControl or the item itself were disabled
+
+* 
+  **components/autocomplete** - `FRM-1043 <http://jira.korp.com.br/browse/FRM-1043>`_
+
+
+  * Fixed autocomplete dropdown not sticking to its respective input
+
+Changes
+^^^^^^^
+
+* **navigation** - `FRM-1046 <http://jira.korp.com.br/browse/FRM-1046>`_\ , `FRM-1107 <http://jira.korp.com.br/browse/FRM-1107>`_
+
+  * Clicking on a navbar item with children will no longer try to navigate to that item's route
+
+Breaking changes
+^^^^^^^^^^^^^^^^
+
+
+* **components/no-result** - `FRM-1106 <http://jira.korp.com.br/browse/FRM-1106>`_
+
+  * Removed "icon" property
+  * Added i18n
+
+Internal Changes
+^^^^^^^^^^^^^^^^
+
+
+* **components/accordion** - `FRM-949 <http://jira.korp.com.br/browse/FRM-949>`_
+
+  * Refactored tests
+
+18-03-20 (4.2.0-beta.5)
+-----------------------
+
+Internal Changes
+^^^^^^^^^^^^^^^^
+
+
+* **testing** - `FRM-934 <http://jira.korp.com.br/browse/FRM-934>`_
+
+  * Visual regression tests now use @viasoft/testing
+
+Visual Changes
+^^^^^^^^^^^^^^
+
+
+* **theming** - `FRM-934 <http://jira.korp.com.br/browse/FRM-934>`_
+
+  * Fixed input label text sizes
+
+Fixes
+^^^^^
+
+
+* **navigation** - `FRM-1044 <http://jira.korp.com.br/browse/FRM-1044>`_ - Fixed console error
+
+16-03-20 (4.2.0-beta.4)
+-----------------------
+
+Fixes
+^^^^^
+
+
+* **authorization** - `FRM-1098 <http://jira.korp.com.br/browse/FRM-1098>`_
+
+  * Fixed VsAuthorizationService.isGrantedMap() in test environments. - *isGrantedMap* now returns a map with every permission requested as "true".
+
+13-03-20 (4.2.0-beta.3)
+-----------------------
+
+Fixes
+^^^^^
+
+
+* **client-core** - `FRM-1091 <http://jira.korp.com.br/browse/FRM-1091>`_
+
+  * Added Client core.
+
+13-03-20 (4.2.0-beta.2)
+-----------------------
+
+Fixes
+^^^^^
+
+
+* **VsRadioButton** - `FRM-1095 <http://jira.korp.com.br/browse/FRM-1095>`_
+
+  * **Click in radio button now sets value**.
+
+    * Before this task, it would not select if you click in a input.
+
+11-03-20 (4.2.0-beta.1)
+-----------------------
+
+Deprecated
+^^^^^^^^^^
+
+
+* **VsDatepicker** - `FRM-1080 <http://jira.korp.com.br/browse/FRM-1080>`_
+
+  * Properties **"readonly"** and **"allowPicker"** are now **deprecated** and will be removed in future releases. Setting such properties to "true" **will raise a warning**.
+
+Features
+^^^^^^^^
+
+* **VsDatepicker** - `FRM-1080 <http://jira.korp.com.br/browse/FRM-1080>`_
+
+  * **FormControl value is now always a Date**
+
+    * When setting the FormControl value or initializing the form, you can use a valid date string, number or Date object. If a string or number can't be converted to a Date, the FormControl value will be set to null, otherwise, it will be set to the corresponding date.
+
+  * **AM/PM removed** from picker modal to better reflect the 24-hour format displayed in the input
+
+Fixes
+^^^^^
+
+
+* **VsDatepicker** - `FRM-1080 <http://jira.korp.com.br/browse/FRM-1080>`_
+
+  * FormControl.setValue with **emitEvent: false** flag should now work
+  * "month" mode now sets the date as 15 to **prevent timezone conflicting with the month**

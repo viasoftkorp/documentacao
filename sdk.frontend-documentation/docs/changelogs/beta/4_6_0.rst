@@ -1,0 +1,197 @@
+
+Changelog - 4.6.0 Betas
+=======================
+
+4.6.0-beta.14 (26/06/2020)
+--------------------------
+
+Features
+^^^^^^^^
+
+* 
+  **components/grid** - `FRM-1241 <http://jira.korp.com.br/browse/FRM-1241>`_
+
+
+  * Added option to clear selection upon filtering when selection mode is set to ``'checkbox'``
+
+* 
+  **components/tree-table** - `FRM-1280 <http://jira.korp.com.br/browse/FRM-1280>`_
+
+
+  * Added ``children`` and ``expanded`` properties to ``VsTreeTableNode``
+  * Added ``data-tt-*`` attributes to many parts of the component to make testing easier
+  * Added ``rowData`` variable to custom templates
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/filter** - `FRM-1280 <http://jira.korp.com.br/browse/FRM-1280>`_
+
+  * Fixed error message when retrieving cache in some rare cases
+
+----
+
+4.6.0-beta.13 (23/06/2020)
+--------------------------
+
+Features
+^^^^^^^^
+
+* **components/tree-table** - `FRM-1279 <http://jira.korp.com.br/browse/FRM-1279>`_
+
+  * Added the ability to reorder columns
+
+----
+
+4.6.0-beta.12 (23/06/2020)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/filter** - `FRM-1298 <http://jira.korp.com.br/browse/FRM-1298>`_
+
+  * Fixed a bug that caused the search in ``selection`` mode to also apply a ``text`` filter
+
+----
+
+4.6.0-beta.11 (22/06/2020)
+--------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **components** - `FRM-1297 <http://jira.korp.com.br/browse/FRM-1297>`_
+
+  * Fixed another critical bug that rendered the ``components`` package unusable
+
+----
+
+4.6.0-beta.10 (19/06/2020)
+--------------------------
+
+Features
+^^^^^^^^
+
+* **components/tree-table** - `FRM-1278 <http://jira.korp.com.br/browse/FRM-1278>`_
+
+  * Added actions column to tree-table
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/filter** - `FRM-1278 <http://jira.korp.com.br/browse/FRM-1278>`_
+
+  * Fixed a critical bug that caused ``'@viasoft/components/filter'`` imports to fail
+
+----
+
+4.6.0-beta.9 (17/06/2020)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* **components/grid**\ , **components/shared/table** - `FRM-1277 <http://jira.korp.com.br/browse/FRM-1277>`_
+
+  * ``VsGridCell`` renamed to ``VsTableCell`` and import moved from ``'@viasoft/components/grid'`` to ``'@viasoft/components/shared'``
+
+Features
+^^^^^^^^
+
+* **components/tree-table** - `FRM-1277 <http://jira.korp.com.br/browse/FRM-1277>`_
+
+  * Added ``type`` property to columns
+
+    * Default styling/formatting columns can be used as well as custom ones can be created by declaring a ``vsTemplate`` inside the Tree Table
+    * ``'boolean'``\ , ``'currency'``\ , ``'currency-precision'``\ , ``'date'``\ , ``'date-time'`` and ``'number'`` have default filter settings that can be overridden if neccessary
+    * More info will be available in the docs in the full release
+
+  * Added ``translate`` property to columns
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/datepicker** - `FRM-1288 <http://jira.korp.com.br/browse/FRM-1288>`_
+
+  * Fixed a bug where datepickers would be "dirty" when initialized with nullish values
+
+----
+
+4.6.0-beta.8 (16/06/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/filter** - `FRM-1293 <http://jira.korp.com.br/browse/FRM-1293>`_
+
+  * Refactored layout in a way that makes z-index manipulation unnecessary, fixing many small layout issues
+
+----
+
+4.6.0-beta.7 (09/06/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+* 
+  **components/datepicker** - `FRM-1286 <http://jira.korp.com.br/browse/FRM-1286>`_
+
+
+  * Fixed a bug where the datepicker wouldn't close after selecting a date when in ``day`` mode
+
+* 
+  **components/grid** - `FRM-1287 <http://jira.korp.com.br/browse/FRM-1287>`_
+
+
+  * Fixed a bug that caused the grid to never call ``get`` if all columns had their filters manually disabled
+
+----
+
+4.6.0-beta.4 (08/06/2020)
+-------------------------
+
+Features
+^^^^^^^^
+
+* **components/tree-table** - `FRM-1276 <http://jira.korp.com.br/browse/FRM-1276>`_
+
+  * Added column sorting
+  * Added cache support for sorting (requires setting ``cacheId`` property)
+
+Bug Fixes
+^^^^^^^^^
+
+* **components/grid** - `FRM-560 <http://jira.korp.com.br/browse/FRM-560>`_
+
+  * Fixed a bug that caused ``get`` to be called twice when sorting a column
+
+----
+
+4.6.0-beta.3 (05/06/2020)
+-------------------------
+
+Breaking changes
+^^^^^^^^^^^^^^^^
+
+* **components/filter** - `FRM-1275 <http://jira.korp.com.br/browse/FRM-1275>`_
+
+  * Filter imports have been moved from ``@viasoft/components/grid`` to ``@viasoft/components/filter``
+
+Features
+^^^^^^^^
+
+* 
+  **components/datepicker** - `FRM-1226 <http://jira.korp.com.br/browse/FRM-1226>`_
+
+
+  * You can now type in the time field in the datepicker overlay
+
+* 
+  **components/tree-table** - `FRM-1275 <http://jira.korp.com.br/browse/FRM-1275>`_
+
+
+  * Added filter features from grid
+  * Added cache support for filter (requires setting ``cacheId`` property)

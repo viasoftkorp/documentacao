@@ -1,0 +1,314 @@
+Changelog - 9.0.0 Betas
+=======================
+
+9.0.0-beta.16 (21/02/2025)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [NO-ISSUE] `common`: Add `firstUntilDestroyed` as a rxjs method.
+- [NO-ISSUE] `common`: Add `nameof<MinhaClasse>().propriedade`, allowing you to type property names.
+- [NO-ISSUE] `common`: Add `VsCommonModule.forStandalone({translates: {}})` method.
+- [NO-ISSUE] `input`: Add `shouldHideHintLabelContainer` @Input().
+- [NO-ISSUE] `spinner`: Add `center` @Input().
+- [NO-ISSUE] `datepicker`: Add `isIMaskLazy` @Input().
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-201] `components`: `grid` Fix in actions size calculation.
+- [SDKF-201] `components`: `grid` Fix in infinite loading when used in a ChangeDetectionStrategy.OnPush component.
+- [NO-ISSUE] `components`: `forms` Fix focusManagerService for mat-select.
+- [NO-ISSUE] `components`: `dialog` Fix in actions selector.
+- [NO-ISSUE] `components`: Fixing a bunch of memory leaks.
+- [NO-ISSUE] `components`: `grid` actionSizeLimit action now doesn't emit `onRowClick` when clicked.
+
+____
+
+9.0.0-beta.8 (05/12/2024)
+--------------------------
+
+Features
+^^^^^^^^
+
+- [SDKF-198] `navigation`: `vs-navigation-view` now has `hideSidenavMenu` @Input;
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-191] `components`: `dialog` now handles when actions has multiple button[model=icon] / icon;
+
+____
+
+9.0.0-beta.7 (05/12/2024)
+--------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- [SDKF-183] `components`: `grid` / `tree-table` `editManagerService` is now signal based, so beware for possible breaking changes.
+
+Features
+^^^^^^^^
+
+- [SDKF-183] `components`: `grid` / `tree-table` `editRowOptions.onRowEdit` / `editRowOptions.onRowsEdit` now has a trigger parameter, allowing you to know why edit was saved.
+- [SDKF-183] `components`: `grid` / `tree-table` `editRowOptions.onCancelEdit` added, allowing you to know why edit was canceled.
+- [SDKF-183] `components`: `grid` now has a `footer` ng-content.
+
+____
+
+9.0.0-beta.6 (02/12/2024)
+--------------------------
+
+This release is focused around updating to Angular 18. It is crucial that you follow these steps in this exact order when updating your apps and libraries.
+
+Before Updating
+^^^^^^^^^^^^^^^
+
+Update your Node.JS to version `20.12.2`.
+  - We recommend using `NVM` to work simultaneously between old/new apps
+
+    - ``nvm install 20.12.2``
+    - ``nvm use 20.12.2``
+
+Also, install the latest versions of global packages (like @angular/cli / @angular/schematics).
+  - ``npm i -g @angular/cli@18.2.2``
+  - ``npm i -g @angular-devkit/schematics@18.2.2 @angular-devkit/schematics-cli@18.2.2``
+
+Follow these steps to migrate to Angular 18
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We recommend first updating all projects that are on version <= 8.0.x according to the `guide <https://sdk-frontend-documentation.readthedocs.io/en/latest/changelogs/beta/8_0_0.html>`_.
+
+Next, follow the `tutorial <https://angular.dev/update-guide?v=17.0-18.0&l=1>`_ to update from version v17 to v18.
+
+- The only CLI commands should be:
+  
+  .. code-block:: sh
+
+    ng update @angular/core@18 @angular/cli@18 --force
+    ng update @angular/material@18 --force
+
+.. raw:: html
+
+Update Dependencies
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dependency
+     - Status
+     - Version
+     - Documentation
+   * - @angular/animations
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/animations <https://github.com/angular/angular#readme>`_
+   * - @angular/cdk
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/cdk <https://github.com/angular/components#readme>`_
+   * - @angular/common
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/common <https://github.com/angular/angular#readme>`_
+   * - @angular/compiler
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/compiler <https://github.com/angular/angular#readme>`_
+   * - @angular/core
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/core <https://github.com/angular/angular#readme>`_
+   * - @angular/forms
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/forms <https://github.com/angular/angular#readme>`_
+   * - @angular/material
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/material <https://github.com/angular/components#readme>`_
+   * - @angular/platform-browser
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/platform-browser <https://github.com/angular/angular#readme>`_
+   * - @angular/platform-browser-dynamic
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/platform-browser <https://github.com/angular/angular#readme>`_
+   * - @angular/router
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/router <https://github.com/angular/angular/tree/main/packages/router>`_
+   * - @microsoft/signalr
+     - 🔄 Updated
+     - ``~8.0.7``
+     - `microsoft/signalr <https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-8.0?view=aspnetcore-8.0>`_
+     - 🔄 Updated
+     - ``~15.0.0``
+     - `ngx-translate/core <https://github.com/ngx-translate/core/blob/master/README.md>`_
+   * - @sentry/angular-ivy
+     - ❌ Removed
+     -
+     -
+   * - @sentry/angular
+     - ✅ Added
+     - ``~8.28.0``
+     - `@sentry/angular <https://docs.sentry.io/platforms/javascript/guides/angular/>`_
+   * - @sentry/browser
+     - 🔄 Updated
+     - ``~8.28.0``
+     - `@sentry/browser <https://docs.sentry.io/platforms/javascript/guides/angular/>`_
+   * - @viasoft/datepicker
+     - 🔄 Updated
+     - ``~9.0.1``
+   * - @viasoft/fontawesome-pro
+     - 🔄 Updated
+     - ``~6.4.8``
+     - `viasoft/fontawesome-pro <https://sdk-frontend-documentation.readthedocs.io/en/latest/>`_ 
+   * - angular-imask
+     - 🔄 Updated
+     - ``~7.6.1``
+     - `angular-imask <https://github.com/uNmAnNeR/imaskjs/tree/master/packages/angular-imask>`_
+   * - core-js
+     - 🔄 Updated
+     - ``~3.38.1``
+     - `core-js <https://github.com/zloirock/core-js>`_
+   * - dompurify
+     - 🔄 Updated
+     - ``~3.1.6``
+     - `dompurify <https://www.npmjs.com/package/dompurify>`_
+   * - imask
+     - 🔄 Updated
+     - ``~7.6.1``
+     - `imask <https://imask.js.org/guide.html>`_
+   * - jwt-decode
+     - 🔄 Updated
+     - ``^4.0.0``
+     - `jwt-decode <https://github.com/auth0/jwt-decode#readme>`_
+   * - primeng
+     - 🔄 Updated
+     - ``~17.18.9``
+     - `primeng <https://primefaces.org/primeng/setup>`_
+   * - single-spa
+     - 🔄 Updated
+     - ``^6.0.3``
+     - `single-spa <https://single-spa.js.org/docs/getting-started-overview>`_
+   * - single-spa-angular
+     - 🔄 Updated
+     - ``^9.2.0``
+     - `single-spa-angular <https://single-spa.js.org/docs/getting-started-overview>`_
+   * - tslib
+     - 🔄 Updated
+     - ``^2.7.0``
+     - `tslib <https://github.com/microsoft/tslib>`_
+   * - ua-parser-js
+     - 🔄 Updated
+     - ``~1.0.38``
+     - `ua-parser-js <https://github.com/faisalman/ua-parser-js>`_
+   * - zone.js
+     - 🔄 Updated
+     - ``~0.14.10``
+     - `zone.js <https://www.npmjs.com/package/zone.js?activeTab=readme>`_
+
+.. list-table::
+   :header-rows: 1
+
+   * - Dev dependency
+     - Status
+     - Version
+     - Documentation
+   * - @angular-builders/custom-webpack
+     - 🔄 Updated
+     - ``~18.0.0``
+     - `@angular-builders/custom-webpack <https://github.com/just-jeb/angular-builders?tab=readme-ov-file#readme>`_
+   * - @angular-devkit/build-angular
+     - 🔄 Updated
+     - ``^18.2.12``
+     - `@angular-devkit/build-angular <https://github.com/angular/angular-cli>`_
+   * - @angular-eslint/builder
+     - 🔄 Updated
+     - ``18.3.0``
+     - `angular-eslint/builder <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/eslint-plugin
+     - 🔄 Updated
+     - ``18.3.0``
+     - `angular-eslint/eslint-plugin <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/eslint-plugin-template
+     - 🔄 Updated
+     - ``18.3.0``
+     - `angular-eslint/eslint-plugin-template <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/schematics
+     - 🔄 Updated
+     - ``18.3.0``
+     - `angular-eslint/schematics <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular-eslint/template-parser
+     - 🔄 Updated
+     - ``18.3.0``
+     - `angular-eslint/template-parser <https://github.com/angular-eslint/angular-eslint#readme>`_
+   * - @angular/cli
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `@angular/cli <https://github.com/angular/angular-cli>`_
+   * - @angular/compiler-cli
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/compiler-cli <https://github.com/angular/angular/tree/main/packages/compiler-cli>`_
+   * - @angular/language-service
+     - 🔄 Updated
+     - ``^18.2.2``
+     - `angular/language-service <https://github.com/angular/angular#readme>`_
+   * - @types/lodash
+     - 🔄 Updated
+     - ``^4.17.7``
+     - `types/lodash <https://github.com/DefinitelyTyped/DefinitelyTyped/>`_
+   * - @viasoft/testing
+     - 🔄 Updated
+     - ``4.0.4``
+     - `viasoft/testing <link>`_
+   * - cypress
+     - 🔄 Updated
+     - ``~13.15.2``
+     - `cypress <https://docs.cypress.io/guides/references/migration-guide>`_
+   * - ng-packagr
+     - 🔄 Updated
+     - ``~18.2.1``
+     - `ng-packagr <https://github.com/ng-packagr/ng-packagr>`_
+   * - prettier
+     - 🔄 Updated
+     - ``~3.3.3``
+     - `prettier <https://prettier.io>`_
+   * - typescript
+     - 🔄 Updated
+     - ``~5.5.4``
+     - `typescript <https://www.typescriptlang.org/>`_
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+- `Angular Material` theming has changed a lot, we are still using v2 (rather than v3) via m2-* functions. Beware possible breaking changes
+- `@viasoft/theming/config" as config` won't export most of the vsTheme variables, use `@viasoft/theming/variables` instead;
+- `vs-search-input` now implements `FormManipulator`, so `controlName` has changed to `formControlName`
+- [SDKF-178] - `common`: `VS_AVOID_SHOWING_FILTER_ICON_IN_GRID` altered to `VS_SHOULD_SHOW_FILTER_ICON_IN_GRID`, now grid / tree-table will not show its filter icon by default.
+- [SDKF-181] `components`: `grid` edit row's icon has changed.
+- [APPBUILDER-133] `components`: `header` height has changed, it may cause scroll changes mainly when header is not at the top of the screen.
+- [SDKF-177] `common`: `navbar.searchInput` theme has changed.
+
+Features
+^^^^^^^^
+
+- [SDKF-173] - `vs-drawer` component added, replacing mat-drawer's functionality.
+- [SDKF-174] `components`: `grid` now has a `loaded` @output
+- [SDKF-175] `components`: `grid` now only emits `options.select` event after all select process (not at the start as before).
+- [SDKF-184] `components`: `label-link` normalization function now are exported via common (`normalizeHrefForPortal` / `checkIfIsExternalLink`).
+- [SDKF-179] `components`: `grid / tree-table` now has a `compactFilterMode`, removing filter line and adding a float mode (integrated with the header)
+
+Bug Fixes
+^^^^^^^^^
+
+- [SDKF-174] `components`: `grid.actionsSizeLimit` always showing ... butotn fixed.
+- [SDKF-176] `common`: partial selection in input / textarea fixed.
+- [SDKF-192] `common`: `currency` mask now handles `undefined` / `null` values correctly.
+- [SDKF-185] `common`: `currency` mask now pre-formatted values correctly.
+- [SDKF-187] `components`: `input / textarea` handling `ngModelOptions` correctly.

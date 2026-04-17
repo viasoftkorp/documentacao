@@ -1,0 +1,111 @@
+Changelog - 4.8.0 Betas
+=======================
+
+4.8.2-beta.7 (12/08/2020)
+-------------------------
+
+Features
+^^^^^^^^
+
+``common``
+~~~~~~~~~~~~~~
+
+* `SDKBACK-270 <http://jira.korp.com.br/browse/SDKBACK-270>`_\ : Added External Authentication Service used to request a Google Access Token
+
+----
+
+4.8.1-beta.5 (06/08/2020)
+-------------------------
+
+Changes
+^^^^^^^
+
+``http``
+~~~~~~~~~~~~
+
+* `FRM-1364 <http://jira.korp.com.br/browse/FRM-1364>`_\ : Interceptor now only inserts headers from access tokens that haven't expired
+* `FRM-1364 <http://jira.korp.com.br/browse/FRM-1364>`_\ : Interceptor now only tries to insert headers that havent't already been inserted
+
+----
+
+4.8.0-beta.4 (23/07/2020)
+-------------------------
+
+Changes
+^^^^^^^
+
+``navigation``
+~~~~~~~~~~~~~~~~~~
+
+* `FRM-1343 <http://jira.korp.com.br/browse/FRM-1343>`_\ : Update notification sidebar style
+
+Bug Fixes
+^^^^^^^^^
+
+``navigation``
+~~~~~~~~~~~~~~~~~~
+
+* `FRM-1349 <http://jira.korp.com.br/browse/FRM-1349>`_\ : Fix "No provider for MatSnackBar" error
+
+Other
+^^^^^
+
+* `FRM-1351 <http://jira.korp.com.br/browse/FRM-1351>`_\ , `FRM-1014 <http://jira.korp.com.br/browse/FRM-1014>`_\ : Test and general stability and performance improvements
+
+----
+
+4.8.0-beta.3 (08/07/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+``components > tab-group``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1335 <http://jira.korp.com.br/browse/FRM-1335>`_\ : Subroutes can now be used and will work properly
+
+----
+
+4.8.0-beta.2 (07/07/2020)
+-------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+``common > notification``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1290 <http://jira.korp.com.br/browse/FRM-1290>`_\ : Fixed an issue where notification messages would be duplicated when multiple tabs were open
+
+``components > tree-table``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1326 <http://jira.korp.com.br/browse/FRM-1326>`_\ : Fixed a bug where columns wouldn't resize correctly when ``fitColumns = false``
+
+----
+
+4.8.0-beta.1 (06/07/2020)
+-------------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+``dependencies``
+~~~~~~~~~~~~~~~~~~~~
+
+* `FRM-1329 <http://jira.korp.com.br/browse/FRM-1329>`_\ : Added ``"dompurify": "2.0.12"`` dependency
+
+Features
+^^^^^^^^
+
+``common > notification``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+* `FRM-1329 <http://jira.korp.com.br/browse/FRM-1329>`_\ : Notifications can now have HTML
+
+``common``
+~~~~~~~~~~~~~~
+
+* `FRM-1289 <http://jira.korp.com.br/browse/FRM-1289>`_\ : Added ``ensureTrailingSlash`` to ``initAppSettings``

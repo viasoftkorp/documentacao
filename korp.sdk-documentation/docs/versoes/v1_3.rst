@@ -1,0 +1,150 @@
+v1.3
+====
+
+Visão geral
+^^^^^^^^^^^
+
+| Essa versão do SDK traz duas grandes mudanças: service discovery (registro no consul) e busca de connection strings.
+
+* Connection strings
+
+Até a versão anterior, todas as configurações referente a banco de dados eram muito simples, tudo vinha do Consul. Foi necessária uma mudança brusca nisso, pois teremos um segundo servidor de SQL Server na nuvem, impossibilitando o modelo anterior. A partir de agora, a busca de connection string será exatamente igual ao C#: poderá ser configurada uma connection string por serviço no ``Viasoft.TenantManagement``.
+
+* Service discovery (registro no consul)
+
+Por padrão agora o SDK utilizará a estratégia `TTL <https://developer.hashicorp.com/consul/api-docs/agent/check#ttl>`_ para service discovery. Na prática para o programador, a diferença será que não mostrará mais as chamadas de ``health-check`` no console. Para voltar ao comportamento anterior, configure a flag ``ServiceDiscovery:TTL:Enabled`` para ``false``.
+
+----
+
+Migrando v1.2 para v1.3
+^^^^^^^^^^^^^^^^^^^^^^^
+
+| Execute os seguinte comandos
+
+    .. code-block:: bash
+
+        go get bitbucket.org/viasoftkorp/korp.sdk
+
+    .. code-block:: bash
+
+        go get -u gorm.io/gorm
+
+    .. code-block:: bash
+
+        go get -u gorm.io/driver/sqlserver
+
+| No arquivo go.mod, altere a versão em ``go 1.??`` para ``go 1.19``.
+
+| Executar o seguinte comando no terminal
+
+    .. code-block:: bash
+
+        go mod tidy
+
+| No arquivo Dockerfile, altere a linha ``FROM golang:1.??`` para ``FROM golang:1.19``
+
+| Copie o conteúdo do arquivo `Jenkinsfile <https://bitbucket.org/viasoftkorp/viasoft.projecttemplates.golang/src/master/Jenkinsfile>`_, cole no Jenkinsfile e corrija as variáveis.
+
+----
+
+Breaking changes
+^^^^^^^^^^^^^^^^
+
+Arquivo main.go
+---------------
+
+| Adicionar a chamada ``caching.MustInitCaching()`` após a linha ``defer sentrySdk.FlushSentry()``.
+| Remover a chamada ``defer service_discovery.DeregisterFromServiceDiscovery()``.
+| Adicionar novo parâmetro a chamada de ``NewServiceDiscoveryConfig`` com o valor ``fiber_helper.NewFiberShutdownServer(app)``.
+
+
+Pacote service_discovery
+------------------------
+
+Novo parâmetro de tipo ``OnShutdownTask`` no método ``NewServiceDiscoveryConfig``. Esse parâmetro tem como objetivo que, ao parar o serviço, o "desregistramento" do Consul ocorra e o servidor HTTP seja também parado.
+
+
+Pacote unit_of_work
+-------------------
+
+Adicionado dois novos parâmetros ao método ``NewUnitOfWork``. A explicação do que o parâmetro ``initializer`` faz pode ser vista no tópico do pacote storage.
+
+Pacote infrastructure
+---------------------
+
+Os métodos, interfaces e classes desse pacote foram movidos para o pacote storage.
+
+* Adicionado dois novos parâmetros ao método ``GetDatabase``.
+* Adicionado três novos parÂmetros ao método ``InitializeDatabase``.
+* Removido método ``NewVaultSqlCredentialsProvider``.
+* Removido método ``NewVaultSqlCredentialsProviderWithCustomCredentialsKey``.
+* Removido método ``NewConnectionStringProviderWithCustomKey``.
+* Removida struct ``vaultSqlCredentialsProvider``.
+* Removida struct ``consulConnectionStringProvider``.
+* Método ``GetConnectionString`` da interface ``ConnectionStringProvider`` teve seu parâmetro alterado para ``*ambient_data.AmbientDataModel``.
+
+Pacote storage
+--------------
+
+* Método ``GetDatabase``
+        
+    Possibilita a inicialização ou reaproveitação de um database já cacheado. O parâmetro ``initializer`` tem como objetivo possibilitar uma maneira do programador implementar um método para inicialização do banco de dados, como por exemlo roda migration, seeder etc. Pode ser ``nil`` caso não tenha nenhum código para ser executado na inicialização de um database.
+
+* Nova flag no Consul
+
+    | Por padrão o SDK entenderá que seu serviço depende de connection string customizada. Essa flag é ``EnableEnvironmentDependentConnectionString``, e seus valores podem ser:
+    
+    +------------+-------------------------------------------------------------------------------------------+
+    | Valor      | Efeito                                                                                    |
+    +============+===========================================================================================+
+    | true       | as connection string virão do serviço ``Viasoft.TenantManagement``                        |
+    +------------+-------------------------------------------------------------------------------------------+
+    | false      | a connection string virá do Consul da propriedade ``ConnectionStrings:DefaultConnection`` |
+    +------------+-------------------------------------------------------------------------------------------+
+
+----
+
+Adição
+^^^^^^
+
+Interface ITenantManagementAPI
+------------------------------
+
+| Para criar uma instância do serviço, utilize o método ``NewTenantManagementAPI`` do pacote ``tenant_management``
+
+* Método ``GetConnectionStringsForTenant`` busca todas as connections strings para o serviço e tenant informado.
+
+* Método ``GetEnvironment`` busca um ambiente a partir de um ``*ambient_data.AmbientDataModel``.
+
+* Método ``GetEnvironments`` busca os ambientes a partir de um ``tenantId``.
+
+
+Interface IConnectionStringStore
+--------------------------------
+
+| Para criar uma instância do serviço, utilize o método ``NewConnectionStringStore`` do pacote ``infrastructure``
+
+* Método ``GetConnectionString`` busca uma connection string a partir de um ``*ambient_data.AmbientDataModel``. Realiza uma lógica de precedência em que, primeiro procura uma connection string para o EnvironmentId, segundo procura uma connection para o TenantId, senão retorna uma string vazia.
+
+Novo pacote ambient_data
+------------------------
+
+| Método ``GetAmbientDataFromContext`` disponibiliza um ``*AmbientDataModel``.
+
+Novo pacote proxy
+-----------------
+
+Adicionado proxies para Authentication e Authorization. Para utilizar adicione os middlewares ao seu servidor HTTP, exemplo:
+
+    .. code-block:: go
+
+        app := fiber_helper.NewFiberApp()
+        app.Use(logger.New())
+        service_discovery.AddKorpFiberHealthCheck(app)
+        app.Use(handler.KorpFiberAuthorizationHandler())
+        app.Use(proxy.KorpAuthenticationProxy("/korp-sdk/"))
+        app.Use(proxy.KorpAuthorizationProxy("/korp-sdk/"))
+
+.. warning::
+
+    É importante os proxies estarem após o handler de Autorização, enesse caso representado pela linha ``app.Use(handler.KorpFiberAuthorizationHandler())``.

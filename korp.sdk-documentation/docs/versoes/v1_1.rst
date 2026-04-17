@@ -1,0 +1,134 @@
+v1.1
+====
+
+Versionamento
+^^^^^^^^^^^^^
+
+| Foi definido que todos os serviços que acessam tabelas do Korp (legado) devem ser versionados na URL. Para issso, a partir da versão 1.1, o SDK disponibiliza ferramentas para o seu serviço suportar versionamento.
+| Com essa alteração, todas as chamadas para outros serviços, inclusive Delphi, devem ser criadas levando em conta a versão atual.
+| Perceba também que os frontend também terão uma versão atrelada, ou seja, as chamadas partindo das telas terão que ser realizadas com versionamento. Não será possível frontend de versão X utilizar backend de versão y.
+
+Requisitando outros serviços
+----------------------------
+
+| Todas as chamadas realizadas para serviços versionados terão que ter sua URL composta com a versão do serviço. O SDK disponibiliza a função ``GetVersionWithoutBuild`` do pacote ``utils`` para isso.
+
+| Exemplo de chamada
+
+.. code-block:: go
+
+    var gateway = utils.GetGateway()
+    var endpoint = fmt.Sprintf("%s/%s/logistica/picking/pickings", gateway, utils.GetVersionWithoutBuild(service_info.Version))
+    var client = &http.Client{
+		Timeout: time.Second * 100,
+	}
+
+    resp, err := client.Get(endpoint)
+
+| As chamadas para serviço Delphi sempre seguirão o padrão /Korp/Services/VERSÃO/database/...
+
+.. code-block:: go
+
+    var gateway = utils.GetGateway()
+    var endpoint = fmt.Sprintf("%s/Korp/Services/%s/Korp_PRD/WmsService/MovimentarEstoqueLotePacoteSerie", gateway, utils.GetVersionWithoutBuild(service_info.Version))
+    var client = &http.Client { 
+      Timeout: time.Second * 100,
+    }
+
+Migrando v1.0 para v1.1
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* No arquivo main
+
+#. Remover a constante ``version``
+#. Remover a constante ``serviceName``
+#. Função main: Na primeira linha, setar a variável ``service_info.ServiceName`` com o que estava na constante ``serviceName``
+#. Função main: Logo após configurar o ``service_info.ServiceName``, chamar ``auto_update.MustDoUpdate()``
+#. Função main: Remover propriedade ``ServiceSection`` da chamada ``AddKorpConsul``
+#. Função main: Remover parâmetros version, ``serviceName`` da chamada ``sentrySdk.InitSentry()``
+#. Função main: Remover o parâmetro ``serviceName`` da chamada ``consulSdk.GetPropertyFromConsul("ServicePort"``, passar uma string vazia ""
+#. Função getCORS(): Remover o parâmetro ``serviceName`` da chamada ``consulSdk.GetPropertyFromConsul("CORS"``, passar uma string vazia ""
+#. Função main: Antes da chamada ``AddKorpAuthorization``, adicionar ``secret_manager.MustInitSecretManager(nil)``
+#. Função main: Logo após a chamada ``secret_manager.MustInitSecretManager(nil)``, adicionar ``go auto_update.SelfUpdateScheduler()``
+
+O seu arquivo main.go precisa ficar com a estrutura igual a https://bitbucket.org/viasoftkorp/viasoft.projecttemplates.golang/src/master/main.go
+
+* No arquivo route:
+
+#. Deve-se confirmar a utilização de Middleware de autenticação para todas as rotas, para isso, o use do middleware deve estar acima de todas as rotas registradas;
+
+  #. Utilizar ``handler.KorpFiberAuthorizationHandler()`` para Fiber
+
+  #. Utilizar ``handler.KorpGinAuthorizationHandler()`` para Gin
+  
+| Autorização e Versionamento
+
+.. warning::
+    
+    As rotas novas adicionadas ao seu serviço versionado deverão obrigatoriamente estarem configuradas com autorização, mesmo que as rotas antigas (sem versão) não estejam. Segue exemplo
+    
+    .. code-block:: go
+    
+        func initRoutes(router *fiber.App) {
+            router.Use(logger.New())
+            service_discovery.AddKorpFiberHealthCheck(router)
+
+            // TODO Remover rotas sem Group
+            router.Get("/:tenantId/:databaseName/saldoprodutos/:empresa/:produto", controllers.GetSaldoProduto)
+
+            routerGroup := router.Group(utilsSdk.GetVersionWithoutBuild(service_info.Version))
+            
+            //logo após o router.Group(), adicionar a chamada de handler
+            routerGroup.Use(handler.KorpFiberAuthorizationHandler())
+            routerGroup.Get("/saldoprodutos/:empresa/:produto", controllers.GetSaldoProduto)
+            routerGroup.Get("/saldoprodutos/:empresa", controllers.GetBatchSaldoProduto)
+        }
+    
+----
+
+Breaking changes
+^^^^^^^^^^^^^^^^
+
+* Pacote Authorization
+
+O Authorization passará a validar e autenticar tokens vindos da Nuvem, desde que contenham o Scope com o mesmo nome que o ServiceName ou se for um token frontend (se a flag de ``AllowFrontendRequests`` estiver ativa)
+
+* Pacote infrastructure
+
+| Função ``GetDatabase`` não aceita mais o ``serviceName`` por parâmetro. Remover das chamadas
+| Função ``InitializeDatabase`` não aceita mais o ``serviceName`` por parâmetro. Remover das chamadas
+
+* Pacote consul
+
+| Removida propriedade ``ServiceSection`` da struct ``KorpConsulConfig``
+
+* Pacote sentry
+
+| Removido parâmetros ``version`` e ``serviceName`` da função ``InitSentry``
+
+* Pacote unit_of_work
+
+| Removido parâmetro ``serviceName`` da função ``NewUnitOfWork``
+
+----
+
+Requisições no frontend
+-----------------------
+
+
+| A documentação referente a como realizar chamadas para o seu backend, está no link `'Chamadas com Versionamento' <https://sdk-frontend-documentation.readthedocs.io/en/frm-1924/changelogs/backend-communication-changelogs/2022-05-01-versioned-routes.html>`_
+
+----
+
+Atualizando Jenkinsfile
+^^^^^^^^^^^^^^^^^^^^^^^
+
+ Devido à atualização do sdk, a jenkinsfile, a dockerfile e o docker-compose devem ser atualizados.
+
+ .. note:: 
+
+   Serviços com a versão do sdk maior que a a versão v1.1.32 ou similares provavelmente já estão com essas alterações aplicadas.
+
+   **MESMO ASSIM, CONFIRA QUE OS ARQUIVOS ESTÃO CONFORME O PADRÃO EXPLICADO ABAIXO**
+
+.. include:: v1_1_jenkins_file.rst

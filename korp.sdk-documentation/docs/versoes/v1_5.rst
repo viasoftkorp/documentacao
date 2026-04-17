@@ -1,0 +1,27 @@
+v1.5
+====
+
+Migrando v1.4 para v1.5
+^^^^^^^^^^^^^^^^^^^^^^^
+
+| Execute os seguinte comandos
+
+    .. code-block:: bash
+
+        go get bitbucket.org/viasoftkorp/korp.sdk
+    
+    E depois
+
+    .. code-block:: bash
+
+        go mod tidy
+
+----
+
+Breaking changes
+^^^^^^^^^^^^^^^^
+
+Arquivo main.go
+---------------
+
+- Remover a linha ``secret_manager.MustInitSecretManager``.

@@ -1,0 +1,7 @@
+setup:
+
+py get-pip.py
+
+pip install -U sphinx-autobuild
+pip install -U sphinx_copybutton
+pip install -U sphinx_rtd_theme

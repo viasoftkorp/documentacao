@@ -1,0 +1,46 @@
+v1.4
+====
+
+Migrando v1.3 para v1.4
+^^^^^^^^^^^^^^^^^^^^^^^
+
+| Execute os seguinte comandos
+
+    .. code-block:: bash
+
+        go get bitbucket.org/viasoftkorp/korp.sdk
+    
+    E depois
+
+    .. code-block:: bash
+
+        go mod tidy
+
+----
+
+Breaking changes
+^^^^^^^^^^^^^^^^
+
+Arquivo main.go
+---------------
+
+| Essa breaking change aplica-se somente para quem utiliza o pacote ``bus``:
+
+- Remover a linha ``defer bus.CloseRabbitMq()``.
+- Trocar a chamada ``bus.UseRabbitMqAsBroker()`` para ``bus.MustUseRabbitMqAsBroker()``.
+- Declarar nova variável ``shutdown``, atribuir a mesma conforme código e utiliza-la no parâmetro ``onShutdown`` do método ``service_discovery.NewServiceDiscoveryConfig``.
+
+.. code-block:: go
+
+    shutdown := service_discovery.WrapShutdownTasks(bus.ServiceBusShutdownServer(), fiber_helper.NewFiberShutdownServer(app))
+    c := service_discovery.NewServiceDiscoveryConfig(shutdown, ....)
+
+----
+
+Melhorias
+^^^^^^^^^
+
+Pacote ``bus``
+--------------
+
+| O pacote foi totalmente reestruturado. Para utilização visite :doc:`/docs/geral/service-bus`.

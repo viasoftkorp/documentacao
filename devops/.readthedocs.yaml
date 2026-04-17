@@ -1,7 +1,7 @@
 version: 2
 
 sphinx:
-  configuration: conf.py
+  configuration: devops/conf.py
 
 build:
   os: ubuntu-22.04
